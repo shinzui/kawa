@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header>
+      <div class="navbar navbar-static">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand">Kawa</a>
+            <ul class="nav">
+              <li class="active"><a href="">Pages</a></li>
+              <li><a href="">Index</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </header>
+  <div class="fluid-container">
+    <ul class="breadcrumb">
+      <%= yield :breadcrumb %>
+    </ul>
+    <%= yield %>
+  </div>
 </body>
 </html>

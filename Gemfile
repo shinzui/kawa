@@ -4,10 +4,31 @@ gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
 
+gem 'nokogiri'
+gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
+gem 'creole'
+
 
 group :development do
   gem 'awesome_print'
   gem 'guard'
+  gem "guard-rspec"
+  gem "guard-cucumber"
+  gem "guard-shell"
+  gem "guard-bundler"
+  gem "rb-fsevent", :require  => false
+  gem "growl_notify", :require  => false
+  gem "yard"
+end
+
+
+group :test do
+  gem 'cucumber-rails'
+  gem "rspec-rails"
+  gem 'database_cleaner'
+  gem 'fabrication'
+  gem 'mongoid-rspec'
+  gem 'launchy'
 end
 
 # Gems used only for assets and not required
@@ -18,7 +39,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'jquery-rails'
+gem 'less-rails-bootstrap', :git  => "git@github.com:shinzui/less-rails-bootstrap.git"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

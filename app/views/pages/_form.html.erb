@@ -1,0 +1,19 @@
+<%= simple_form_for @page, :wrapper  => :inline do |f| %>
+  <%= field_set_tag nil, :class  => "control-group" do %>
+    <%= f.input :name, :label_html  => {:class  => 'control-label'} %>
+  <% end %>
+
+  <%= field_set_tag nil, :class  => "control-group" do %>
+    <%= f.input :markup, :collection  => Page.supported_markups %>
+  <% end %> 
+
+  <%= field_set_tag nil, :class  => "control-group" do %>
+    <%= f.input :raw_data, :as  => :text, :input_html  => {:class  => "span16"} %> 
+  <% end %>
+
+  <div class="actions">
+    <%= f.button :submit, :class  => "primary" %>
+    <%= button_tag 'Cancel', :type  => :reset, :class  => "btn" %>
+
+  </div>
+<% end %>
