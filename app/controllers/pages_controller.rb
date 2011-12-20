@@ -15,7 +15,8 @@ class PagesController < ApplicationController
   end
 
   def show
-    page = Page.find(params[:id])
+    # page = Page.find(params[:id])
+    page = Page.find_by_slug(params[:id])
     @page = PagePresenter.new(page)
   end
 

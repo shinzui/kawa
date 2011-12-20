@@ -1,3 +1,7 @@
+Given /^there is a "([^"]*)" Page$/ do |page_name|
+  Fabricate(:markdown_page, :name  => page_name)
+end
+
 Given /^I create a "([^"]*)" page in "([^"]*)"$/ do |page_name, markup|
   visit new_page_path
   wiki_page = Fabricate.attributes_for("#{markup}_page".to_sym, :name  => page_name, :markup  => markup)
@@ -9,7 +13,7 @@ end
 
 Then /^I should see the "([^"]*)" page generated from "([^"]*)"$/ do |page_name, markup|
   wiki_page = Page.where(:name  => page_name).first
-  visit page_path(wiki_page.id)
+  visit page_path(wiki_page)
   page.should have_content(wiki_page.name)
  
   #TODO there must be an easier way to verify, also extract to helper
@@ -19,4 +23,9 @@ Then /^I should see the "([^"]*)" page generated from "([^"]*)"$/ do |page_name,
     css_path = node.css_path.gsub(/^\? >/,'').strip
     page.should have_css(css_path, :text  => node.text)
   end
+end
+
+Then /^I should be able to access the "([^"]*)" page from a user friendly url$/ do |page_name|
+  wiki_page = Page.where(:name  => page_name).first
+  visit page_path(page_name)
 end

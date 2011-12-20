@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
+gem 'mongoid_slug'
 
 gem 'nokogiri'
 gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
