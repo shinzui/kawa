@@ -1,8 +1,8 @@
 Given /^there is (?:a|an) "([^"]*)" Page$/ do |page_name|
-  Fabricate(:markdown_page, :name  => page_name)
+  @page = Fabricate(:markdown_page, :name  => page_name)
 end
 
-Given /^I create a "([^"]*)" page in "([^"]*)"$/ do |page_name, markup|
+Given /^I create (?:a|an) "([^"]*)" page in "([^"]*)"$/ do |page_name, markup|
   visit new_page_path
   wiki_page = Fabricate.attributes_for("#{markup}_page".to_sym, :name  => page_name, :markup  => markup)
   fill_in "Name", :with => wiki_page[:name] 

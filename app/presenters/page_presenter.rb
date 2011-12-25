@@ -7,7 +7,7 @@ class PagePresenter
   end
 
   def data
-    MarkupRenderer.renderer(@model.markup)[@model.raw_data]
+    PageRenderer.new(@model).render
   end
 
 end

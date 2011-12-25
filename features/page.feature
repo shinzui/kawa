@@ -30,4 +30,3 @@ Feature: Manage pages
   Scenario: Deleting a page
       Given there is a "神戸" Page
       Then I should be able to delete the page
-    
