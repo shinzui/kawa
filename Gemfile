@@ -3,11 +3,13 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
-gem 'mongoid_slug'
+gem 'mongoid_slug', :git  => 'git@github.com:shinzui/mongoid-slug.git'
 
 gem 'nokogiri'
 gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
 gem 'creole'
+gem 'crummy'
+#gem 'idn'
 
 
 group :development do

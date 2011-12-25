@@ -1,4 +1,4 @@
-Given /^there is a "([^"]*)" Page$/ do |page_name|
+Given /^there is (?:a|an) "([^"]*)" Page$/ do |page_name|
   Fabricate(:markdown_page, :name  => page_name)
 end
 
@@ -11,8 +11,8 @@ Given /^I create a "([^"]*)" page in "([^"]*)"$/ do |page_name, markup|
   click_button :submit
 end
 
-Then /^I should see the "([^"]*)" page generated from "([^"]*)"$/ do |page_name, markup|
-  wiki_page = Page.where(:name  => page_name).first
+Then /^I should see the page generated$/ do
+  wiki_page = Page.last
   visit page_path(wiki_page)
   page.should have_content(wiki_page.name)
  
@@ -25,7 +25,41 @@ Then /^I should see the "([^"]*)" page generated from "([^"]*)"$/ do |page_name,
   end
 end
 
-Then /^I should be able to access the "([^"]*)" page from a user friendly url$/ do |page_name|
-  wiki_page = Page.where(:name  => page_name).first
-  visit page_path(page_name)
+Then /^I should be able to access the page from a user friendly url$/ do
+  wiki_page = Page.last
+  visit page_path(wiki_page.slug)
+end
+
+Given /^I update the Page name to "([^"]*)"$/ do |new_page_name|
+  @new_page_name = new_page_name
+  wiki_page = Page.last
+  visit edit_page_path(wiki_page)
+  fill_in "Name", :with  => new_page_name
+  click_button :submit
+end
+
+Then /^the Page name should change$/ do 
+  wiki_page = Page.last
+  wiki_page.name.should == @new_page_name
+end
+
+Given /^there are (\d+) Pages$/ do |count|
+  count.to_i.times { Fabricate(:markdown_page) }
+end
+
+Given /^I go to the index page$/ do
+  visit pages_path
+end
+
+Then /^I should see a link to all pages$/ do
+  Page.all.each do |wiki_page|
+    page.should have_xpath('//a', :text  => wiki_page.name)
+  end
+end
+
+Then /^I should be able to delete the page$/ do
+  wiki_page = Page.last
+  visit page_path(wiki_page)
+  find(:xpath, "//a[@data-method='delete']").click
+  Page.where(:id  => wiki_page.id).should be_empty
 end

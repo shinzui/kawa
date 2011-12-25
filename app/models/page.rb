@@ -19,5 +19,4 @@ class Page
 		Markup.constants.map {|m| Markup.const_get(m)}
 	end
 
-  
 end

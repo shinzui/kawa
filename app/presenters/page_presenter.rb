@@ -1,12 +1,13 @@
 class PagePresenter
-  delegate :name, :to  => :@page
+  delegate :name, :to  => :@model
+  attr_reader :model
 
   def initialize(page)
-    @page = page
+    @model = page
   end
 
   def data
-    MarkupRenderer.renderer(@page.markup)[@page.raw_data]
+    MarkupRenderer.renderer(@model.markup)[@model.raw_data]
   end
 
 end

@@ -13,17 +13,17 @@
           <div class="container">
             <a class="brand">Kawa</a>
             <ul class="nav">
-              <li class="active"><a href="">Pages</a></li>
-              <li><a href="">Index</a></li>
+              <li class="active"><%= link_to 'Pages', pages_path %></li>
             </ul>
+            <form action="" class="form-search navbar-search pull-left">
+              <input type="text" class="search-query span-2" placeholder="Search" />
+            </form>
           </div>
         </div>
       </div>
   </header>
   <div class="fluid-container">
-    <ul class="breadcrumb">
-      <%= yield :breadcrumb %>
-    </ul>
+    <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
     <%= yield %>
   </div>
 </body>
