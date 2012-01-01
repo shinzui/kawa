@@ -60,6 +60,6 @@ end
 Then /^I should be able to delete the page$/ do
   wiki_page = Page.last
   visit page_path(wiki_page)
-  find(:xpath, "//a[@data-method='delete']").click
+  find(:xpath, "//a[contains(@rel, 'delete-page')]").click
   Page.where(:id  => wiki_page.id).should be_empty
 end

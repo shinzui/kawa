@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git@github.com:shinzui/less-rails-bootstrap.git
-  revision: 498703e70270851ea0a54fcf758336c2336b9b3f
+  revision: 51927258b755662adfc2f943a50280abaef7b9bb
   specs:
     less-rails-bootstrap (1.4.1)
       less-rails (~> 2.1.0)
@@ -131,8 +131,8 @@ GEM
     less (2.0.8)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
-    less-rails (2.1.1)
-      actionpack (~> 3.1.1)
+    less-rails (2.1.2)
+      actionpack (>= 3.1)
       less (~> 2.0.7)
     libv8 (3.3.10.4)
     linecache19 (0.5.13)

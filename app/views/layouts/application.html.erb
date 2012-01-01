@@ -24,6 +24,12 @@
   </header>
   <div class="fluid-container">
     <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
+    <% if notice %>
+      <div class="alert-message success fade in" data-alert="alert">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <p><%= notice %></p>
+      </div>
+    <% end %>
     <%= yield %>
   </div>
 </body>
