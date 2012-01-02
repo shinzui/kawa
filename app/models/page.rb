@@ -1,6 +1,10 @@
 class Page
   include Mongoid::Document
   include Mongoid::Slug
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
+  index_name "#{Rails.env}-#{Rails.application.class.to_s.downcase}-pages"
 
   module Markup
     MARKDOWN = "markdown".freeze
@@ -18,5 +22,15 @@ class Page
 	def	self.supported_markups
 		Markup.constants.map {|m| Markup.const_get(m)}
 	end
+
+  def self.search_index
+    Tire.index(index_name)
+  end
+
+  def self.elastic_search(query_str)
+    tire.search(load: true) do
+      query { string query_str } if query_str.present?
+    end
+  end
 
 end

@@ -15,8 +15,9 @@
             <ul class="nav">
               <li class="active"><%= link_to 'Pages', pages_path %></li>
             </ul>
-            <form action="" class="form-search navbar-search pull-left">
-              <input type="text" class="search-query span-2" placeholder="Search" />
+
+            <form action="<%= pages_path %>" class="form-search navbar-search pull-left" method='get'>
+              <input type="text" class="search-query span-2" placeholder="Search" name="query"/>
             </form>
           </div>
         </div>
@@ -24,10 +25,12 @@
   </header>
   <div class="fluid-container">
     <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
-    <% if notice %>
-      <div class="alert-message success fade in" data-alert="alert">
+    <% if notice or flash[:error] %>
+      <% css_class = notice ? 'success' : 'error' %>
+      <% message = notice ?  notice : flash[:error] %>
+      <div class="alert-message <%= css_class %> fade in" data-alert="alert">
         <a class="close" data-dismiss="alert" href="#">×</a>
-        <p><%= notice %></p>
+        <p><%= message %></p>
       </div>
     <% end %>
     <%= yield %>

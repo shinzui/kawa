@@ -1,10 +1,23 @@
 class PagesController < ApplicationController
-
   before_filter :load_page, :page_crumb, :only  => [:show, :edit, :update]
+
+  rescue_from Tire::Search::SearchRequestFailed do |error|
+    if error.message =~ /SearchParseException/ && params[:query]
+      flash[:error] = "Sorry, your query '#{params[:query]}' is invalid"
+    else
+      flash[:error] = "An error occured while searching"
+    end
+    redirect_to root_path
+  end
 
   def index
     add_crumb "Pages"
-    @pages = Page.all
+
+    if params[:query]
+      @pages = Page.elastic_search(params[:query])
+    else
+      @pages = Page.all
+    end
   end
 
   def new

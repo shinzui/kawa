@@ -10,7 +10,9 @@ gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
 gem 'creole'
 gem 'crummy'
 #gem 'idn'
-
+gem 'tire'
+gem 'tire-contrib'
+gem 'yajl-ruby'
 
 group :development do
   gem 'awesome_print'
@@ -32,6 +34,7 @@ group :test do
   gem 'fabrication'
   gem 'mongoid-rspec'
   gem 'launchy'
+  gem 'capybara-webkit'
 end
 
 # Gems used only for assets and not required
