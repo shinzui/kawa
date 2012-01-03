@@ -37,6 +37,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    redirect_to new_page_path(page: {name: params[:id]}) unless @page
     @page = PagePresenter.new(@page)
   end
 
@@ -64,7 +65,7 @@ class PagesController < ApplicationController
     end
 
     def page_crumb
-      add_crumb @page.name
+      add_crumb @page.name if @page
     end
 
 end

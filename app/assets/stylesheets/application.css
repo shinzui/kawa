@@ -6,3 +6,9 @@
  *= require_self
  *= require_tree . 
 */
+
+a.absent {
+  color: #f30;
+  text-decoration: none;
+  border-bottom: 1px dashed #f30;
+}

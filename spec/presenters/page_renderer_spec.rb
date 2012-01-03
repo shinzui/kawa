@@ -38,9 +38,8 @@ describe PageRenderer do
       end
 
       it "should create link with class absent" do
-        #FIXME can't call page_path since mongoid_slug would save the record
-        expected_link =  lambda { "<a class=\"absent\" href=\"#{page_path(@linked_page)}\">#{@linked_page.name}</a>" }
-        renderer.render.should match expected_link.call
+        expected_link = "<a class=\"absent\" href=\"#{new_page_path(page: {name: @linked_page.name})}\">#{@linked_page.name}</a>" 
+        renderer.render.should match Regexp.escape(expected_link)
       end
     end
 
@@ -52,8 +51,8 @@ describe PageRenderer do
       end
 
       it "should create a link with the specified title" do
-        expected_link =  lambda { "<a class=\"absent\" href=\"#{page_path(@linked_page)}\">#{@title}</a>" }
-        renderer.render.should match expected_link.call
+        expected_link =  "<a class=\"absent\" href=\"#{new_page_path(page: {name: @linked_page.name})}\">#{@title}</a>"
+        renderer.render.should match Regexp.escape(expected_link)
       end
     end
 

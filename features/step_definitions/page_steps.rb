@@ -30,6 +30,10 @@ Then /^I should be able to access the page from a user friendly url$/ do
   visit page_path(wiki_page.slug)
 end
 
+Given /^I access the "([^"]*)" page$/ do |page_name| 
+  visit page_path(id: page_name)
+end
+
 Given /^I update the Page name to "([^"]*)"$/ do |new_page_name|
   @new_page_name = new_page_name
   wiki_page = Page.last
@@ -62,4 +66,10 @@ Then /^I should be able to delete the page$/ do
   visit page_path(wiki_page)
   find(:xpath, "//a[contains(@rel, 'delete-page')]").click
   Page.where(:id  => wiki_page.id).should be_empty
+end
+
+Then /^I should be redirected to the create "([^"]*)" page$/ do |page_name| 
+  page.current_path.should == new_page_path
+  field = find_field "Name"
+  field.value.should == page_name
 end

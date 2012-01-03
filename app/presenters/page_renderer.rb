@@ -41,7 +41,13 @@ class PageRenderer
       
       page = Page.where(:name  => page_name).first
       page ||= Page.new(:name  => page_name)
-      presence = page.new_record? ? 'absent' : 'present'
-      "<a class=\"#{presence}\" href=\"#{page_path(page)}\">#{title}</a>"
+      if page.new_record?
+        presence = 'absent'  
+        path = new_page_path(page: {name: page_name})
+      else
+        presence = 'present'
+        path = page_path(page)
+      end
+      "<a class=\"#{presence}\" href=\"#{path}\">#{title}</a>"
     end
 end
