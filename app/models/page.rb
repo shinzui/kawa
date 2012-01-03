@@ -27,6 +27,10 @@ class Page
     Tire.index(index_name)
   end
 
+  def self.create_search_index
+    search_index.create unless search_index.exists?
+  end
+
   def self.elastic_search(query_str)
     tire.search(load: true) do
       query { string query_str } if query_str.present?

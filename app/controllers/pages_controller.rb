@@ -15,6 +15,7 @@ class PagesController < ApplicationController
 
     if params[:query]
       @pages = Page.elastic_search(params[:query])
+      render 'search_result'
     else
       @pages = Page.all
     end
@@ -22,7 +23,7 @@ class PagesController < ApplicationController
 
   def new
     add_crumb "New Page"
-    @page = Page.new
+    @page = Page.new(params[:page])
   end
 
   def create

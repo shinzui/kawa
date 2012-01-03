@@ -1,4 +1,6 @@
 Given /^I search for "([^"]*)"$/ do |search_term|
+  #ensure there is a search index
+  Page.create_search_index
   visit root_path
   within(:css, ".form-search") do
     fill_in 'query', :with  => search_term
@@ -16,4 +18,8 @@ end
 
 Then /^I should see a friendly search error page$/ do
   page.should have_content("Sorry, your query")
+end
+
+Then /^I should see a button to create the "([^"]*)" Page$/ do |page_name|
+  page.should have_link "Create #{page_name}", :href  => new_page_path(page: {name: page_name})
 end
