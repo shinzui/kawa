@@ -12,5 +12,5 @@ Then /^I should see a link to the "([^"]*)" page on the "([^"]*)" page$/ do |int
   wiki_page = Page.where(:name  => page_name).first
   visit page_path(wiki_page)
   linked_page = Page.where(:name  => interwiki_page).first || Page.new(:name  => interwiki_page)
-  page.should have_link(linked_page.name, :href  => page_path(linked_page))
+  page.should have_link(linked_page.name, :href  => PageRenderer.linked_page_path(linked_page))
 end

@@ -1,6 +1,10 @@
 class PageRenderer
   include Rails.application.routes.url_helpers
 
+  class << self
+    include Rails.application.routes.url_helpers
+  end
+
   def initialize(page = page)
     @page = page
     @tagmap = {}
@@ -11,6 +15,18 @@ class PageRenderer
     data = preprocess_tags(data)
     data = MarkupRenderer.renderer(@page.markup)[data]
     post_process_tags(data)
+  end
+
+  def self.linked_page_path(page)
+    if page.new_record?
+      new_page_path(page: {name: page.name})
+    else
+      page_path(page)
+    end
+  end
+
+  def linked_page_path(page)
+   self.class.linked_page_path(page) 
   end
 
   private
@@ -41,13 +57,7 @@ class PageRenderer
       
       page = Page.where(:name  => page_name).first
       page ||= Page.new(:name  => page_name)
-      if page.new_record?
-        presence = 'absent'  
-        path = new_page_path(page: {name: page_name})
-      else
-        presence = 'present'
-        path = page_path(page)
-      end
-      "<a class=\"#{presence}\" href=\"#{path}\">#{title}</a>"
+      presence = page.new_record? ? 'absent' : 'present'
+      "<a class=\"#{presence}\" href=\"#{linked_page_path(page)}\">#{title}</a>"
     end
 end
