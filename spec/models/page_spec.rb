@@ -11,4 +11,10 @@ describe Page do
       Page.supported_markups.count.should == Page::Markup.constants.count
     end
   end
+
+  describe "Links" do
+    context "page with external links" do
+    end
+    
+  end
 end

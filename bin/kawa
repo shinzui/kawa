@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+
+KAWA_ENV = ENV['KAWA_ENV'] || "production"
+
+ENV['MONGOID_HOST']     ||= 'localhost'
+ENV['MONGOID_DATABASE'] ||= 'kawa_production'
+
+`./bin/unicorn_rails -E #{KAWA_ENV}`
