@@ -22,7 +22,7 @@ group :development do
   gem "guard-shell"
   gem "guard-bundler"
   gem "rb-fsevent", :require  => false
-  gem "growl_notify", :require  => false
+  gem "growl", :require  => false
   gem "yard"
 end
 
