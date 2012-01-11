@@ -8,13 +8,16 @@ class PageRenderer
   def initialize(page = page)
     @page = page
     @tagmap = {}
+    @plugin_processor = Kawa::Wiki::Plugin::Processor.new(@page)
   end
 
   def render
     data = @page.raw_data
     data = preprocess_tags(data)
+    data = @plugin_processor.preprocess_plugins(data)
     data = MarkupRenderer.renderer(@page.markup)[data]
-    post_process_tags(data)
+    data = post_process_tags(data)
+    @plugin_processor.post_process_rendering_plugins(data)
   end
 
   def self.linked_page_path(page)

@@ -1,10 +1,18 @@
 class Page
   include Mongoid::Document
   include Mongoid::Slug
+
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
+  include Mongoid::TaggableWithContext
+  include Mongoid::TaggableWithContext::AggregationStrategy::RealTime
+
   index_name "#{Rails.env}-#{Rails.application.class.to_s.downcase}-pages"
+
+  taggable :tags, :separator  => ","
+
+  before_save :process_plugins
 
   module Markup
     MARKDOWN = "markdown".freeze
@@ -35,6 +43,12 @@ class Page
     tire.search(load: true) do
       query { string query_str } if query_str.present?
     end
+  end
+
+  private
+  
+  def process_plugins
+    Kawa::Wiki::Plugin::Processor.new(self).process_processing_plugins(raw_data)
   end
 
 end
