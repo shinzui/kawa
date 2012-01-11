@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_slug', :git  => 'git@github.com:shinzui/mongoid-slug.git'
+gem 'mongoid_taggable_with_context'
 
 gem 'nokogiri'
 gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
