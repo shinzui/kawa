@@ -11,7 +11,7 @@ module Kawa::Wiki::Plugin
     end
 
     def preprocess_plugins(data)
-      data.gsub!(/(.?)<<(.+?)>>/m) do
+      data.gsub(/(.?)<<(.+?)>>/m) do
         if $1 == "'"
           "<<#{$2}>>"
         else
@@ -20,7 +20,6 @@ module Kawa::Wiki::Plugin
           "#{$1}#{stamp}"
         end
       end
-      data
     end
 
     def post_process_processing_plugins(data)
@@ -39,12 +38,13 @@ module Kawa::Wiki::Plugin
     end
 
     def post_process_plugins(data, plugin_type)
+      result = data
       @pluginmap.each do |stamp, plugin|
         replacement = process_plugin(plugin, plugin_type)
         replacement ||= ""
-        data.gsub!(stamp, replacement)
+        result = data.gsub(stamp, replacement)
       end
-      data
+      result
     end
 
     def process_plugin(plugin_text, plugin_type)

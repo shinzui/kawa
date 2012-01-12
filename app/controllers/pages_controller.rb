@@ -16,6 +16,8 @@ class PagesController < ApplicationController
     if params[:query]
       @pages = Page.elastic_search(params[:query])
       render 'search_result'
+    elsif params[:tag]
+      @pages = Page.where(tags_array: params[:tag])
     else
       @pages = Page.all
     end

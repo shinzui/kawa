@@ -4,9 +4,17 @@
   <%= @page.data.html_safe %>
 </div>
 
+<% if @page.tags? %>
+  <div style="float:right;">
+    <i class="tags"></i>
+    <% @page.tags.each_with_index do |tag, idx| %>
+      <%= link_to tag, pages_path(:tag  => tag) %><%= render_comma(@page.tags, idx) %>
+    <% end %>
+  </div>
+<% end %>
+
 
 <div class="form-actions">
   <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn small", :alt  => "Edit", :title  => "Edit" %>
   <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :confirm  => "Are you sure?", :class  => "btn danger small", :alt  => "Delete" %>
-
 </div>

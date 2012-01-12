@@ -6,6 +6,14 @@ class PagePresenter
     @model = page
   end
 
+  def tags
+    @model.tags_array
+  end
+
+  def tags?
+    tags.present?  
+  end
+
   def data
     PageRenderer.new(@model).render
   end
