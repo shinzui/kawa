@@ -22,13 +22,20 @@ describe PageRenderer do
     context "Page name links to existing pages" do
       before :each do
         @linked_page = Fabricate(:markdown_page, :name  => "Tokyo tower")
-        @interwiki_link = "[[#{@linked_page.name}]]"
       end
 
       it "should create link with class present" do
+        @interwiki_link = "[[#{@linked_page.name}]]"
         expected_link = "<a class=\"present\" href=\"#{page_path(@linked_page)}\">#{@linked_page.name}</a>"
         renderer.render.should match expected_link
       end
+
+      it "should support case-insensitive names" do
+        @interwiki_link = "[[#{@linked_page.name.upcase}]]"
+        expected_link = "<a class=\"present\" href=\"#{page_path(@linked_page)}\">#{@linked_page.name.upcase}</a>"
+        renderer.render.should match expected_link
+      end
+
     end
 
     context "Page name links to non-existing pages" do

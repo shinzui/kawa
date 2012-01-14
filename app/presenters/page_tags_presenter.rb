@@ -3,9 +3,6 @@ class PageTagsPresenter
 
   Tag = Struct.new(:name, :weight)
 
-  def initialize
-  end
-
   def tags
     tags = []
     Page.tags_with_weight.each do |tag|

@@ -58,7 +58,7 @@ class PageRenderer
       title, page_name = *parts.compact.map(&:strip)
       page_name ||= title
       
-      page = Page.where(:name  => page_name).first
+      page = Page.named(page_name).first
       page ||= Page.new(:name  => page_name)
       presence = page.new_record? ? 'absent' : 'present'
       "<a class=\"#{presence}\" href=\"#{linked_page_path(page)}\">#{title}</a>"

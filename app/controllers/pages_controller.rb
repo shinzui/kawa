@@ -17,6 +17,7 @@ class PagesController < ApplicationController
       @pages = Page.elastic_search(params[:query])
       render 'search_result'
     elsif params[:tag]
+      add_crumb params[:tag]
       @pages = Page.where(tags_array: params[:tag])
     else
       @pages = Page.all
