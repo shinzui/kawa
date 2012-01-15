@@ -4,6 +4,11 @@ module Kawa
 
     def boot
       load_wiki_plugins
+      setup
+    end
+
+    def setup
+      ActionController::Base.send(:include, Kawa::Common::ViewContextFilter) if defined?(ActionController::Base)  
     end
 
     def load_wiki_plugins

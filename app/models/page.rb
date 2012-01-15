@@ -14,7 +14,7 @@ class Page
 
   before_save :process_plugins
 
-  scope :named, ->(name) { where(name: /^#{name}/i) }
+  scope :named, ->(name) { where(name: /^#{name}$/i) }
 
   module Markup
     MARKDOWN = "markdown".freeze

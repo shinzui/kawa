@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     add_crumb "Pages"
 
     if params[:query]
-      @pages = Page.elastic_search(params[:query])
+      @search = SearchPresenter.new(params[:query])
       render 'search_result'
     elsif params[:tag]
       add_crumb params[:tag]

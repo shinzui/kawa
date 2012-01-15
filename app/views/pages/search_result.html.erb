@@ -1,20 +1,23 @@
 <h3>Search Result</h3>
 
-<% if @pages.empty? %>
+<% unless @search.results? %>
   <div class="block-message alert-message warning">
     <p>
       No pages matched your query.
     </p>
     <div class="alert-actions">
-      <%= link_to "Create #{params[:query]}", new_page_path(:page  => {:name  => params[:query]}), :class  => "btn small" %>
+      <%= @search.new_page_link_from_query :class  => "btn small" %>
     </div>
   </div>
 <% else %>  
   <ul>
-  <% @pages.each do |page| %>
+  <% @search.results.each do |page| %>
     <li><%= link_to page.name, page %></li>
   <% end %>
   </ul>
-<% end %>
 
+  <% unless @search.exact_match? %>
+    <div><%= @search.new_page_link_from_query :class  => "btn small" %></div>
+  <% end  %>
+<% end %>
 
