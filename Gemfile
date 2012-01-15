@@ -57,5 +57,7 @@ gem 'less-rails-bootstrap', :git  => "git@github.com:shinzui/less-rails-bootstra
 # Use unicorn as the web server
 gem 'unicorn'
 
-gem 'ruby-debug19', :require => 'ruby-debug'
+group :test, :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
 
