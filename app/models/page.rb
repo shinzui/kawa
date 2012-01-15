@@ -24,6 +24,7 @@ class Page
   field :name
   field :markup
   field :raw_data
+  index :name, unique: true
   slug :name
 
   validates_presence_of :name, :markup, :raw_data
