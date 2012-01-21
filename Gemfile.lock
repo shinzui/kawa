@@ -27,6 +27,13 @@ GIT
       mongoid (~> 2.0)
       stringex (~> 1.3)
 
+GIT
+  remote: git@github.com:shinzui/mongoid_taggable_with_context.git
+  revision: 15465b64ecca96bb88746130a3e48600833a5653
+  specs:
+    mongoid_taggable_with_context (0.8.0)
+      mongoid (>= 2.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -59,6 +66,10 @@ GEM
     activesupport (3.1.3)
       multi_json (~> 1.0)
     addressable (2.2.6)
+    ajax-chosen-rails (0.1.1)
+      chosen-rails
+      railties (~> 3.0)
+      thor (~> 0.14)
     archive-tar-minitar (0.5.2)
     arel (2.2.1)
     awesome_print (1.0.1)
@@ -76,6 +87,9 @@ GEM
       capybara (>= 1.0.0, < 1.2)
     childprocess (0.2.3)
       ffi (~> 1.0.6)
+    chosen-rails (0.9.5.1)
+      railties (~> 3.0)
+      thor (~> 0.14)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -153,8 +167,6 @@ GEM
     mongoid-rspec (1.4.4)
       mongoid (~> 2.0)
       rspec (~> 2)
-    mongoid_taggable_with_context (0.8.0)
-      mongoid (>= 2.0.0)
     multi_json (1.0.4)
     nokogiri (1.5.0)
     polyglot (0.3.3)
@@ -262,9 +274,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ajax-chosen-rails
   awesome_print
   bson_ext
   capybara-webkit
+  chosen-rails
   coffee-rails (~> 3.1.1)
   creole
   crummy
@@ -283,7 +297,7 @@ DEPENDENCIES
   mongoid
   mongoid-rspec
   mongoid_slug!
-  mongoid_taggable_with_context
+  mongoid_taggable_with_context!
   nokogiri
   rails (= 3.1.3)
   rb-fsevent

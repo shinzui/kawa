@@ -4,7 +4,7 @@ gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_slug', :git  => 'git@github.com:shinzui/mongoid-slug.git'
-gem 'mongoid_taggable_with_context'
+gem 'mongoid_taggable_with_context', :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
 
 gem 'nokogiri'
 gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
@@ -49,6 +49,8 @@ end
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'jquery-rails'
 gem 'less-rails-bootstrap', :git  => "git@github.com:shinzui/less-rails-bootstrap.git"
+gem 'chosen-rails'
+gem 'ajax-chosen-rails'
 
 
 # To use ActiveModel has_secure_password

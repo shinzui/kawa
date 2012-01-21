@@ -3,9 +3,13 @@ class PageTagsPresenter
 
   Tag = Struct.new(:name, :weight)
 
+  def initialize(term = nil)
+    @tags = term.nil? ? Page.tags_with_weight : Page.tags_with_weight(:criteria  => {:_id  => /#{term}/i})
+  end
+
   def tags
     tags = []
-    Page.tags_with_weight.each do |tag|
+    @tags.each do |tag|
       tags << Tag.new(tag.first, tag.last)
     end
     tags

@@ -16,7 +16,8 @@ Given /^the "([^"]*)" page is tagged with "([^"]*)"$/ do |page_name, tag|
 end
 
 When /^I visit the "([^"]*)" tag page$/ do |tag|
-  visit pages_path(:tag  => tag)
+  tags = tag.split /\sand\s/
+  visit pages_path(:tags  => tags)
 end
 
 Then /^I should a link to the "([^"]*)" page$/ do |page_name|

@@ -1,5 +1,14 @@
-<% if params[:tag] %>
-  <h3>Pages tagged with <%= params[:tag] %></h3>
+<% if @search %>
+  <form action="<%= pages_path %>" method="get">
+    <select id="tags" name="tags[]" multiple>
+      <% @search.tags.each do |tag| %>
+        <option value="<%= tag %>" selected><%= tag %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Filter" class="btn small"/>
+  </form>
+
+  <h3>Pages tagged with <%= @search.search_tags %></h3>
 <% end %>
 <ul>
 <% @pages.each do |page| %>

@@ -11,6 +11,12 @@ Feature: Page tags
     When I visit the "tokyo" tag page
     Then I should a link to the "tokyo tower" page
 
+  Scenario: Viewing pages tagged with multiple tags
+    Given the "tokyo tower" page is tagged with "tokyo, landmark"
+    And there are 2 Pages
+    When I visit the "tokyo and landmark" tag page
+    Then I should a link to the "tokyo tower" page
+
   Scenario: Viewing tag page
     Given the "tokyo tower" page is tagged with "tokyo"
     And the "namba" page is tagged with "osaka"

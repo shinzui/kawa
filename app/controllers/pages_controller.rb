@@ -16,9 +16,10 @@ class PagesController < ApplicationController
     if params[:query]
       @search = SearchPresenter.new(params[:query])
       render 'search_result'
-    elsif params[:tag]
-      add_crumb params[:tag]
-      @pages = Page.where(tags_array: params[:tag])
+    elsif TagSearchPresenter.tag_search?(params)
+      @search = TagSearchPresenter.new(params)
+      add_crumb @search.search_tags
+      @pages = @search.pages
     else
       @pages = Page.all
     end

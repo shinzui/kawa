@@ -7,4 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require underscore
+//= require ajax-chosen-jquery
 //= require_tree .
