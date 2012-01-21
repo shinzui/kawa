@@ -1,17 +1,19 @@
-<% if @search %>
-  <form action="<%= pages_path %>" method="get">
-    <select id="tags" name="tags[]" multiple>
-      <% @search.tags.each do |tag| %>
-        <option value="<%= tag %>" selected><%= tag %></option>
-      <% end %>
-    </select>
-    <input type="submit" value="Filter" class="btn small"/>
-  </form>
+<div class="row">
+  <% if @search %>
+    <form action="<%= pages_path %>" method="get">
+      <select id="tags" name="tags[]" multiple>
+        <% @search.tags.each do |tag| %>
+          <option value="<%= tag %>" selected><%= tag %></option>
+        <% end %>
+      </select>
+      <input type="submit" value="Filter" class="btn small"/>
+    </form>
 
-  <h3>Pages tagged with <%= @search.search_tags %></h3>
-<% end %>
-<ul>
-<% @pages.each do |page| %>
-  <li><%= link_to page.name, page %></li>
-<% end %>
-</ul>
+    <h3>Pages tagged with <%= @search.search_tags %></h3>
+  <% end %>
+  <ul>
+    <% @pages.each do |page| %>
+      <li><%= link_to page.name, page %></li>
+    <% end %>
+  </ul>
+</div>

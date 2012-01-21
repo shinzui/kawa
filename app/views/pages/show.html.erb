@@ -1,20 +1,25 @@
-<h1><%= @page.name %></h1>
-
-<div>
-  <%= @page.data.html_safe %>
-</div>
-
-<% if @page.tags? %>
-  <div style="float:right;">
-    <i class="tags"></i>
-    <% @page.tags.each_with_index do |tag, idx| %>
-      <%= link_to tag, pages_path(:tag  => tag) %><%= render_comma(@page.tags, idx) %>
-    <% end %>
+  <div class=" page-data row">
+    <div class="span14">
+      <h1><%= @page.name %></h1>
+      <div> <%= @page.data.html_safe %></div>
+    </div>
   </div>
-<% end %>
+  <div class="page-metadata row">
+    <div class="span10">
+      <%= @page.created_at %>
+      <%= @page.updated_at %>
+    </div>
+    <div class="tags span4 pull-right">
+      <% if @page.tags? %>
+        <i class="tags"></i>
+        <% @page.tags.each_with_index do |tag, idx| %>
+          <%= link_to tag, pages_path(:tag  => tag) %><%= render_comma(@page.tags, idx) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-
-<div class="form-actions">
-  <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn small", :alt  => "Edit", :title  => "Edit" %>
-  <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :confirm  => "Are you sure?", :class  => "btn danger small", :alt  => "Delete" %>
-</div>
+  <div class="form-actions row">
+    <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn small", :alt  => "Edit", :title  => "Edit" %>
+    <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :confirm  => "Are you sure?", :class  => "btn danger small", :alt  => "Delete" %>
+  </div>

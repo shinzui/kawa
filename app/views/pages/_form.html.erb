@@ -1,25 +1,27 @@
-<%= simple_form_for @page, :wrapper  => :inline do |f| %>
-  <% if f.error_notification %>
-    <div class="alert-message warning fade in" data-alert="alert">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-      <p><%= f.error_notification %></p>
+<div class="row">
+  <%= simple_form_for @page, :wrapper  => :inline do |f| %>
+    <% if f.error_notification %>
+      <div class="alert-message warning fade in" data-alert="alert">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <p><%= f.error_notification %></p>
+      </div>
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :name, :label_html  => {:class  => 'control-label'} %>
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :markup, :collection  => Page.supported_markups %>
+    <% end %> 
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :raw_data, :as  => :text, :input_html  => {:class  => "span12"} %> 
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.button :submit, :class  => "primary" %>
+      <%= link_to "Cancel", url_for(:back), :class  => "btn" %>
     </div>
   <% end %>
-
-  <%= field_set_tag nil, :class  => "control-group" do %>
-    <%= f.input :name, :label_html  => {:class  => 'control-label'} %>
-  <% end %>
-
-  <%= field_set_tag nil, :class  => "control-group" do %>
-    <%= f.input :markup, :collection  => Page.supported_markups %>
-  <% end %> 
-
-  <%= field_set_tag nil, :class  => "control-group" do %>
-    <%= f.input :raw_data, :as  => :text, :input_html  => {:class  => "span12"} %> 
-  <% end %>
-
-  <div class="form-actions">
-    <%= f.button :submit, :class  => "primary" %>
-    <%= link_to "Cancel", url_for(:back), :class  => "btn" %>
-  </div>
-<% end %>
+</div>

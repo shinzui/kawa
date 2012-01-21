@@ -1,23 +1,24 @@
-<h3>Search Result</h3>
+<div class="row">
+  <h3>Search Result</h3>
 
-<% unless @search.results? %>
-  <div class="block-message alert-message warning">
-    <p>
-      No pages matched your query.
-    </p>
-    <div class="alert-actions">
-      <%= @search.new_page_link_from_query :class  => "btn small" %>
+  <% unless @search.results? %>
+    <div class="block-message alert-message warning">
+      <p>
+        No pages matched your query.
+      </p>
+      <div class="alert-actions">
+        <%= @search.new_page_link_from_query :class  => "btn small" %>
+      </div>
     </div>
-  </div>
-<% else %>  
-  <ul>
-  <% @search.results.each do |page| %>
-    <li><%= link_to page.name, page %></li>
+  <% else %>  
+    <ul>
+    <% @search.results.each do |page| %>
+      <li><%= link_to page.name, page %></li>
+    <% end %>
+    </ul>
+
+    <% unless @search.exact_match? %>
+      <div><%= @search.new_page_link_from_query :class  => "btn small" %></div>
+    <% end  %>
   <% end %>
-  </ul>
-
-  <% unless @search.exact_match? %>
-    <div><%= @search.new_page_link_from_query :class  => "btn small" %></div>
-  <% end  %>
-<% end %>
-
+</div>

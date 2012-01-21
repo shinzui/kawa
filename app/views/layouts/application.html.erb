@@ -8,9 +8,9 @@
 </head>
 <body>
   <header>
-      <div class="navbar navbar-static">
+      <div class="navbar navbar-fixed">
         <div class="navbar-inner">
-          <div class="container">
+          <div class="fluid-container">
             <a class="brand">Kawa</a>
             <ul class="nav">
               <li class="active"><%= link_to 'Pages', pages_path %></li>
@@ -23,17 +23,28 @@
         </div>
       </div>
   </header>
+
   <div class="fluid-container">
-    <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
-    <% if notice or flash[:error] %>
-      <% css_class = notice ? 'success' : 'error' %>
-      <% message = notice ?  notice : flash[:error] %>
-      <div class="alert-message <%= css_class %> fade in" data-alert="alert">
-        <a class="close" data-dismiss="alert" href="#">×</a>
-        <p><%= message %></p>
+    <div class="fluid-content">
+      <div class="fluid-container">
+        <div class="row">
+          <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
+
+          <% if notice or flash[:error] %>
+            <% css_class = notice ? 'success' : 'error' %>
+            <% message = notice ?  notice : flash[:error] %>
+            <div class="alert-message <%= css_class %> fade in" data-alert="alert">
+              <a class="close" data-dismiss="alert" href="#">×</a>
+              <p><%= message %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-    <%= yield %>
+
+      <div class="fluid-container">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </body>
 </html>

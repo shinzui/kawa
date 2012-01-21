@@ -2,3 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //*= require chosen
+
+.page-data {
+  min-height: 200px;
+}
+
+.page-metadata {
+  background-color: whiteSmoke;
+  font-size: 85%;
+  color: #555;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  height:13px;
+}
+
+.page-metadata div.tags {
+  font-weight: bold;
+}
