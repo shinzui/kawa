@@ -1,5 +1,6 @@
 class Page
   include Mongoid::Document
+  include Mongoid::Timestamps
   include Mongoid::Slug
 
   include Tire::Model::Search

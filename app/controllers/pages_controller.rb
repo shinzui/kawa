@@ -21,7 +21,7 @@ class PagesController < ApplicationController
       add_crumb @search.search_tags
       @pages = @search.pages
     else
-      @pages = Page.all
+      @pages = Page.all.desc(:updated_at)
     end
   end
 

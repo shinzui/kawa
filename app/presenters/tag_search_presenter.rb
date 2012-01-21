@@ -21,7 +21,7 @@ class TagSearchPresenter
   end
 
   def pages
-    @pages ||= Page.all_in(tags_array: @tags)
+    @pages ||= Page.all_in(tags_array: @tags).desc(:updated_at)
   end
 
 end
