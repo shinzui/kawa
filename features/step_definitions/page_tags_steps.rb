@@ -24,7 +24,9 @@ Then /^I should a link to the "([^"]*)" page$/ do |page_name|
   wiki_page = Page.where(name: page_name).first
   page.should have_link(page_name, :href  => page_path(wiki_page))
   Page.where(:name.ne  => page_name).each do |other_page|
-    page.should_not have_link(other_page.name, :href  => page_path(other_page))
+    within(:css, ".main") do
+      page.should_not have_link(other_page.name, :href  => page_path(other_page))
+    end
   end
 end
 

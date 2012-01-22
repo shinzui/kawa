@@ -7,33 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-      <div class="navbar navbar-fixed">
-        <div class="navbar-inner">
-          <div class="fluid-container">
-            <a class="brand">Kawa</a>
-            <ul class="nav">
-              <li class="active"><%= link_to 'Pages', pages_path %></li>
-            </ul>
-
-            <form action="<%= pages_path %>" class="form-search navbar-search pull-left" method='get'>
-              <input type="text" class="search-query span-2" placeholder="Search" name="query"/>
-            </form>
-          </div>
-        </div>
-      </div>
-  </header>
-
-  <div class="fluid-container">
-    <div class="fluid-content">
+  <div class="navbar navbar-fixed">
+    <div class="navbar-inner">
       <div class="fluid-container">
+        <a class="brand">Kawa</a>
+        <ul class="nav">
+          <li class="active"><%= link_to 'Pages', pages_path %></li>
+        </ul>
+
+        <form action="<%= pages_path %>" class="form-search navbar-search pull-left" method='get'>
+          <input type="text" class="search-query span-2" placeholder="Search" name="query"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="fluid-container sidebar-right">
+    <div class="fluid-sidebar">
+      <div class="well">
+        <%= render :partial  => "shared/sidebar" %>
+      </div>
+    </div>
+    <div class="fluid-content">
+      <div class="fluid-container main">
         <div class="row">
           <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
 
           <% if notice or flash[:error] %>
             <% css_class = notice ? 'success' : 'error' %>
             <% message = notice ?  notice : flash[:error] %>
-            <div class="alert-message <%= css_class %> fade in" data-alert="alert">
+            <div class="alert <%= css_class %> fade in" data-alert="alert">
               <a class="close" data-dismiss="alert" href="#">×</a>
               <p><%= message %></p>
             </div>

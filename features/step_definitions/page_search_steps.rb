@@ -12,7 +12,9 @@ Then /^I should get a link to the "([^"]*)" page$/ do |page_name|
   wiki_page = Page.where(:name  => page_name).first
   page.should have_link(wiki_page.name, :href  => page_path(wiki_page))
   Page.excludes(name: page_name).each do |non_matching_page|
-    page.should_not have_link(non_matching_page.name, :href  => page_path(non_matching_page))
+    within(:css, ".main") do
+      page.should_not have_link(non_matching_page.name, :href  => page_path(non_matching_page))
+    end
   end
 end
 

@@ -7,6 +7,10 @@
  *= require_tree . 
 */
 
+body {
+  padding-top: 60px;
+}
+
 a.absent {
   color: #f30;
   text-decoration: none;
