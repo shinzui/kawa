@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //*= require chosen
 
+a[href^="http"] {
+  background: url(external.gif) no-repeat right center;
+  padding-right: 11px;
+}
+
+a[href*="github"] {
+  background: url(octocat.png) no-repeat right center;
+  padding-right: 19px;
+}
+
 .page-data {
   min-height: 200px;
 }
