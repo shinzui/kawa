@@ -4,7 +4,7 @@ Given /^I create an interwiki link to "([^"]*)" from the "([^"]*)" Page$/ do |li
   wiki_page = Fabricate.attributes_for(:markdown_page, :name  => page_name)
   fill_in "Name", :with  => wiki_page[:name]
   select wiki_page[:markup], :from  => :markup
-  fill_in "Raw data", :with  => "##{wiki_page[:name]}\n [[#{linked_page_name}]]"
+  fill_in "Raw data", :with  => "##{wiki_page[:name]}\n\n [[#{linked_page_name}]]"
   click_button :submit
 end
 

@@ -5,14 +5,14 @@ class PageRenderer
     include Rails.application.routes.url_helpers
   end
 
-  def initialize(page = page)
+  def initialize(page)
     @page = page
     @tagmap = {}
     @plugin_processor = Kawa::Wiki::Plugin::Processor.new(@page)
   end
 
   def render
-    data = @page.raw_data
+    data = @page.raw_data.clone
     data = preprocess_tags(data)
     data = @plugin_processor.preprocess_plugins(data)
     data = MarkupRenderer.renderer(@page.markup)[data]

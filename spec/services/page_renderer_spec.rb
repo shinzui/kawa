@@ -3,6 +3,20 @@ require 'spec_helper'
 describe PageRenderer do
   include Rails.application.routes.url_helpers
 
+  describe "Renderer the same page" do
+    before :each do
+      @page = Fabricate.build(:markdown_page, :raw_data  => "#Title\n[[Page Link]]")
+      @first_renderer = PageRenderer.new(@page)
+      @second_renderer = PageRenderer.new(@page)
+    end
+
+    context "with different renderer instances" do
+      it "should return the same result" do
+        @first_renderer.render.should == @second_renderer.render
+      end
+    end
+  end
+
   describe "Markdown page rendering" do
     before :each do
       @page = Fabricate.build(:markdown_page, :raw_data  => "#Title")
@@ -64,5 +78,6 @@ describe PageRenderer do
     end
 
   end
+
 
 end

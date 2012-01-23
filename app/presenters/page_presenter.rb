@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PagePresenter
   include Kawa::Common::Presenter
 
@@ -6,6 +7,14 @@ class PagePresenter
 
   def initialize(page)
     @model = page
+  end
+
+  def title
+    "川 - #{@model.title}"
+  end
+
+  def header
+    h.content_tag(:h1, @model.title) if @model.title == @model.name
   end
 
   def tags
@@ -17,7 +26,7 @@ class PagePresenter
   end
 
   def data
-    PageRenderer.new(@model).render
+    @model.formatted_data
   end
 
   def created_at
@@ -31,6 +40,5 @@ class PagePresenter
     h.content_tag(:strong, "Last updated on:") +
     h.content_tag(:em, I18n.l(@model.updated_at, :format  => :long))
   end
-
 
 end

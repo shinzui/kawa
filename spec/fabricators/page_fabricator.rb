@@ -3,7 +3,7 @@ Fabricator(:page) do
 end
 
 Fabricator(:markdown_page, :from  => :page) do
-  raw_data "#Title\n**bold** *italic*"
+  raw_data "##Title\n**bold** *italic*"
   markup  { Page::Markup::MARKDOWN }
 end
 

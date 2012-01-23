@@ -1,7 +1,8 @@
-<div class=" page-data row">
-  <div class="span12">
-    <h1><%= @page.name %></h1>
-    <div> <%= @page.data.html_safe %></div>
+<% content_for(:page_title) { @page.title } %>
+<div class="row">
+  <div class="page-data span12">
+    <%= @page.header %>
+    <%= @page.data.html_safe %>
   </div>
 </div>
 <div class="page-metadata row">

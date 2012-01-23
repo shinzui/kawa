@@ -14,6 +14,7 @@ gem 'crummy'
 gem 'tire'
 gem 'tire-contrib'
 gem 'yajl-ruby'
+gem 'loofah'
 
 group :development do
   gem 'awesome_print'

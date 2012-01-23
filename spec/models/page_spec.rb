@@ -28,6 +28,28 @@ describe Page do
 
   end
 
+  describe "#title" do
+    context "page without a headline on top" do
+      context "markdown page" do
+        it "should return the page name"  do
+          page = Fabricate.build(:markdown_page, :raw_data => "[link](http://www.github.com)" )
+          page.title.should == page.name
+        end
+      end
+    end
+
+    context "page with a header" do
+      context "markdown page" do
+        it "should return the page headline text" do
+          page_title = "Title"
+          page = Fabricate.build(:markdown_page,  :raw_data  => "\n\n##{page_title}")
+          page.title.should == page_title
+        end
+      end
+
+    end
+  end
+
   describe "Links" do
     context "page with external links" do
     end
