@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: git@github.com:shinzui/mongoid-slug.git
-  revision: ec19c2e76a00ddddb28a11d07c09ebfa5792d8fc
+  revision: 41264b2e65524758a714e64b4ad0cdc826e132aa
   specs:
-    mongoid_slug (0.8.3)
+    mongoid_slug (0.9.0)
       mongoid (~> 2.0)
       stringex (~> 1.3)
 
