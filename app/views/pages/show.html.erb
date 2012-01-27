@@ -12,7 +12,7 @@
   </div>
   <div class="tags pull-right">
     <% if @page.tags? %>
-      <i class="tags"></i>
+      <i class="icon tags"></i>
       <% @page.tags.each_with_index do |tag, idx| %>
         <%= link_to tag, pages_path(:tag  => tag) %><%= render_comma(@page.tags, idx) %>
       <% end %>
