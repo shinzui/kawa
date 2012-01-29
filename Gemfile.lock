@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git@github.com:shinzui/less-rails-bootstrap.git
-  revision: 927856f077304518a1f2725a38982ead1c6d13b4
+  revision: 5bdf508d72e19728ffc88c3e6d19e5336bbfc406
   specs:
     less-rails-bootstrap (1.4.1)
       less-rails (~> 2.1.0)
