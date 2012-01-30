@@ -1,7 +1,7 @@
 <div class="row">
-  <%= simple_form_for @page, :wrapper  => :inline do |f| %>
+  <%= simple_form_for @page, :wrapper  => :bootstrap do |f| %>
     <% if f.error_notification %>
-      <div class="alert-message warning fade in" data-alert="alert">
+      <div class="alert alert-block alert-error fade in" data-alert="alert">
         <a class="close" data-dismiss="alert" href="#">×</a>
         <p><%= f.error_notification %></p>
       </div>
