@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <ul>
     <% @tags.each do |tag|  %>
       <li><%= link_to tag.name, pages_path(:tag  => tag.name) %></li>

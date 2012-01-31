@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <% if @search %>
     <form action="<%= pages_path %>" method="get">
       <select id="tags" name="tags[]" multiple>
@@ -6,7 +6,7 @@
           <option value="<%= tag %>" selected><%= tag %></option>
         <% end %>
       </select>
-      <input type="submit" value="Filter" class="btn small"/>
+      <input type="submit" value="Filter" class="btn btn-small"/>
     </form>
 
     <h3>Pages tagged with <%= @search.search_tags %></h3>

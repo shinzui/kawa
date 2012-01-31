@@ -1,18 +1,18 @@
 <% content_for(:page_title) { @page.title } %>
-<div class="row">
+<div class="row-fluid">
   <div class="page-data span12">
     <%= @page.header %>
     <%= @page.data.html_safe %>
   </div>
 </div>
-<div class="page-metadata row">
+<div class="page-metadata row-fluid">
   <div class="span8">
     <%= @page.created_at %>
     <%= @page.updated_at %>
   </div>
   <div class="tags pull-right">
     <% if @page.tags? %>
-      <i class="icon tags"></i>
+      <i class="icon-tags"></i>
       <% @page.tags.each_with_index do |tag, idx| %>
         <%= link_to tag, pages_path(:tag  => tag) %><%= render_comma(@page.tags, idx) %>
       <% end %>
@@ -20,10 +20,8 @@
   </div>
 </div>
 
-<div class="form-actions row">
-  <div class="span12">
-  <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn small", :alt  => "Edit", :title  => "Edit" %>
-  <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :confirm  => "Are you sure?", :class  => "btn danger small", :alt  => "Delete" %>
-  </div>
+<div class="form-actions row-fluid">
+  <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn-info btn-small", :alt  => "Edit", :title  => "Edit" %>
+  <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :confirm  => "Are you sure?", :class  => "btn-danger btn-small", :alt  => "Delete" %>
 </div>
 

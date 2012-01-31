@@ -3,16 +3,26 @@
 <head>
   <title><%= content_for?(:page_title) ? content_for(:page_title) : "川" %></title>
   <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="fluid-container">
+      <div class="container-fluid">
         <a class="brand">川</a>
         <ul class="nav">
           <li class="active"><%= link_to 'Pages', pages_path %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Quotes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "New Quote", new_quote_path %></li>
+              <li><%= link_to "View all quotes", quotes_path %></li>
+            </ul>
+          </li>
         </ul>
 
         <form action="<%= pages_path %>" class="form-search navbar-search pull-left" method='get'>
@@ -21,32 +31,35 @@
       </div>
     </div>
   </div>
-  <div class="fluid-container sidebar-right">
-    <div class="fluid-sidebar">
-      <div class="well">
-        <%= render :partial  => "shared/sidebar" %>
-      </div>
-    </div>
-    <div class="fluid-content">
-      <div class="fluid-container main">
-        <div class="row">
-          <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span10">
+        <div class="container-fluid main">
+          <div class="row-fluid">
+            <%=  (render_crumbs :format  => :html_list, :ul_class  => 'breadcrumb', :active_li_class  => 'active', :separator  => "<span class='divider'>/</span>").html_safe%>
 
-          <% if notice or flash[:error] %>
-            <% css_class = notice ? 'success' : 'error' %>
-            <% message = notice ?  notice : flash[:error] %>
-            <div class="alert <%= css_class %> fade in" data-alert="alert">
-              <a class="close" data-dismiss="alert" href="#">×</a>
-              <p><%= message %></p>
-            </div>
-          <% end %>
+            <% if notice or flash[:error] %>
+              <% css_class = notice ? 'success' : 'error' %>
+              <% message = notice ?  notice : flash[:error] %>
+              <div class="alert <%= css_class %> fade in" data-alert="alert">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                <p><%= message %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <%= yield %>
         </div>
       </div>
-
-      <div class="fluid-container">
-        <%= yield %>
+      <div class="span2">
+        <div class="well">
+          <%= render :partial  => "shared/sidebar" %>
+        </div>
       </div>
     </div>
   </div>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
