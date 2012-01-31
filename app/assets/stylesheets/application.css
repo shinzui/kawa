@@ -17,7 +17,7 @@ a.absent {
   border-bottom: 1px dashed #f30;
 }
 
-.page-metadata {
+.page-metadata, .quote-metadata{
   background-color: whiteSmoke;
   font-size: 85%;
   color: #555;
@@ -27,7 +27,7 @@ a.absent {
   height:13px;
 }
 
-.page-metadata div.tags {
+.page-metadata div.tags, .quote-metadata div.tags {
   font-weight: bold;
 }
 

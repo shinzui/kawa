@@ -1,0 +1,28 @@
+<blockquote>
+  <%= @quote.quotation %>
+  <%= @quote.attribution %>
+</blockquote>
+
+
+<div class="quote-metadata row-fluid">
+  <div class="span8">
+    <%= @quote.created_at %>
+    <%= @quote.updated_at %>
+  </div>
+  <div class="tags pull-right">
+    <% if @quote.tags? %>
+      <i class="icon-tags"></i>
+      <% @quote.tags.each_with_index do |tag, idx| %>
+        <%= link_to tag, quotes_path(:tag  => tag) %><%= render_comma(@quote.tags, idx) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="form-actions row-fluid">
+  <div class="span12">
+  <%= link_to 'Edit quote', edit_quote_path(@quote.model), :rel  => "edit-quote", :class  => "btn btn-small", :alt  => "Edit", :title  => "Edit" %>
+  <%= link_to 'Delete quote', @quote.model, :rel  => 'delete-quote', :method  => :delete, :confirm  => "Are you sure?", :class  => "btn-danger btn-small", :alt  => "Delete" %>
+  </div>
+</div>
+

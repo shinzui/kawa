@@ -17,9 +17,9 @@ class PagesController < ApplicationController
       @search = SearchPresenter.new(params[:query])
       render 'search_result'
     elsif TagSearchPresenter.tag_search?(params)
-      @search = TagSearchPresenter.new(params)
+      @search = TagSearchPresenter.new(Page, params)
       add_crumb @search.search_tags
-      @pages = @search.pages
+      @pages = @search.result
     else
       @pages = Page.all.desc(:updated_at)
     end

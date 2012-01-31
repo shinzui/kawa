@@ -29,11 +29,13 @@ Kawa::Application.configure do
   config.assets.debug = true
 
   unless $rails_rake_task
-    require 'ruby-debug'
+    if ENV['DEBUG']
+      require 'ruby-debug'
 
-    Debugger.settings[:autoeval] = true
-    Debugger.settings[:autolist] = 1
-    Debugger.settings[:reload_source_on_change] = true
-    Debugger.start_remote
+      Debugger.settings[:autoeval] = true
+      Debugger.settings[:autolist] = 1
+      Debugger.settings[:reload_source_on_change] = true
+      Debugger.start_remote
+    end
   end
 end

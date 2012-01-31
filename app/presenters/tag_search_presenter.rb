@@ -6,7 +6,8 @@ class TagSearchPresenter
     params[:tag].present? || params[:tags].present?
   end
 
-  def initialize(params)
+  def initialize(model, params)
+    @model = model
     if params[:tag]
       @tags = [params[:tag]]
     end
@@ -20,8 +21,8 @@ class TagSearchPresenter
     @tags.join(" and ")
   end
 
-  def pages
-    @pages ||= Page.all_in(tags_array: @tags).desc(:updated_at)
+  def result
+    @result ||= @model.all_in(tags_array: @tags).desc(:updated_at)
   end
 
 end

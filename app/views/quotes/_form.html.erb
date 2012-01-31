@@ -1,0 +1,31 @@
+<div class="row-fluid">
+  <%= simple_form_for @quote, :wrapper  => :bootstrap do |f| %>
+    <% if f.error_notification %>
+      <div class="alert alert-block alert-error fade in" data-alert="alert">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <p><%= f.error_notification %></p>
+      </div>
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :author, :label_html  => {:class  => 'control-label'} %>
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :source, :label_html  => {:class  => 'control-label'} %>
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span12"} %> 
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :tags, :label_html  => {:class  => 'control-label'} %>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.button :submit, :class  => "btn-primary" %>
+      <%= link_to "Cancel", url_for(:back), :class  => "btn" %>
+    </div>
+  <% end -%>
+</div>
