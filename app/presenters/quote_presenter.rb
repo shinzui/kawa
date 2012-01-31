@@ -11,8 +11,8 @@ class QuotePresenter
 
   def attribution
     if author
-      attribution = author
-      attribution << " in #{source} " if source
+      attribution = "#{author}"
+      attribution << " in #{source} " unless source.empty?
       h.content_tag(:small, attribution)
     end
   end
