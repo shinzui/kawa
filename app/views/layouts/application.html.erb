@@ -11,9 +11,9 @@
       <div class="container-fluid">
         <a class="brand">川</a>
         <ul class="nav">
-          <li class="active"><%= link_to 'Pages', pages_path %></li>
+          <li class="<%= 'active' if on_path?('page') || current_page?(root_path) %>"><%= link_to 'Pages', pages_path %></li>
 
-          <li class="dropdown">
+          <li class="dropdown <%= 'active' if on_path?('quote') %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Quotes
               <b class="caret"></b>
