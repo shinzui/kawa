@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     else
       flash[:error] = "An error occured while searching"
     end
-    redirect_to root_path
+    redirect_to pages_path
   end
 
   def index
