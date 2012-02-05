@@ -25,8 +25,8 @@ module Kawa::Wiki::Plugin
 end
 
 __END__
-<div class="wiki_stat">
+<aside class="wiki_stat">
   <p> Wiki has <a href="{{pages_path}}">{{page_count}} pages</a> tagged with 
      <a href="{{page_tags_path}}">{{page_tags_count}} tags</a>.</p>
   <p> Wiki has <a href="{{quotes_path}}">{{quote_count}} quotes</a> tagged with {{quote_tags_count}} tags.</p>
-</div>
+</aside>

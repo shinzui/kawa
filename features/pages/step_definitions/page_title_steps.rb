@@ -1,5 +1,5 @@
 Then /^the page header should be "([^"]*)"$/ do |header| 
-  within(:css, ".page-data > h1:first-child") do
+  within(:css, ".page-data > header > h1:first-child") do
     page.should have_content(header)
   end
 end

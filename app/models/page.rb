@@ -50,13 +50,18 @@ class Page
   end
 
   def formatted_data(renderer = PageRenderer.new(self))
+    #TODO cache result
     renderer.render
   end
 
   def title
+    header = embedded_header
+    header.empty? ? name : Loofah.fragment(header.to_html).scrub!(:strip).text
+  end
+
+  def embedded_header
     doc = Nokogiri::HTML(%{<div id="kawa-root">} + formatted_data + %{</div>})
     header = doc.css("div#kawa-root > h1:first-child")
-    header.empty? ? name : Loofah.fragment(header.to_html).scrub!(:strip).text
   end
 
   private

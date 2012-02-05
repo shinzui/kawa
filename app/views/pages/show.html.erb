@@ -1,9 +1,9 @@
 <% content_for(:page_title) { @page.title } %>
 <div class="row-fluid">
-  <div class="page-data span12">
+  <article class="page-data span12">
     <%= @page.header %>
     <%= @page.data.html_safe %>
-  </div>
+  </article>
 </div>
 <div class="page-metadata row-fluid">
   <div class="span8">
