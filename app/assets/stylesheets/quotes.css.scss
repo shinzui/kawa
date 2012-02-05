@@ -1,3 +1,27 @@
-// Place all the styles related to the quotes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+div.quote {
+  min-height: 50px;
+  margin-bottom:15px;
+  border-bottom: 1px solid #DFE5E7;
+
+  div.control {
+    margin-bottom:10px;
+    visibility: hidden;
+
+    a {
+      color: #FFF;
+      text-decoration:none;
+      font-szie:7px;
+    }
+    span {
+      margin-right: 5px;
+    }
+    .label {
+      font-size: 9px;
+    }
+  }
+}
+
+
+div.hover div.control {
+  visibility: visible;
+}

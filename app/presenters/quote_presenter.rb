@@ -2,7 +2,7 @@ class QuotePresenter
   include Kawa::Common::Presenter
   include BasePresenter
 
-  delegate :author, :source, :quotation, :to  => :@model
+  delegate :id, :author, :source, :quotation, :to  => :@model
   attr_reader :model
 
   def initialize(model)

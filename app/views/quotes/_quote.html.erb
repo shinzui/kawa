@@ -1,5 +1,18 @@
-<blockquote>
-  <% quote = QuotePresenter.new(quote) -%>
-  <%= quote.quotation %>
-  <%= quote.attribution %>
-</blockquote>
+<% quote = QuotePresenter.new(quote) -%>
+<div class="quote fluid-row">
+  <blockquote>
+    <%= quote.quotation %>
+    <%= quote.attribution %>
+  </blockquote>
+  <div class="control"> 
+    <span class="label label-info">
+      <%= link_to 'View', quote.model %>
+    </span>
+    <span class="label label-info">
+        <%= link_to 'Edit', edit_quote_path(quote.id) %>
+    </span>
+    <span class="label label-important">
+      <%= link_to 'Delete', quote.model, :rel  => 'delete-quote', :method  => :delete, :confirm  => "Are you sure?" %>
+    </span>
+  </div>
+</div>
