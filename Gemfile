@@ -50,7 +50,7 @@ end
 
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'jquery-rails'
-gem 'less-rails-bootstrap', :git  => "git@github.com:shinzui/less-rails-bootstrap.git"
+gem 'less-rails-bootstrap'
 gem 'chosen-rails'
 gem 'ajax-chosen-rails'
 
