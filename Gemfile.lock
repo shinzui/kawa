@@ -172,6 +172,7 @@ GEM
       mongoid (~> 2.0)
       rspec (~> 2)
     multi_json (1.0.4)
+    mustache (0.99.4)
     nokogiri (1.5.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -300,6 +301,7 @@ DEPENDENCIES
   mongoid-rspec
   mongoid_slug!
   mongoid_taggable_with_context!
+  mustache
   nokogiri
   rails (= 3.2.1)
   rb-fsevent

@@ -15,6 +15,7 @@ gem 'tire'
 gem 'tire-contrib'
 gem 'yajl-ruby'
 gem 'loofah'
+gem 'mustache'
 
 group :development do
   gem 'awesome_print'
