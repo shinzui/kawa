@@ -16,6 +16,10 @@
     <% end %>
 
     <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :source_url, :label_html  => {:class  => 'control-label'} %>
+    <% end %>
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
       <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span12"} %> 
     <% end %>
 
