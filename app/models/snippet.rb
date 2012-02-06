@@ -5,34 +5,21 @@ class Snippet
   include Mongoid::TaggableWithContext
   include Mongoid::TaggableWithContext::AggregationStrategy::RealTime
 
+  include SnippetLabel
+
   after_initialize { self.labels = {} unless labels }
 
   taggable :tags, :separator  => ","
 
-  field :labels, :type  => Hash
   field :data
 
   validates_presence_of :data
 
+  label :lang
 
-  def self.label(*labels)
-    labels.each {|label| define_label(label) }
+  def self.supported_languages
+    lang = Struct.new(:lang, :lang_code)
+    [lang.new("English", :en), lang.new("Japanese", :ja), lang.new("French", :fr), lang.new("Korean", :ko)]
   end
 
-  def self.define_label(label)
-    define_method label do
-      labels[label.to_s]
-    end
-
-    define_method "#{label}=" do |label_value|
-      set_label(label.to_s, label_value)
-    end
-  end
-
-  def set_label(key, value)
-    self.labels = {} unless labels
-    labels[key] = value.strip if value
-  end
-
-  
 end

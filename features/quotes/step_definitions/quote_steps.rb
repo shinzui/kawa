@@ -1,19 +1,39 @@
 # encoding: UTF-8
-Given /^I create a new quotation$/ do 
+
+def new_quote
   visit new_quote_path
   fill_in "Author", with: "Miyamoto Musashi"
   fill_in "Quotation", with: "Do nothing which is of no use."
   fill_in "Source", with: "The Book of Five Rings"
-  click_button :submit
 end
 
-Then /^I should see the quotation$/ do
+def verify_quote
   quote = Quote.last
   quote.author.should_not be_nil
   quote.source.should_not be_nil
   page.should have_content(quote.quotation)
   page.should have_content(quote.author)
   page.should have_content(quote.source)
+end
+
+Given /^I create a new quotation$/ do 
+  new_quote
+  click_button :submit
+end
+
+Given /^I create a "([^"]*)" quotation$/ do |lang| 
+  new_quote
+  select lang, :from  => :lang
+  click_button :submit
+end
+
+Then /^I should see the quotation$/ do
+  verify_quote
+end
+
+Then /^the quote should be marked with the "([^"]*)" lang$/ do |lang|
+  verify_quote
+  page.should have_xpath("//blockquote[@lang='#{lang}']")
 end
 
 Given /^there is a quote$/ do

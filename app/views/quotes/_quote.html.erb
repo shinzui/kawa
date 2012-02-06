@@ -1,9 +1,6 @@
 <% quote = QuotePresenter.new(quote) -%>
 <div class="quote fluid-row">
-  <blockquote>
-    <%= quote.quotation %>
-    <%= quote.attribution %>
-  </blockquote>
+  <%= quote %>
   <div class="control"> 
     <span class="label label-info">
       <%= link_to 'View', quote.model %>

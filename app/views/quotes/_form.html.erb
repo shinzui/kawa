@@ -24,6 +24,10 @@
     <% end %>
 
     <%= field_set_tag nil, :class  => "control-group" do %>
+      <%= f.input :lang, :collection  => Language.supported, :label_method  => :name, :value_method  => :iso_code %>
+    <% end %> 
+
+    <%= field_set_tag nil, :class  => "control-group" do %>
       <%= f.input :tags, :label_html  => {:class  => 'control-label'} %>
     <% end %>
 
