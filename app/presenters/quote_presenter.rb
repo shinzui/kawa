@@ -2,7 +2,7 @@ class QuotePresenter
   include Kawa::Common::Presenter
   include BasePresenter
 
-  delegate :id, :author, :source, :quotation, :to  => :@model
+  delegate :id, :author, :source, :source_url, :quotation, :to  => :@model
   attr_reader :model
 
   def initialize(model)
@@ -20,8 +20,14 @@ class QuotePresenter
   def attribution
     if author
       attribution = "#{author}"
-      attribution << " in #{source} " unless source.empty?
-      h.content_tag(:small, attribution)
+      attribution << " in #{attribution_source}" unless attribution_source.nil?
+      h.content_tag(:small, attribution.html_safe)
+    end
+  end
+
+  def attribution_source
+    if source.present?
+      source_url.present? ?  h.link_to(source, source_url) : source
     end
   end
 

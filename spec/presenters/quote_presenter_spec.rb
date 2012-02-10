@@ -17,6 +17,22 @@ describe QuotePresenter do
       end
     end
 
+    context "quote with source" do
+      before :each do 
+        @quote = Fabricate.build(:quote, "author"  => "Miyamoto Musahi", "source"  => "The Book of Five Rings")
+        @presenter = QuotePresenter.new(@quote)
+      end
+
+      it "should have the source" do
+        @presenter.attribution.should == "<small>#{@quote.author} in #{@quote.source}</small>"
+      end
+
+      it "should have the source url if present" do
+        @quote.source_url = "http://bookoffiverings.com"
+        @presenter.attribution.should == "<small>#{@quote.author} in <a href=\"#{@quote.source_url}\">#{@quote.source}</a></small>"
+      end
+    end
+
     context "quote without author" do
       before :each do
         @quote = Fabricate.build(:quote)
