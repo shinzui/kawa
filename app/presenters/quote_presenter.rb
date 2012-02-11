@@ -1,5 +1,4 @@
 class QuotePresenter
-  include Kawa::Common::Presenter
   include BasePresenter
 
   delegate :id, :author, :source, :source_url, :quotation, :to  => :@model
