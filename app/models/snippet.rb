@@ -17,9 +17,4 @@ class Snippet
 
   label :lang
 
-  def self.supported_languages
-    lang = Struct.new(:lang, :lang_code)
-    [lang.new("English", :en), lang.new("Japanese", :ja), lang.new("French", :fr), lang.new("Korean", :ko)]
-  end
-
 end
