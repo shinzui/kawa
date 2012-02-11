@@ -1,15 +1,20 @@
 require 'spec_helper'
 
-klass = Class.new(Snippet) do
+klass = Class.new do
+  include Snippet
   label :source, :source_url
 end
 
-describe Snippet do
-  it { should validate_presence_of(:data) }
+class BaseSnippet
+  include Snippet
+end
 
+describe Snippet do
+  it { BaseSnippet.should validate_presence_of(:data) }
+
+  let (:snippet) { BaseSnippet.new }
   describe "Tagging" do
     it "should use a comma as a tag separator" do
-      snippet = Fabricate(:snippet)
       snippet.tags = "ruby, programming language"
       snippet.tags_array.count.should == 2
     end
@@ -17,7 +22,7 @@ describe Snippet do
   end
 
   describe ".set_label" do
-    let(:snippet) { Snippet.new }
+    let (:snippet) { BaseSnippet.new }
 
     it "should strip whitespaces" do
       snippet.set_label("author", " Haruki Murakami " )

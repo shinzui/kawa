@@ -166,6 +166,11 @@ GEM
     mongoid-rspec (1.4.4)
       mongoid (~> 2.0)
       rspec (~> 2)
+    mongoid_rails_migrations (0.0.14)
+      activesupport (>= 3.0.0)
+      bundler (>= 1.0.0)
+      rails (>= 3.0.0)
+      railties (>= 3.0.0)
     multi_json (1.0.4)
     mustache (0.99.4)
     nokogiri (1.5.0)
@@ -294,6 +299,7 @@ DEPENDENCIES
   loofah
   mongoid
   mongoid-rspec
+  mongoid_rails_migrations
   mongoid_slug!
   mongoid_taggable_with_context!
   mustache

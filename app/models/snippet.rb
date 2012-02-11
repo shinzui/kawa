@@ -1,4 +1,6 @@
-class Snippet
+module Snippet
+  extend ActiveSupport::Concern
+
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -7,14 +9,16 @@ class Snippet
 
   include SnippetLabel
 
-  after_initialize { self.labels = {} unless labels }
+  included do
+    after_initialize { self.labels = {} unless labels }
 
-  taggable :tags, :separator  => ","
+    taggable :tags, :separator  => ","
 
-  field :data
+    field :data
 
-  validates_presence_of :data
+    validates_presence_of :data
 
-  label :lang
+    label :lang
+  end
 
 end

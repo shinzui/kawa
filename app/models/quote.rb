@@ -1,4 +1,5 @@
-class Quote < Snippet
+class Quote 
+  include Snippet
 
   alias :quotation :data
   alias :quotation= :data=
