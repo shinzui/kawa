@@ -28,6 +28,7 @@ group :development do
   gem "rb-fsevent", :require  => false
   gem "growl", :require  => false
   gem "yard"
+  gem "pry-rails"
 end
 
 
