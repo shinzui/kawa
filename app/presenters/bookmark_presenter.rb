@@ -1,10 +1,12 @@
-class LinkPresenter
+class BookmarkPresenter
   include BasePresenter
 
   delegate :id, :url, :title, :description, :to  => :@model
+  attr_reader :model
 
   def initialize(model)
     @model = model
+    self
   end
 
   def link

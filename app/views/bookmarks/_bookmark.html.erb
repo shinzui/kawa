@@ -1,0 +1,8 @@
+<% bookmark = BookmarkPresenter.new(bookmark) %>
+<div class="bookmark fluid-row">
+  <%= bookmark.link %>
+  <%= render :partial  => "shared/control", :locals  => {:model  => bookmark.model, :edit_path  => edit_bookmark_path(bookmark.id)} %>
+</div>
+
+
+

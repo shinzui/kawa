@@ -1,0 +1,3 @@
+class Bookmark < Link
+
+end

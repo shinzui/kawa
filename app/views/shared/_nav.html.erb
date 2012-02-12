@@ -1,0 +1,38 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="brand">川</a>
+      <ul class="nav">
+        <li class="<%= 'active' if on_path?('page')  %>"><%= link_to 'Pages', pages_path %></li>
+
+        <li class="dropdown <%= 'active' if on_path?('quote') %>">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Quotes
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "New Quote", new_quote_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "View all quotes", quotes_path %></li>
+          </ul>
+        </li>
+
+        <li class="dropdown <%= 'active' if on_path?('bookmark') %>">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Bookmarks
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "New Bookmark", new_bookmark_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "View all bookmarks", bookmarks_path %></li>
+          </ul>
+        </li>
+      </ul>
+
+      <form action="<%= pages_path %>" class="form-search navbar-search pull-left" method='get'>
+        <input type="text" class="search-query span-2" placeholder="Search" name="query"/>
+      </form>
+    </div>
+  </div>
+</div>
