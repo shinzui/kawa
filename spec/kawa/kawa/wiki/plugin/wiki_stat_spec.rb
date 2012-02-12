@@ -14,12 +14,18 @@ module Kawa::Wiki::Plugin
       Quote.stub(:count).and_return(quote_count)
       quote_tag_count = 11
       Quote.stub_chain(:tags, :count).and_return(quote_tag_count)
+      bookmark_count = 11
+      Bookmark.stub(:count).and_return(bookmark_count)
+      bookmark_tag_count = 7
+      Bookmark.stub_chain(:tags, :count).and_return(bookmark_tag_count)
 
       result = stat_plugin.process
       result.should match /#{page_tag_count} tags/
       result.should match /#{page_count} pages/
       result.should match /#{quote_count} quotes/
       result.should match /#{quote_tag_count} tags/
+      result.should match /#{bookmark_count} bookmarks/
+      result.should match /#{bookmark_tag_count} tags/
     end
 
   end
