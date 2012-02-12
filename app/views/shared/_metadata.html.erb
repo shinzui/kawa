@@ -1,0 +1,15 @@
+<div class='<%= "#{presenter.model.class.to_s.downcase}-metadata" %> row-fluid'>
+  <div class="span8">
+    <%= presenter.created_at %>
+    <%= presenter.updated_at %>
+  </div>
+  <div class="tags pull-right">
+    <% if presenter.tags? %>
+      <i class="icon-tags"></i>
+      <% presenter.tags.each_with_index do |tag, idx| %>
+        <%= link_to tag, "#{url_for(presenter.model.class)}?tag=#{tag}" %><%= render_comma(presenter.tags, idx) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

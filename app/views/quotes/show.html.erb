@@ -1,19 +1,6 @@
 <%= @quote.quote %>
 
-<div class="quote-metadata row-fluid">
-  <div class="span8">
-    <%= @quote.created_at %>
-    <%= @quote.updated_at %>
-  </div>
-  <div class="tags pull-right">
-    <% if @quote.tags? %>
-      <i class="icon-tags"></i>
-      <% @quote.tags.each_with_index do |tag, idx| %>
-        <%= link_to tag, quotes_path(:tag  => tag) %><%= render_comma(@quote.tags, idx) %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @quote} %>
 
 <div class="form-actions row-fluid">
   <div class="span12">
