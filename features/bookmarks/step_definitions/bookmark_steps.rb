@@ -22,6 +22,5 @@ Given /^I create a new bookmark$/ do
 end
 
 Then /^I should see the bookmark$/ do
-  save_and_open_page
   verify_bookmark
 end

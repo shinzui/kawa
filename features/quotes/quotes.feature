@@ -8,6 +8,7 @@ Feature: Manage quotes
     Given I create a "Japanese" quotation
     Then the quote should be marked with the "ja" lang
 
+  @update_quote
   Scenario: Editing a quote
     Given there is a quote
     And I update quotation to "Step by step walk the thousand-mile road"

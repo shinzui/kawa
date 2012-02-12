@@ -49,6 +49,7 @@ Given /^I update quotation to "([^"]*)"$/ do |new_quotation|
 end
 
 Then /^the quotation should change$/ do
+  Quote.count.should == 1
   quote = Quote.last
   quote.quotation.should == @new_quotation
 end
@@ -70,7 +71,7 @@ Then /^I should be able to delete the quote$/ do
   quote_id = quote.id
   visit quote_path(quote)
   find(:xpath, "//a[contains(@rel, 'delete-quote')]").click
-  Quote.where(:id  => quote_id).should be_empty
+  Quote.where(:id  => quote_id).first.should be_nil
 end
 
 Given /^there are (\d+) quotes$/ do |count|

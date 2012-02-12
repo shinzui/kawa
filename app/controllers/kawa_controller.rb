@@ -27,8 +27,8 @@ class KawaController < ApplicationController
   end
 
   def create
-    if instance.save
-      redirect_to instance, :notice  => "#{model.to_s} added successfully"
+    if new_instance.save
+      redirect_to new_instance, :notice  => "#{model.to_s} added successfully"
     else
       render :edit
     end
@@ -38,6 +38,7 @@ class KawaController < ApplicationController
   end
 
   def update
+    instance = instance_variable_get(model_singular_ivar)
     if instance.update_attributes(params[model_sym])
       redirect_to instance, :notice  => "#{model.to_s} updated successfully"
     else
@@ -46,6 +47,7 @@ class KawaController < ApplicationController
   end
 
   def destroy
+    instance = instance_variable_get(model_singular_ivar)
     instance.destroy
     redirect_to send "#{model.to_s.downcase.pluralize}_path"
   end
@@ -65,8 +67,8 @@ class KawaController < ApplicationController
     self.class.to_s.gsub('Controller', '').singularize.constantize
   end
 
-  def instance
-    instance_variable_set(model_singular_ivar, model.new(params[model_sym]))
+  def new_instance
+    @new_instance ||= instance_variable_set(model_singular_ivar, model.new(params[model_sym]))
   end
 
   def model_sym
