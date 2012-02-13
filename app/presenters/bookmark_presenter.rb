@@ -11,7 +11,9 @@ class BookmarkPresenter
 
   def link
     if title
-      h.link_to(title, url) + h.content_tag(:span, url)
+      h.link_to(title, url) + h.content_tag(:div, :class  => "url") do
+        h.concat(h.content_tag(:span, url))
+      end
     else
      h.link_to(url, url)
     end
