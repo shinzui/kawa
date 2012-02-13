@@ -19,7 +19,7 @@ class QuotePresenter
   def attribution
     if author
       attribution = "#{author}"
-      attribution << " in #{attribution_source}" unless attribution_source.nil?
+      attribution << ", #{attribution_source}" unless attribution_source.nil?
       h.content_tag(:small, attribution.html_safe)
     end
   end
