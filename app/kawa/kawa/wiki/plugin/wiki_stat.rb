@@ -21,7 +21,8 @@ module Kawa::Wiki::Plugin
         quote_tags_count: ::Quote.tags.count,
         bookmarks_path: bookmarks_path,
         bookmark_count: ::Bookmark.count,
-        bookmark_tags_count: ::Bookmark.tags.count
+        bookmark_tags_count: ::Bookmark.tags.count,
+        link_count: ::Link.count
       }
     end
   end
@@ -33,4 +34,5 @@ __END__
      <a href="{{page_tags_path}}">{{page_tags_count}} tags</a>.</p>
   <p> Wiki has <a href="{{quotes_path}}">{{quote_count}} quotes</a> tagged with {{quote_tags_count}} tags.</p>
   <p> Wiki has <a href="{{bookmarks_path}}">{{bookmark_count}} bookmarks</a> tagged with {{bookmark_tags_count}} tags.</p>
+  <p> Wiki has {{link_count}} links.</p>
 </aside>
