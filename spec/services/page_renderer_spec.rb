@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PageRenderer do
   include Rails.application.routes.url_helpers
 
-  describe "Renderer the same page" do
+  describe "Renderering the same page" do
     before :each do
       @page = Fabricate.build(:markdown_page, :raw_data  => "#Title\n[[Page Link]]")
       @first_renderer = PageRenderer.new(@page)

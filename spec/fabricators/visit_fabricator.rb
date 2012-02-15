@@ -1,0 +1,2 @@
+Fabricator(:visit) do
+end

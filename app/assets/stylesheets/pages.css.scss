@@ -3,12 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //*= require chosen
 
-a[href^="http"] {
+a.external {
   background: url(external.gif) no-repeat right center;
   padding-right: 11px;
 }
 
-a[href*="github"] {
+a.github {
   background: url(github-favicon.ico) no-repeat right center;
   padding-right: 19px;
 }

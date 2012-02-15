@@ -17,6 +17,7 @@ gem 'tire-contrib'
 gem 'yajl-ruby'
 gem 'loofah'
 gem 'mustache'
+gem 'postrank-uri'
 
 group :development do
   gem 'awesome_print'

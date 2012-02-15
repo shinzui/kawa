@@ -109,6 +109,8 @@ GEM
       nokogiri (>= 1.5.0)
     database_cleaner (0.7.0)
     diff-lcs (1.1.3)
+    domainatrix (0.0.10)
+      addressable
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
@@ -161,7 +163,7 @@ GEM
     mime-types (1.17.2)
     mongo (1.5.2)
       bson (= 1.5.2)
-    mongoid (2.4.2)
+    mongoid (2.4.4)
       activemodel (~> 3.1)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)
@@ -177,6 +179,10 @@ GEM
     mustache (0.99.4)
     nokogiri (1.5.0)
     polyglot (0.3.3)
+    postrank-uri (1.0.15)
+      addressable (>= 2.2.3)
+      domainatrix
+      nokogiri
     pry (0.9.8.2)
       coderay (~> 1.0.5)
       method_source (~> 0.7)
@@ -313,6 +319,7 @@ DEPENDENCIES
   mongoid_taggable_with_context!
   mustache
   nokogiri
+  postrank-uri
   pry-rails
   rails (= 3.2.1)
   rb-fsevent

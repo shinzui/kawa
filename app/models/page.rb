@@ -14,12 +14,15 @@ class Page
   taggable :tags, :separator  => ","
 
   before_save :process_plugins
+  before_save :extract_links
+
+  has_and_belongs_to_many :links
 
   scope :named, ->(name) { where(name: /^#{name}$/i) }
 
   module Markup
     MARKDOWN = "markdown".freeze
-    CREOLE   = "creole".freeze
+    # CREOLE   = "creole".freeze
   end
   
   field :name
@@ -68,6 +71,13 @@ class Page
   
   def process_plugins
     Kawa::Wiki::Plugin::Processor.new(self).process_processing_plugins(raw_data)
+  end
+
+  def extract_links
+    doc = Nokogiri::HTML.parse(formatted_data)
+    link_ids = doc.css('a').map { |a| a['href'] }.map { |l| l[%r{/links/(.*)}, 1] }
+    page_links = Link.find(link_ids.compact)
+    self.links = page_links 
   end
 
 end

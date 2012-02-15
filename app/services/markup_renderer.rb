@@ -13,8 +13,8 @@ module MarkupRenderer
   end
 
   def markdown
-    options = {:no_intra_emphasis  => true, :tables  => true}
-    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
+    options = {:no_intra_emphasis  => true, :tables  => true, :autolink  => true}
+    @markdown ||= Redcarpet::Markdown.new(Kawa::Markdown::HtmlRenderer, options)
   end
 
 
