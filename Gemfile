@@ -18,6 +18,7 @@ gem 'yajl-ruby'
 gem 'loofah'
 gem 'mustache'
 gem 'postrank-uri'
+gem 'pygments.rb'
 
 group :development do
   gem 'awesome_print'
@@ -30,6 +31,7 @@ group :development do
   gem "growl", :require  => false
   gem "yard"
   gem "pry-rails"
+  gem "pry-doc"
 end
 
 
@@ -41,6 +43,7 @@ group :test do
   gem 'mongoid-rspec'
   gem 'launchy'
   gem 'capybara-webkit'
+  gem 'webmock', :require  => false
 end
 
 # Gems used only for assets and not required

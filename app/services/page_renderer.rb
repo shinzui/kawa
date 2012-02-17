@@ -8,15 +8,18 @@ class PageRenderer
   def initialize(page)
     @page = page
     @tagmap = {}
+    @codemap = {}
     @plugin_processor = Kawa::Wiki::Plugin::Processor.new(@page)
   end
 
   def render
     data = @page.raw_data.clone
+    data = extract_code(data)
     data = preprocess_tags(data)
     data = @plugin_processor.preprocess_plugins(data)
     data = MarkupRenderer.renderer(@page.markup)[data]
     data = post_process_tags(data)
+    data = highlight_code(data)
     @plugin_processor.post_process_rendering_plugins(data)
   end
 
@@ -33,6 +36,25 @@ class PageRenderer
   end
 
   private
+    def extract_code(data)
+      data.gsub!(/^``` ?([^\r\n]+)?\r?\n(.+?)\r?\n```\r?$/m) do
+        stamp = Digest::SHA1.hexdigest("#{$1}.#{$2}")
+        @codemap[stamp] = {:lang  => $1, :code  => $2}
+        stamp
+      end
+      data
+    end
+
+    def highlight_code(data)
+      @codemap.each do |stamp, spec|
+        code = spec[:code]
+        code.gsub!(/^(  |\t)/m, '') if code.lines.all? {|l| l  =~ /(  |\t)/ }
+        highlight = Pygments.highlight(code, :lexer  => spec[:lang])
+        data.gsub!(stamp, highlight)
+      end
+      data 
+    end
+
     def preprocess_tags(data)
       data.gsub!(/(.?)\[\[(.+?)\]\]/m) do
         if $1 == "'"

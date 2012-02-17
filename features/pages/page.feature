@@ -4,9 +4,9 @@ Feature: Manage pages
     Given I create a "japan" page in "markdown"
     Then I should see the page generated
 
-  Scenario: Create new page with creole
-    Given I create a "tokyo" page in "creole"
-    Then I should see the page generated
+  # Scenario: Create new page with creole
+    # Given I create a "tokyo" page in "creole"
+    # Then I should see the page generated
 
   Scenario: Updating a page's name
     Given there is an "Inari Taisha" Page

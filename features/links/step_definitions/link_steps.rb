@@ -8,7 +8,7 @@ end
 
 Then /^I should be redirected to the link's url$/ do 
  link = Link.last
- current_url.should == link.url
+ current_url.should match (/^#{link.url}/)
 end
 
 Then /^I should record the visit to the link$/ do

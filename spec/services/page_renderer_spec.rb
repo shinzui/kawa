@@ -28,6 +28,34 @@ describe PageRenderer do
     end
   end
 
+  describe "Code blocks" do
+    before :each do
+      data =<<-PAGE_DATA
+# Sample Ruby Code
+        
+```ruby
+  class Test
+   def method
+     puts "konnichiwa"
+   end
+  end
+```
+
+```bash
+rake db:migrate --trace
+```
+      PAGE_DATA
+      @page = Fabricate.build(:markdown_page, :raw_data  => data)
+      @renderer = PageRenderer.new(@page)
+    end
+
+    it "should highlight the code block" do
+      result =  @renderer.render
+      doc = Nokogiri::HTML::DocumentFragment.parse(result)
+      doc.css('.highlight').count.should == 2
+    end
+  end
+
   describe "Interwiki links" do
 
     let(:page) { Fabricate.build(:markdown_page, :raw_data  => "#Title\n#{@interwiki_link}") }
