@@ -1,22 +1,12 @@
 <div class="row-fluid">
-  <%= simple_form_for @bookmark, :wrapper  => :bootstrap do |f| %>
+  <%= simple_form_for @bookmark, :html  => { :class  => 'form-vertical' } do |f| %>
     <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :url, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :url %>
+    <%= f.input :title %>
+    <%= f.input :description, :as  => :text, :input_html  => {:class  => "span12"} %> 
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :title, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
-
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :description, :as  => :text, :input_html  => {:class  => "span12"} %> 
-    <% end %>
-
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :tags, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :tags %>
 
     <div class="form-actions">
       <%= f.button :submit, :class  => "btn-primary" %>

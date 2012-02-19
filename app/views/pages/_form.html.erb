@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <%= simple_form_for @page, :wrapper  => :bootstrap do |f| %>
+  <%= simple_form_for @page, :html  => { :class  => 'form-vertical' } do |f| %>
     <% if f.error_notification %>
       <div class="alert alert-block alert-error fade in" data-alert="alert">
         <a class="close" data-dismiss="alert" href="#">×</a>
@@ -7,17 +7,11 @@
       </div>
     <% end %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :name, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :name %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :markup, :collection  => Page.supported_markups %>
-    <% end %> 
+    <%= f.input :markup, :collection  => Page.supported_markups %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :raw_data, :as  => :text, :input_html  => {:class  => "span12"} %> 
-    <% end %>
+    <%= f.input :raw_data, :as  => :text, :input_html  => {:class  => "span12"} %> 
 
     <div class="form-actions">
       <%= f.button :submit, :class  => "btn-primary" %>

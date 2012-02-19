@@ -1,5 +1,3 @@
-require 'fabrication/cucumber'
-
 Given /^there is (?:a|an) "([^"]*)" Page$/ do |page_name|
   @page = Fabricate(:markdown_page, :name  => page_name)
 end

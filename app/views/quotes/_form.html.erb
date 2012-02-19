@@ -1,30 +1,18 @@
 <div class="row-fluid">
-  <%= simple_form_for @quote, :wrapper  => :bootstrap do |f| %>
+  <%= simple_form_for @quote do |f| %>
     <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :author, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :author %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :source, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :source %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :source_url, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :source_url %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span12"} %> 
-    <% end %>
+    <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span12"} %> 
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :lang, :collection  => Language.supported, :label_method  => :name, :value_method  => :iso_code %>
-    <% end %> 
+    <%= f.input :lang, :collection  => Language.supported, :label_method  => :name, :value_method  => :iso_code %>
 
-    <%= field_set_tag nil, :class  => "control-group" do %>
-      <%= f.input :tags, :label_html  => {:class  => 'control-label'} %>
-    <% end %>
+    <%= f.input :tags %>
 
     <div class="form-actions">
       <%= f.button :submit, :class  => "btn-primary" %>
