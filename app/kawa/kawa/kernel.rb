@@ -1,3 +1,7 @@
+require 'kawa/wiki/plugin/wiki_plugin'
+require 'kawa/wiki/plugin/rendering_plugin'
+require 'kawa/wiki/plugin/processing_plugin'
+
 module Kawa
   module Kernel
     extend self

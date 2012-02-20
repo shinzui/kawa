@@ -8,12 +8,17 @@ module Kawa::Wiki::Plugin
   class WebHook < WikiPlugin
     include ProcessingPlugin
   end
+
+  class RandomQuote < WikiPlugin
+    include RenderingPlugin
+  end
 end
 
 module Kawa::Wiki::Plugin
   describe Processor do
     before :each do
       Registry.stub(:find!).with("mathjax").and_return(MathJax)
+      Registry.stub(:find!).with("quote").and_return(RandomQuote)
       Registry.stub(:find!).with("webhook").and_return(WebHook)
       Registry.stub(:find!).with("some_plugin").and_raise(UnknownPlugin)
 
@@ -24,6 +29,8 @@ module Kawa::Wiki::Plugin
         #Test
 
         [[Wiki Link]]
+
+        <<quote >>
 
         <<mathjax latex='#{@latex_option}'>>
 
@@ -58,7 +65,18 @@ module Kawa::Wiki::Plugin
 
         it "should only process rendering plugins" do
           Kawa::Wiki::Plugin::MathJax.any_instance.should_receive(:process).once.with({latex: @latex_option})
+          Kawa::Wiki::Plugin::RandomQuote.any_instance.should_receive(:process).once
           @processor.post_process_rendering_plugins(@data)
+        end
+
+        it "should process multiple plugins" do
+          latex_out = "latex output"
+          random_quote_out = "random quote"
+          Kawa::Wiki::Plugin::MathJax.any_instance.should_receive(:process).once.with({latex: @latex_option}).and_return(latex_out)
+          Kawa::Wiki::Plugin::RandomQuote.any_instance.should_receive(:process).once.and_return(random_quote_out)
+          result = @processor.post_process_rendering_plugins(@data)
+          result.should match /#{latex_out}/m
+          result.should match /#{random_quote_out}/m
         end
       end
     end

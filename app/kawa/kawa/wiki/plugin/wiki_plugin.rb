@@ -1,7 +1,6 @@
 module Kawa
   module Wiki
     module Plugin
-
       class WikiPlugin
         attr_reader :page
 
@@ -10,7 +9,7 @@ module Kawa
         end
 
         def self.name
-          to_s.demodulize.underscore 
+          to_s.demodulize.gsub(/plugin$/, '').underscore 
         end
 
         def name

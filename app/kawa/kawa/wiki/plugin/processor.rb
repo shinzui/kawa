@@ -25,7 +25,7 @@ module Kawa::Wiki::Plugin
     def post_process_processing_plugins(data)
       post_process_plugins(data, ProcessingPlugin)
     end
-    
+
     def post_process_rendering_plugins(data)
       post_process_plugins(data, RenderingPlugin)
     end
@@ -42,7 +42,7 @@ module Kawa::Wiki::Plugin
       @pluginmap.each do |stamp, plugin|
         replacement = process_plugin(plugin, plugin_type)
         replacement ||= ""
-        result = data.gsub(stamp, replacement)
+        result = data.gsub!(stamp, replacement)
       end
       result
     end
@@ -58,7 +58,7 @@ module Kawa::Wiki::Plugin
     end
 
     def process_rendering_plugin(plugin, options)
-      
+
     end
 
     def process_plugin_options(plugin_options)

@@ -11,9 +11,9 @@ module Kawa::Wiki::Plugin
       page_tag_count = 15
       Page.stub_chain(:tags, :count).and_return(page_tag_count)
       quote_count = 9
-      Quote.stub(:count).and_return(quote_count)
+      ::Quote.stub(:count).and_return(quote_count)
       quote_tag_count = 11
-      Quote.stub_chain(:tags, :count).and_return(quote_tag_count)
+      ::Quote.stub_chain(:tags, :count).and_return(quote_tag_count)
       bookmark_count = 11
       Bookmark.stub(:count).and_return(bookmark_count)
       bookmark_tag_count = 7
