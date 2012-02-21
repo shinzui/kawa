@@ -17,7 +17,7 @@ class KawaController < ApplicationController
       add_crumb @search.search_tags
       instance_variable_set(ivar, @search.result)
     else
-      instance_variable_set(ivar, model.all)
+      instance_variable_set(ivar, all)
     end
   end
 
@@ -53,6 +53,10 @@ class KawaController < ApplicationController
   end
 
   protected
+
+  def all
+    model.all
+  end
 
   def load_resource
     ivar = model_singular_ivar
