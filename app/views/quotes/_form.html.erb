@@ -6,17 +6,17 @@
 
     <%= f.input :source %>
 
-    <%= f.input :source_url %>
+    <%= f.input :source_url, :input_html  => {:class  => "span8"}%>
 
-    <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span12"} %> 
+    <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span8", :rows  => 13} %> 
 
     <%= f.input :lang, :collection  => Language.supported, :label_method  => :name, :value_method  => :iso_code %>
 
-    <%= f.input :tags %>
+    <%= f.input :tags, :input_html  => {:class  => "span4"} %>
 
     <div class="form-actions">
-      <%= f.button :submit, :class  => "btn-primary" %>
-      <%= link_to "Cancel", url_for(:back), :class  => "btn" %>
+      <%= f.button :submit, :class  => "btn btn-primary" %> 
+      <button class="btn"><%= link_to "Cancel", url_for(:back) %></button>
     </div>
   <% end -%>
 </div>

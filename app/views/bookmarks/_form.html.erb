@@ -2,11 +2,10 @@
   <%= simple_form_for @bookmark, :html  => { :class  => 'form-vertical' } do |f| %>
     <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
 
-    <%= f.input :url %>
-    <%= f.input :title %>
-    <%= f.input :description, :as  => :text, :input_html  => {:class  => "span12"} %> 
-
-    <%= f.input :tags %>
+    <%= f.input :url, :input_html  => {:class  => "span8"} %>
+    <%= f.input :title, :input_html  => {:class  => "span8"} %>
+    <%= f.input :description, :as  => :text, :input_html  => {:class  => "span8", :rows  => 10} %> 
+    <%= f.input :tags, :input_html  => {:class  => "span4"} %>
 
     <div class="form-actions">
       <%= f.button :submit, :class  => "btn-primary" %>
