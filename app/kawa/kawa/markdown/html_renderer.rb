@@ -7,7 +7,7 @@ module Kawa
       def link(link, title, content)
         kawa_link = find_or_generate_link(link)
 
-        "<a href='#{link_path(kawa_link)}' title='#{kawa_link.url}' class='#{css_classes(link)}'>#{content}</a>"
+        "<a href='#{short_url_path(kawa_link)}' title='#{kawa_link.url}' class='#{css_classes(link)}'>#{content}</a>"
       end
 
       def autolink(link, link_type)

@@ -3,7 +3,7 @@ Given /^there is a Link$/ do
 end
 
 Given /^I visit the link short url$/ do
-  visit link_path(@link.id)
+  visit short_url_path(@link.id)
 end
 
 Then /^I should be redirected to the link's url$/ do 

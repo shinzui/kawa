@@ -9,6 +9,8 @@ Kawa::Application.routes.draw do
   resources :links
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  #
+  match 'l/:id'  => "short_urls#show", :as  => :short_url
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

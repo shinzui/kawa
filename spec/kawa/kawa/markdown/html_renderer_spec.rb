@@ -14,7 +14,7 @@ describe Kawa::Markdown::HtmlRenderer do
       anchor = doc.at_css("a")
       anchor.text.should == "http://tnm.jp"
       link = Link.with_url("http://tnm.jp").first
-      anchor["href"].should == link_path(link)
+      anchor["href"].should == short_url_path(link)
       anchor["title"].should == link.url 
     end
 
@@ -42,7 +42,7 @@ describe Kawa::Markdown::HtmlRenderer do
       end
 
       it "should link to a kawa link and place original link in title" do
-        @anchor["href"].should == link_path(@link)
+        @anchor["href"].should == short_url_path(@link)
         @anchor["title"].should == @link.url
         @anchor.text.should == "Tokyo National Museum"
       end

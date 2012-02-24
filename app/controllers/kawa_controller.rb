@@ -7,6 +7,12 @@ class KawaController < ApplicationController
     end
   end
 
+  def self.prohibit(*actions)
+    actions.each do |action|
+      undef_method action
+    end
+  end
+
   def index
     add_crumb model.to_s.pluralize
 
