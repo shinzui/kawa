@@ -1,0 +1,9 @@
+<div class="link">
+  <%= @link.link %>
+
+  <%  if @link.description %>
+    <p><%= @link.description %></p>
+  <% end -%>
+
+  <%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @link} %>
+</div>

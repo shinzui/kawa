@@ -1,9 +1,0 @@
-<div class="bookmark">
-  <%= @bookmark.link %>
-
-  <%  if @bookmark.description %>
-    <p><%= @bookmark.description %></p>
-  <% end -%>
-
-  <%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @bookmark} %>
-</div>

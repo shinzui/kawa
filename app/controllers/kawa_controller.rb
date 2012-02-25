@@ -16,7 +16,7 @@ class KawaController < ApplicationController
   def index
     add_crumb model.to_s.pluralize
 
-    ivar = "@#{model.to_s.downcase.pluralize}"
+    ivar = model_plural_ivar 
 
     if TagSearchPresenter.tag_search?(params)
       @search = TagSearchPresenter.new(model, params)
@@ -58,7 +58,21 @@ class KawaController < ApplicationController
     redirect_to send "#{model.to_s.downcase.pluralize}_path"
   end
 
+  private
+  def render(*args)
+    if custom_view_path
+      options = args.extract_options!
+      options[:template] = "#{custom_view_path}/#{params[:action]}"
+      super(*(args << options))
+    else
+      super(*args)
+    end
+  end
+
   protected
+
+  def custom_view_path
+  end
 
   def all
     model.all
@@ -67,6 +81,10 @@ class KawaController < ApplicationController
   def load_resource
     ivar = model_singular_ivar
     instance_variable_set(ivar, model.find(params[:id]))
+  end
+
+  def model_plural_ivar
+    "@#{model.to_s.downcase.pluralize}"
   end
 
   def model_singular_ivar

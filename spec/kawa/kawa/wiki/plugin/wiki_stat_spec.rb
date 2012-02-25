@@ -16,8 +16,8 @@ module Kawa::Wiki::Plugin
       ::Quote.stub_chain(:tags, :count).and_return(quote_tag_count)
       bookmark_count = 11
       Bookmark.stub(:count).and_return(bookmark_count)
-      bookmark_tag_count = 7
-      Bookmark.stub_chain(:tags, :count).and_return(bookmark_tag_count)
+      link_tag_count = 7
+      Link.stub_chain(:tags, :count).and_return(link_tag_count)
       link_count = 99
       Link.stub(:count).and_return(link_count)
 
@@ -27,7 +27,7 @@ module Kawa::Wiki::Plugin
       result.should match /#{quote_count} quotes/
       result.should match /#{quote_tag_count} tags/
       result.should match /#{bookmark_count} bookmarks/
-      result.should match /#{bookmark_tag_count} tags/
+      result.should match /#{link_tag_count} tags/
       result.should match /#{link_count} links/
     end
 

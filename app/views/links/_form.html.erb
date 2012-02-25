@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <%= simple_form_for @bookmark, :html  => { :class  => 'form-vertical' } do |f| %>
+  <%= simple_form_for @link, :html  => { :class  => 'form-vertical' } do |f| %>
     <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
 
     <%= f.input :url, :input_html  => {:class  => "span8"} %>

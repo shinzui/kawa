@@ -1,0 +1,8 @@
+<% link = LinkPresenter.new(link) %>
+<div class="link fluid-row">
+  <%= link.link %>
+  <%= render :partial  => "shared/control", :locals  => {:model  => link.model, :render_destroy  => link.can_delete?, :edit_path  => edit_polymorphic_path(link.model)} %>
+</div>
+
+
+

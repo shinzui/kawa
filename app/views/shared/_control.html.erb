@@ -5,7 +5,9 @@
   <span class="label label-info">
       <%= link_to 'Edit', edit_path %>
   </span>
-  <span class="label label-important">
-    <%= link_to 'Delete', model, :rel  => "delete-#{model.class.to_s.downcase}" , :method  => :delete, :confirm  => "Are you sure?" %>
-  </span>
+  <% if !defined?(render_destroy) || render_destroy %>
+    <span class="label label-important">
+      <%= link_to 'Delete', model, :rel  => "delete-#{model.class.to_s.downcase}" , :method  => :delete, :confirm  => "Are you sure?" %>
+    </span>
+  <% end -%>
 </div>

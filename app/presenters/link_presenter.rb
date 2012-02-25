@@ -9,8 +9,12 @@ class LinkPresenter
     self
   end
 
+  def can_delete?
+    model.class != Link
+  end
+
   def link
-    if title
+    if title.present?
       h.link_to(title, url) + h.content_tag(:div, :class  => "url") do
         h.concat(h.content_tag(:span, url))
       end
