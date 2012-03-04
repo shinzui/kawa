@@ -6,6 +6,10 @@ class BookmarksController < KawaController
 
   protected
 
+  def all
+    Bookmark.all.order_by(:updated_at, :desc)
+  end
+
   def custom_view_path
     "links"
   end
