@@ -7,7 +7,7 @@
         No pages matched your query.
       </p>
       <div class="alert-actions">
-        <%= @search.new_page_link_from_query :class  => "btn btn-small" %>
+        <%= @search.new_page_link_from_query :class  => "btn btn-small", :rel  => "new-page" %>
       </div>
     </div>
   <% else %>  
@@ -18,7 +18,7 @@
     </ul>
 
     <% unless @search.exact_match? %>
-      <div><%= @search.new_page_link_from_query :class  => "btn btn-small" %></div>
+      <div><%= @search.new_page_link_from_query :class  => "btn btn-small", :rel  => "new-page" %></div>
     <% end  %>
   <% end %>
 </div>

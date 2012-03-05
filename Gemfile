@@ -20,6 +20,7 @@ gem 'mustache'
 gem 'postrank-uri'
 gem 'pygments.rb'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem "js-routes"
 
 group :development do
   gem 'awesome_print'

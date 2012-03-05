@@ -9,6 +9,10 @@
 //= require underscore
 //= require ajax-chosen-jquery
 //= require twitter/bootstrap
+//= require keymaster
+//= require js-routes
 //= require_tree .
 //
+
+
 
