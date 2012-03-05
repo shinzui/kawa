@@ -14,4 +14,8 @@ jQuery ->
     else
       window.location = Routes.new_page_path()
   key 'g+h', -> window.location = "/"
+  key 'g+l', -> window.location = Routes.links_path()
+  key 'g+b', -> window.location = Routes.bookmarks_path()
+  key 'g+p', -> window.location = Routes.pages_path()
+  key 'g+q', -> window.location = Routes.quotes_path()
   key 'ctrl+c', -> history.back()
