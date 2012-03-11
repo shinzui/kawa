@@ -1,7 +1,7 @@
 class LinkPresenter
   include BasePresenter
 
-  delegate :id, :url, :title, :description, :to  => :@model
+  delegate :id, :url, :title, :description, :pages, :to  => :@model
   attr_reader :model
 
   def initialize(model)

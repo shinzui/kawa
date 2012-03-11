@@ -5,5 +5,16 @@
     <p><%= @link.description %></p>
   <% end -%>
 
+  <div class="pages">
+    <% if @link.pages.present? %>
+      <h6>Pages</h6>
+      <ul>
+        <% @link.pages.each do |page| %>
+          <li><%= link_to page.name, page_path(page) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
   <%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @link} %>
 </div>

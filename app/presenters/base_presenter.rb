@@ -9,6 +9,13 @@ module BasePresenter
     tags.present?  
   end
 
+  def view_count
+    if model.respond_to?(:visits)
+      count = model.visits.count
+      h.content_tag(:span, "#{h.pluralize(count, 'visit')}")
+    end
+  end
+
   def created_at
     return unless model.created_at
     h.content_tag(:strong, "Created on: ") +
