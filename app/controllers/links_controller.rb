@@ -7,6 +7,6 @@ class LinksController < KawaController
 
   protected
   def all
-    Link.all.order_by(:updated_at, :desc)
+    Link.all.order_by(:created_at, :desc)
   end
 end

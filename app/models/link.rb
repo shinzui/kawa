@@ -30,6 +30,10 @@ class Link
     save
   end
 
+  def generate_screenshot?
+    !url_screenshot.present?
+  end
+
   private 
   def set_id
     self._id = Kawa::Util::Base62.encode(Kawa::Mongo::Sequence.next("links")).to_s if new_record?

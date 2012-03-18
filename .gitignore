@@ -17,6 +17,7 @@
 config/mongoid.yml
 config/configatron/production.rb
 public/assets/
+public/uploads/
 
 .powder
 .powenv
