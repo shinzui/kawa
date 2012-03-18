@@ -12,7 +12,7 @@ def verify_bookmark
   bookmark.url.should_not be_nil
   bookmark.title.should_not be_nil
   bookmark.description.should_not be_nil
-  page.should have_link(bookmark.title, :href  => bookmark.url)
+  page.should have_link(bookmark.title, :href  => short_url_path(bookmark))
   page.should have_content(bookmark.description)
 end
 

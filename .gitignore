@@ -15,6 +15,7 @@
 /tmp
 
 config/mongoid.yml
+config/configatron/production.rb
 public/assets/
 
 .powder

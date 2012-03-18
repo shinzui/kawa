@@ -11,6 +11,8 @@ class Link
 
   validates_uniqueness_of :data
 
+  mount_uploader :url_screenshot, UrlScreenshotUploader
+
   scope :with_url, ->(url) { where(:data  => clean(url)) }
 
   label :title, :description
