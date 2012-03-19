@@ -2,6 +2,7 @@ class Link
   include Snippet
 
   before_validation { self.url = self.class.clean(url) }
+  before_destroy  :can_destroy? 
   before_save :set_id
 
   identity type: String
@@ -32,6 +33,10 @@ class Link
 
   def generate_screenshot?
     !url_screenshot.present?
+  end
+
+  def can_destroy?
+    pages.empty?
   end
 
   private 

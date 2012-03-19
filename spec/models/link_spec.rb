@@ -23,6 +23,7 @@ describe Link do
     end
   end
 
+  it_behaves_like "destroying links", Link
 
   describe "_id" do
     it "should use sequence and be stable" do

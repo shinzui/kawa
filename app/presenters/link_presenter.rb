@@ -10,7 +10,7 @@ class LinkPresenter
   end
 
   def can_delete?
-    model.class != Link
+    model.can_destroy?
   end
 
   def url_screenshot_thumbnail_url
