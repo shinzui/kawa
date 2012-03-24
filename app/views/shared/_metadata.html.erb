@@ -8,7 +8,7 @@
     <% if presenter.tags? %>
       <i class="icon-tags"></i>
       <% presenter.tags.each_with_index do |tag, idx| %>
-        <%= link_to tag, "#{url_for(presenter.model.class)}?tag=#{tag}" %><%= render_comma(presenter.tags, idx) %>
+        <%= link_to tag, "#{url_for(presenter.model.class)}?tag=#{tag}", :rel  => "tag" %><%= render_comma(presenter.tags, idx) %>
       <% end %>
     <% end %>
   </div>
