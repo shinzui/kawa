@@ -25,6 +25,13 @@ describe Link do
 
   it_behaves_like "destroying links", Link
 
+  describe "#generate_screenshot?" do
+    it "should return true if the link does not have a screenshot" do
+      @link  = Fabricate.build(:link)
+      @link.generate_screenshot?.should == true
+    end
+  end
+
   describe "_id" do
     it "should use sequence and be stable" do
       @link = Fabricate(:link)

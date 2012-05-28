@@ -32,7 +32,7 @@ class Link
   end
 
   def generate_screenshot?
-    !url_screenshot.present?
+    url_screenshot.file.nil?
   end
 
   def can_destroy?
