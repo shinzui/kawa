@@ -65,7 +65,7 @@ gem 'jquery-rails'
 gem 'less-rails'
 gem 'less-rails-bootstrap'
 gem 'chosen-rails'
-gem 'ajax-chosen-rails'
+gem 'ajax-chosen-rails', :git  => "git@github.com:shinzui/ajax-chosen-rails.git" 
 
 
 # To use ActiveModel has_secure_password
