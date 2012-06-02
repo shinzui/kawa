@@ -11,7 +11,17 @@ module SnippetLabel
   end
 
   module ClassMethods
+
+    def declared_labels
+      @declared_labels ||=[]
+    end
+
+    def declared_labels=(labels)
+      @declared_labels = labels 
+    end
+
     def label(*labels)
+      self.declared_labels |= labels
       labels.each {|label| define_label(label) }
     end
 
