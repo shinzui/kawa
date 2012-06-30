@@ -15,7 +15,7 @@ class PagePresenter
   end
 
   def header
-    h.content_tag(:header) do
+    h.content_tag(:header, :class  => "page-header") do
       h.content_tag(:h1, @model.title)
     end
   end
