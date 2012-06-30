@@ -24,6 +24,7 @@ gem 'mini_magick'
 gem "js-routes"
 gem 'sidekiq'
 gem "configatron"
+gem "rails-backbone"
 
 group :development do
   gem 'awesome_print'

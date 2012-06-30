@@ -129,6 +129,7 @@ GEM
     diff-lcs (1.1.3)
     domainatrix (0.0.10)
       addressable
+    ejs (1.0.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -238,6 +239,10 @@ GEM
       activesupport (= 3.2.6)
       bundler (~> 1.0)
       railties (= 3.2.6)
+    rails-backbone (0.7.2)
+      coffee-script (~> 2.2.0)
+      ejs (~> 1.0.0)
+      railties (>= 3.1.0)
     railties (3.2.6)
       actionpack (= 3.2.6)
       activesupport (= 3.2.6)
@@ -383,6 +388,7 @@ DEPENDENCIES
   pry-rails
   pygments.rb
   rails (= 3.2.6)
+  rails-backbone
   rb-fsevent
   redcarpet!
   rspec-rails

@@ -11,6 +11,11 @@
 //= require twitter/bootstrap
 //= require keymaster
 //= require js-routes
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/kawa
 //= require_tree .
 //
 
