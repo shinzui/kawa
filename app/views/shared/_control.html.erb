@@ -7,7 +7,7 @@
   </span>
   <% if !defined?(render_destroy) || render_destroy %>
     <span class="label label-important">
-      <%= link_to 'Delete', model, :rel  => "delete-#{model.class.to_s.downcase}" , :method  => :delete, :confirm  => "Are you sure?" %>
+      <%= link_to 'Delete', model, :rel  => "delete-#{model.class.to_s.downcase}" , :method  => :delete, :data  => {:confirm  => "Are you sure?"} %>
     </span>
   <% end -%>
 </div>
