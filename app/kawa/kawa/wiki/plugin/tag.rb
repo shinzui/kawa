@@ -7,7 +7,7 @@ module Kawa
         def process(options)
           values = options.delete(:values)
           raise MissingArgument.new("#{name} plugin requires values") unless values
-          @page.tags = values
+          page.tags = values
           nil
         end
       end
