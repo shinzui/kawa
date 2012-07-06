@@ -20,7 +20,7 @@ class ScreenshotGrabber
 
     script_location = File.join(Rails.root, 'lib/screenshot_grabber.coffee')
     output = "#{Dir.tmpdir}/#{Digest::MD5.hexdigest(link.url)}.png"
-    phantomjs_opts = "--load-plugins=yes --ignore-ssl-errors=yes"
+    phantomjs_opts = "--ignore-ssl-errors=yes"
     `phantomjs #{phantomjs_opts} #{script_location} "#{link.url}" #{output}`
     if FileTest.exists?(output)
       link.url_screenshot = File.open(output)
