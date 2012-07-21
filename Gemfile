@@ -25,6 +25,8 @@ gem "js-routes"
 gem 'sidekiq'
 gem "configatron"
 gem "rails-backbone"
+gem "slim"
+gem "sinatra", :require => nil
 
 group :development do
   gem 'awesome_print'
