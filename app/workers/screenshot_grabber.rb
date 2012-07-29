@@ -24,7 +24,7 @@ class ScreenshotGrabber
     `phantomjs #{phantomjs_opts} #{script_location} "#{link.url}" #{output}`
     if FileTest.exists?(output)
       link.url_screenshot = File.open(output)
-      link.save
+      link.save!
     else
       raise Error.new("Couldn't genereate screenshot of #{link.url}")
     end
