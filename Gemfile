@@ -8,7 +8,7 @@ gem 'mongoid_taggable_with_context', :git  => 'git@github.com:shinzui/mongoid_ta
 gem 'mongoid_rails_migrations'
 
 gem 'nokogiri'
-gem 'redcarpet', :git  => 'git://github.com/tanoku/redcarpet.git'
+gem 'redcarpet'
 gem 'creole'
 gem 'crummy', '~> 1.3.6'
 #gem 'idn'
