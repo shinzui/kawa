@@ -13,6 +13,10 @@ class LinkPresenter
     model.can_destroy?
   end
 
+  def private?
+    model.private?
+  end
+
   def url_screenshot_thumbnail_url
     if model.url_screenshot
       model.url_screenshot.thumb.url

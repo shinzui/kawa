@@ -1,5 +1,8 @@
 <div class='<%= "#{presenter.model.class.to_s.downcase}-metadata" %> row-fluid'>
   <div class="span8">
+    <% if presenter.private? %>
+      <i class="icon-lock"></i>
+    <%  end %>
     <%= presenter.created_at %>
     <%= presenter.updated_at %>
     <%= presenter.view_count %>

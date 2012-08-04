@@ -9,6 +9,10 @@ module BasePresenter
     tags.present?  
   end
 
+  def private?
+    false
+  end
+
   def view_count
     if model.respond_to?(:visits)
       count = model.visits.count

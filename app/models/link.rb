@@ -10,6 +10,8 @@ class Link
   has_many :visits
   has_and_belongs_to_many :pages
 
+  field :private, type: Boolean
+
   validates_uniqueness_of :data
 
   mount_uploader :url_screenshot, UrlScreenshotUploader

@@ -21,6 +21,17 @@ Given /^I create a new bookmark$/ do
   click_button :submit
 end
 
+Given /^I create a private bookmark$/ do
+  new_bookmark
+  check "Private"
+  click_button :submit
+end
+
+And /^the bookmark should be private$/ do
+  page.should have_css(".icon-lock")
+  Bookmark.last.should be_private
+end
+
 Then /^I should see the bookmark$/ do
   verify_bookmark
 end
