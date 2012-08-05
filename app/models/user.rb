@@ -6,12 +6,17 @@ class User
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  embeds_one :user_profile
+  accepts_nested_attributes_for :user_profile
+  index "user_profile.username", :unique  => true
+
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
+  validates_uniqueness_of :email
   
   ## Recoverable
   field :reset_password_token,   :type => String

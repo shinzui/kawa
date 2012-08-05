@@ -1,0 +1,15 @@
+<div class="row-fluid">
+  <%= simple_form_for @user, :html  => {:class  => "form-vertical"} do |f| %>
+    <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
+    <%= f.input :email %>
+    <%= f.fields_for :user_profile  do |profile| %>
+      <%= profile.input :username %>
+      <%= profile.input :first_name %>
+      <%= profile.input :last_name %>
+    <% end %>
+    <div class="form-actions">
+      <%= f.button :submit, :class  => "btn-primary" %>
+      <%= link_to "Cancel", url_for(:back), :class  => "btn" %>
+    </div>
+  <% end %>
+</div>

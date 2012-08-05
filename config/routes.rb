@@ -10,6 +10,7 @@ Kawa::Application.routes.draw do
   resources :quotes
   resources :bookmarks
   resources :links
+  resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
   #
