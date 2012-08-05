@@ -1,5 +1,8 @@
 Feature: Manage quotes
 
+  Background:
+    Given A logged in user
+
   Scenario: Adding a new quote
     Given I create a new quotation
     Then I should see the quotation
@@ -23,13 +26,3 @@ Feature: Manage quotes
     And I tag the quote with "japan, wisdom"
     Then the quote should be tagged with "japan and wisdom"
 
-  Scenario: Viewing all quotes
-    Given there are 4 quotes
-    And I go to quotes page
-    Then I should see the quotes
-
-  Scenario: Viewing tagged quotes
-    Given a quote tagged with "japan"
-    And there are 2 quotes
-    When I visit the "japan" tag quotes
-    Then I should see the "japan" tagged quote

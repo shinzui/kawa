@@ -57,3 +57,4 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 WebMock.disable_net_connect!(:allow_localhost => true)
+

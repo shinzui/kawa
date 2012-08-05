@@ -1,5 +1,6 @@
 Feature: Page tags
 
+  @logged_in
   Scenario: Adding tags through the tag plugin
     Given I create a page and tag it with "tokyo tower, 東京"
     Then it should have the "tokyo tower" tag

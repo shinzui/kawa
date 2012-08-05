@@ -1,4 +1,5 @@
 class KawaController < ApplicationController
+  before_filter :authenticate_user!, :except  => [:index, :show]
 
   def self.inherited(klass)
     super

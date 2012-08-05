@@ -1,5 +1,8 @@
 Feature: Manage bookmarks
 
+  Background:
+    Given A logged in user
+
   Scenario: Adding a new bookmark
     Given I create a new bookmark
     Then I should see the bookmark

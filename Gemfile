@@ -27,6 +27,7 @@ gem "configatron"
 gem "rails-backbone"
 gem "slim"
 gem "sinatra", :require => nil
+gem "devise"
 
 group :development do
   gem 'awesome_print'

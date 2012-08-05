@@ -64,6 +64,7 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     awesome_print (1.0.2)
+    bcrypt-ruby (3.0.1)
     blankslate (2.1.2.4)
     bson (1.6.4)
     bson_ext (1.6.4)
@@ -121,6 +122,11 @@ GEM
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
     database_cleaner (0.8.0)
+    devise (2.1.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     domainatrix (0.0.10)
       addressable
@@ -203,6 +209,7 @@ GEM
     multi_json (1.3.6)
     mustache (0.99.4)
     nokogiri (1.5.5)
+    orm_adapter (0.4.0)
     polyglot (0.3.3)
     postrank-uri (1.0.15)
       addressable (>= 2.2.3)
@@ -344,6 +351,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.1)
+      rack (>= 1.0)
     webmock (1.8.8)
       addressable (~> 2.2.8)
       crack (>= 0.1.7)
@@ -369,6 +378,7 @@ DEPENDENCIES
   crummy (~> 1.3.6)
   cucumber-rails
   database_cleaner
+  devise
   fabrication
   growl
   guard

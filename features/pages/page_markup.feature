@@ -1,5 +1,8 @@
 Feature: Page Markup
 
+  Background:
+    Given A logged in user
+
 	Scenario: Interwiki Link to existing page
 		Given there is a "Tokyo Tower" Page
 		And I create an interwiki link to "it" from the "Tokyo" Page

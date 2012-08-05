@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :authenticate_user!, :except  => [:index, :show]
   before_filter :load_page, :page_crumb, :only  => [:show, :edit, :update]
 
   rescue_from Tire::Search::SearchRequestFailed do |error|

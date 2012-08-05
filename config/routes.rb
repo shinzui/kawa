@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 Kawa::Application.routes.draw do
 
+  devise_for :users
+
   root :to => redirect("/pages/home")
 
   resources :pages
