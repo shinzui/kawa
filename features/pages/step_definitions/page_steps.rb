@@ -25,6 +25,11 @@ Then /^I should see the page generated$/ do
   end
 end
 
+Then /^I should be the author of the page$/ do
+  wiki_page = Page.last
+  wiki_page.author.should == logged_in_user
+end
+
 Then /^I should be able to access the page from a user friendly url$/ do
   wiki_page = Page.last
   visit page_path(wiki_page.slug)
@@ -66,7 +71,7 @@ Then /^I should be able to delete the page$/ do
   wiki_page = Page.last
   visit page_path(wiki_page)
   find(:xpath, "//a[contains(@rel, 'delete-page')]").click
-  Page.where(:id  => wiki_page.id).should be_empty
+  Page.where(:_id  => wiki_page.id).first.should be_nil
 end
 
 Then /^I should be redirected to the create "([^"]*)" page$/ do |page_name| 

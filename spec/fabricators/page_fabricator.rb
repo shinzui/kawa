@@ -1,5 +1,6 @@
 Fabricator(:page) do
   name { sequence(:name) {|i| "page#{i}" } }
+  author { Fabricate(:user)}
 end
 
 Fabricator(:markdown_page, :from  => :page) do

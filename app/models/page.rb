@@ -17,6 +17,8 @@ class Page
   before_save :extract_links
 
   has_and_belongs_to_many :links
+  belongs_to :author, :class_name  => "User"
+  belongs_to :last_editor, :class_name  => "User"
 
   scope :named, ->(name) { where(name: /^#{name}$/i) }
 
@@ -31,7 +33,7 @@ class Page
   index :name, unique: true
   slug :name
 
-  validates_presence_of :name, :markup, :raw_data
+  validates_presence_of :name, :markup, :raw_data, :author
   validates_uniqueness_of :name
 
 	def	self.supported_markups

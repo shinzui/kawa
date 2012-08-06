@@ -34,7 +34,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
 
-    if @page.save
+    if wiki.add_page(current_user, @page)
       redirect_to @page, :notice  => "Success"
     else
       render :action  => :new

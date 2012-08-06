@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 
   add_crumb "Home", "/" 
 
+  def wiki
+    Kawa::Wiki::Engine.instance
+  end
+
   private
     def configure_sidebar
       @sidebar = SidebarPresenter.new

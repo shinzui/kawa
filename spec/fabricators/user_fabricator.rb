@@ -4,9 +4,19 @@ Fabricator(:user) do
   password_confirmation "password"
 end
 
+Fabricator(:user_profile) do
+  username { sequence(:username) {|i| "misaki#{i}"}}
+  first_name "Misaki"
+  last_name "Ito"
+end
+
 Fabricator(:ozu, :from  => :user) do
   email "ozu@gmail.com"
-  first_name "Yasujiro"
-  last_name "Ozu"
-  username "ozu"
+  user_profile { Fabricate.build(ozu_user_profile) }
+end
+
+Fabricator(:ozu_user_profile, :from  => :user_profile) do
+  first_name "Yasujiro" 
+  last_name "Ozu" 
+  username "ozu" 
 end

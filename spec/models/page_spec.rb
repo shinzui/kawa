@@ -5,6 +5,7 @@ describe Page do
   it { should validate_presence_of(:markup) }
   it { should validate_presence_of(:raw_data) }
   it { should validate_uniqueness_of(:name) }
+  it { should validate_presence_of(:author) }
 
   describe ".supported_markups" do
     it "should return an array of all supported markups" do

@@ -7,10 +7,22 @@ Given /^"(.*?)" is logged in$/ do |user_email|
   login_user @user
 end
 
+Given /^I am logged in as "(.*?)"$/ do |user_info|
+  user = User.where(:email  => user_info)
+  user ||= User.where("user_profile.username"  => user_info)
+  if user.nil? && user_info =~ /@/
+    user = Fabricate(:user, :email  => user_info)
+  else
+    user = Fabricate(:user, :user_profile  => Fabricate.build(:user_profile, :username  => user_info) )
+  end
+
+  login_user user
+end
+
 
 Given /^(?:he|she) edits (?:his|her) profile$/ do
   visit edit_user_path(@user)
-  ozu = Fabricate.attributes_for(:ozu)
+  ozu = Fabricate.attributes_for(:ozu_user_profile)
   fill_in "Username", :with  => ozu[:username] 
   fill_in "First name", :with  => ozu[:first_name]
   fill_in "Last name", :with  => ozu[:last_name]
@@ -19,7 +31,7 @@ end
 
 Then /^the user profile should get updated$/ do 
   user = User.last
-  ozu = Fabricate.attributes_for(:ozu)
+  ozu = Fabricate.attributes_for(:ozu_user_profile)
   user.user_profile.first_name.should == ozu[:first_name]
   user.user_profile.last_name.should == ozu[:last_name]
   user.user_profile.username.should == ozu[:username]

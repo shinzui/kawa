@@ -71,7 +71,7 @@ Then /^I should be able to delete the quote$/ do
   quote_id = quote.id
   visit quote_path(quote)
   find(:xpath, "//a[contains(@rel, 'delete-quote')]").click
-  Quote.where(:id  => quote_id).first.should be_nil
+  Quote.where(:_id  => quote_id).first.should be_nil
 end
 
 Given /^there are (\d+) quotes$/ do |count|
