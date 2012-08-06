@@ -147,6 +147,8 @@ GEM
     guard-cucumber (1.2.0)
       cucumber (>= 1.2.0)
       guard (>= 1.1.0)
+    guard-pow (1.0.0)
+      guard (>= 1.1)
     guard-rspec (1.2.1)
       guard (>= 1.1)
     guard-shell (0.5.1)
@@ -383,6 +385,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-cucumber
+  guard-pow
   guard-rspec
   guard-shell
   jquery-rails

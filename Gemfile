@@ -36,6 +36,7 @@ group :development do
   gem "guard-cucumber"
   gem "guard-shell"
   gem "guard-bundler"
+  gem "guard-pow"
   gem "rb-fsevent", :require  => false
   # gem "growl", :require  => false
   gem "terminal-notifier"
