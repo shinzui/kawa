@@ -37,7 +37,8 @@ group :development do
   gem "guard-shell"
   gem "guard-bundler"
   gem "rb-fsevent", :require  => false
-  gem "growl", :require  => false
+  # gem "growl", :require  => false
+  gem "terminal-notifier"
   gem "yard"
   gem "pry-rails"
   gem "pry-doc"
