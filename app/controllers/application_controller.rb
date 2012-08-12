@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   def guest_user
     guest_user_id = session[:guest_user_id]
     if guest_user_id
-      guest = User.where(:_id  => guest_user_id).first
+      guest = GuestUser.where(:_id  => guest_user_id).first
     else
-      guest = User.new(:email  => "guest_#{Time.now.to_i}#{rand(99)}@#{request.host}")
+      guest = GuestUser.new(:email  => "guest_#{Time.now.to_i}#{rand(99)}@#{request.host}")
       guest.save(:validate  => false)
       session[:guest_user_id] = guest.id
     end

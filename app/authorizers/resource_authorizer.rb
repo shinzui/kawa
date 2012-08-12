@@ -16,7 +16,7 @@ class ResourceAuthorizer < ApplicationAuthorizer
   def modifiable_by?(user)
     raise UnsupportedResource unless ResourceOwner.keys.include?(resource.class)
 
-    return true unless resource.private?
+    return true unless resource.respond_to?(:private?) && resource.private? 
     owner = ResourceOwner[resource.class].bind(resource).call
     return owner == user
   end
@@ -26,11 +26,20 @@ class ResourceAuthorizer < ApplicationAuthorizer
   end
 
   def updatable_by?(user)
-    modifiable_by?(user)
+    modifiable_by?(user) && not_guest?(user)
   end
 
   def deletable_by?(user)
-    modifiable_by?(user)
+    modifiable_by?(user) && not_guest?(user)
+  end
+
+  def creatable_by?(user)
+    not_guest?(user)
+  end
+
+  protected 
+  def not_guest?(user)
+    !user.is_a?(GuestUser)
   end
 
 end

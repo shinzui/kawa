@@ -26,4 +26,31 @@ describe ResourceAuthorizer do
       end
     end
   end
+
+  describe "guest users" do
+    before :each do
+      @guest = Fabricate.build(:guest)
+      @page = Fabricate.build(:markdown_page, :author  => @owner)
+      @quote = Fabricate.build(:quote, :contributor  => @owner)
+      @bookmark = Fabricate.build(:bookmark, :creator  => @owner)
+      @resources = [@page, @quote, @bookmark]
+    end
+
+    {:read  => :readable}.each do |verb, ability|
+      it "should let guest user #{verb} the resource" do
+        @resources.each do |resource|
+          resource.authorizer.send("#{ability}_by?", @guest).should be_true
+        end
+      end
+    end
+
+    {:create  => :creatable, :update  => :updatable, :delete  => :deletable}.each do |verb, ability|
+      it "should not let guest users #{verb} the resource" do
+        @resources.each do |resource|
+          error_message = "guest should not be able to #{verb} #{resource.class.to_s.downcase.pluralize}"
+          resource.authorizer.send("#{ability}_by?", @guest).should be_false, error_message
+        end
+      end
+    end
+  end
 end

@@ -4,6 +4,10 @@ Fabricator(:user) do
   password_confirmation "password"
 end
 
+Fabricator(:guest, :from  => :user, :class_name  => :guest_user) do
+  _type "GuestUser"
+end
+
 Fabricator(:user_profile) do
   username { sequence(:username) {|i| "misaki#{i}"}}
   first_name "Misaki"

@@ -9,6 +9,14 @@ module BasePresenter
     tags.present?  
   end
 
+  def updatable?
+    h.current_or_guest_user.can_update?(model)
+  end
+
+  def deletable?
+    h.current_or_guest_user.can_delete?(model)
+  end
+
   def private?
     model.respond_to?(:private?) ? model.private? : false
   end

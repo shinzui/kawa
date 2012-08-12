@@ -12,7 +12,6 @@
     <%= render :partial  => "shared/control", 
       :locals  => {:model  => link.model, 
                    :html_class  => "span12",
-                   :render_destroy  => link.can_delete?, 
                    :edit_path  => edit_polymorphic_path(link.model)} %>
   </div>
 <% end %>

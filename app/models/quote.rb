@@ -1,6 +1,8 @@
 class Quote 
   include Snippet
 
+  include Authority::Abilities
+
   field :random, type: Float
 
   index :random
@@ -13,6 +15,8 @@ class Quote
   label :author, :source, :source_url
 
   after_initialize { self.random ||= rand }
+
+  self.authorizer_name = "ResourceAuthorizer"
 
   def self.random(tags = nil)
     rv = rand

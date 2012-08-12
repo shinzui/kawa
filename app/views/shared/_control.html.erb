@@ -1,11 +1,15 @@
 <div class="control <%= html_class if defined?(html_class) %>"> 
-  <span class="label label-info">
-    <%= link_to 'View', model %>
-  </span>
-  <span class="label label-info">
-      <%= link_to 'Edit', edit_path %>
-  </span>
-  <% if !defined?(render_destroy) || render_destroy %>
+  <% if current_or_guest_user.can_read?(model) -%>
+    <span class="label label-info">
+      <%= link_to 'View', model %>
+    </span>
+  <% end %>
+  <% if current_or_guest_user.can_update?(model) -%>
+    <span class="label label-info">
+        <%= link_to 'Edit', edit_path %>
+    </span>
+  <% end %>
+  <% if current_or_guest_user.can_delete?(model) %>
     <span class="label label-important">
       <%= link_to 'Delete', model, :rel  => "delete-#{model.class.to_s.downcase}" , :method  => :delete, :data  => {:confirm  => "Are you sure?"} %>
     </span>

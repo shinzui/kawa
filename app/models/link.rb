@@ -28,7 +28,7 @@ class Link
   alias :url= :data=
   alias :surl :_id
 
-  self.authorizer_name = "ResourceAuthorizer"
+  self.authorizer_name = "LinkAuthorizer"
 
   def self.clean(url)
     PostRank::URI.clean(url)
