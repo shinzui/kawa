@@ -5,7 +5,8 @@ class ResourceAuthorizer < ApplicationAuthorizer
   ResourceOwner = {
     Page  => Page.public_instance_method(:author),
     Link  => Link.public_instance_method(:creator),
-    Bookmark  => Bookmark.public_instance_method(:creator)
+    Bookmark  => Bookmark.public_instance_method(:creator),
+    Quote  => Quote.public_instance_method(:contributor)
   }.freeze
 
   def self.readable_by?(user)

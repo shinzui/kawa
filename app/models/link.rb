@@ -16,6 +16,7 @@ class Link
   field :private, type: Boolean
 
   validates_uniqueness_of :data
+  # validates_presence_of :creator, :data
 
   mount_uploader :url_screenshot, UrlScreenshotUploader
 

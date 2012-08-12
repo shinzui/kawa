@@ -3,7 +3,7 @@ Given /^there is (?:a|an) "([^"]*)" Page$/ do |page_name|
 end
 
 Given /^there is (?:a|an) "([^"]*)"( private)? page created by "([^"]*)"$/ do |page_name, private, user|
-  author = Fabricate(:user, :email  => user)
+  author = User.where(email: user).first || Fabricate(:user, email: user)
   private_page = private ? true : false
   wiki_page = Fabricate(:markdown_page, :name  => page_name, :author  => author, :private  => private_page)
 end
@@ -111,6 +111,12 @@ Then /^I should see a link to all pages$/ do
   Page.all.each do |wiki_page|
     page.should have_xpath('//a', :text  => wiki_page.name)
   end
+end
+
+Then /^I should not see a link to the "(.*?)" page$/ do |page_name|
+  wiki_page = Page.named(page_name).first
+  wiki_page.should be_present
+  page.should_not have_xpath('//a', :text  => wiki_page.name)
 end
 
 Then /^I should be able to delete the page$/ do

@@ -9,12 +9,12 @@ class LinkPresenter
     self
   end
 
-  def can_delete?
-    model.can_destroy?
+  def owner
+    UserPresenter.new(model.creator).display_name
   end
 
-  def private?
-    model.private?
+  def can_delete?
+    model.can_destroy?
   end
 
   def url_screenshot_thumbnail_url

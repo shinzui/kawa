@@ -36,6 +36,10 @@ Then /^the quote should be marked with the "([^"]*)" lang$/ do |lang|
   page.should have_xpath("//blockquote[@lang='#{lang}']")
 end
 
+Then /^I should be the contributor to the quotation$/ do
+  Quote.last.contributor.should == logged_in_user
+end
+
 Given /^there is a quote$/ do
   @quote = Fabricate(:quote)
 end

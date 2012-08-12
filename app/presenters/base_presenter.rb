@@ -10,7 +10,7 @@ module BasePresenter
   end
 
   def private?
-    false
+    model.respond_to?(:private?) ? model.private? : false
   end
 
   def view_count
@@ -24,6 +24,12 @@ module BasePresenter
     return unless model.created_at
     h.content_tag(:strong, "Created on: ") +
     time_tag(model.created_at)
+  end
+
+  def creator
+    return unless owner
+    h.content_tag(:strong, "by: ") +
+    h.content_tag(:span, owner + ". ")
   end
 
   def updated_at

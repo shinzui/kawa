@@ -1,19 +1,21 @@
-<% link = LinkPresenter.new(link) %>
-<div class="link row-fluid">
-  <div>
-    <div class="thumbnails span2">
-      <%= link.url_screenshot_thumbnail %>
+<% if current_or_guest_user.can_read?(link) %>
+  <% link = LinkPresenter.new(link) %>
+  <div class="link row-fluid">
+    <div>
+      <div class="thumbnails span2">
+        <%= link.url_screenshot_thumbnail %>
+      </div>
     </div>
+    <div class="span10">
+      <%= link.link %>
+    </div>
+    <%= render :partial  => "shared/control", 
+      :locals  => {:model  => link.model, 
+                   :html_class  => "span12",
+                   :render_destroy  => link.can_delete?, 
+                   :edit_path  => edit_polymorphic_path(link.model)} %>
   </div>
-  <div class="span10">
-    <%= link.link %>
-  </div>
-  <%= render :partial  => "shared/control", 
-    :locals  => {:model  => link.model, 
-                 :html_class  => "span12",
-                 :render_destroy  => link.can_delete?, 
-                 :edit_path  => edit_polymorphic_path(link.model)} %>
-</div>
+<% end %>
 
 
 

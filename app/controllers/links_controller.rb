@@ -2,6 +2,7 @@ class LinksController < KawaController
   prohibit :destroy
 
   def show
+    authorize_action_for(@link)
     @link = LinkPresenter.new(@link)
   end
 

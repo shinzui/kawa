@@ -6,7 +6,7 @@ class SidebarPresenter
       Page.all.desc(:updated_at).limit(limit).each do |page|
         h.concat(h.content_tag(:li) do
           h.link_to page.name, h.page_path(page)
-        end)
+        end) if h.current_or_guest_user.can_read?(page)
       end
     end
   end

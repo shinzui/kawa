@@ -1,6 +1,7 @@
 class BookmarksController < KawaController
 
   def show
+    authorize_action_for(@link)
     @link = LinkPresenter.new @link
   end
 

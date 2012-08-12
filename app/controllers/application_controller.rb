@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
       guest_user
     end
   end
+  helper_method :current_or_guest_user
 
   def guest_user
     guest_user_id = session[:guest_user_id]

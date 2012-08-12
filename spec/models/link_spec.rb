@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Link do
   it { should validate_uniqueness_of(:data) }
+  it { should validate_presence_of(:data)}
+  # it { should validate_presence_of(:creator)}
 
   describe "Normalizing urls" do
     before :each do
@@ -74,7 +76,7 @@ describe Link do
 
     context "link without creator" do
       before :each do
-        @link = Fabricate.build(:link)
+        @link = Fabricate.build(:link, :creator  => nil)
       end
 
       it "should set the creator to the page's author" do

@@ -6,6 +6,7 @@ Feature: Manage quotes
   Scenario: Adding a new quote
     Given I create a new quotation
     Then I should see the quotation
+    And I should be the contributor to the quotation
 
   Scenario: Adding a new quote in a different language
     Given I create a "Japanese" quotation

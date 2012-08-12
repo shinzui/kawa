@@ -5,6 +5,8 @@ class Quote
 
   index :random
 
+  belongs_to :contributor, :class_name  => "User"
+
   alias :quotation :data
   alias :quotation= :data=
 

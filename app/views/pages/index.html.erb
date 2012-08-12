@@ -13,7 +13,9 @@
   <% end %>
   <ul>
     <% @pages.each do |page| %>
-      <li><%= link_to page.name, page %></li>
+      <% if current_or_guest_user.can_read?(page) %>
+        <li><%= link_to page.name, page %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>

@@ -8,6 +8,10 @@ class QuotePresenter
     @model = model
   end
 
+  def owner
+    UserPresenter.new(model.contributor).display_name
+  end
+
   def quote
     blockquote_opts = {:lang  => @model.lang} if @model.lang.present?
     h.content_tag(:blockquote, blockquote_opts) do

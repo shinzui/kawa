@@ -27,11 +27,25 @@ Given /^I create a private bookmark$/ do
   click_button :submit
 end
 
+Given /^I access "(.*?)" bookmark$/ do |bookmark_url|
+  bookmark = Bookmark.with_url(bookmark_url).first
+  bookmark.should be_present
+  visit bookmark_path(bookmark)
+end
+
 And /^the bookmark should be private$/ do
   page.should have_css(".icon-lock")
   Bookmark.last.should be_private
 end
 
+And /^I should be the creator of the bookmark$/ do
+  Bookmark.last.creator.should == logged_in_user
+end
+
 Then /^I should see the bookmark$/ do
   verify_bookmark
+end
+
+Given /^I go to view all bookmarks$/ do
+  visit bookmarks_path
 end

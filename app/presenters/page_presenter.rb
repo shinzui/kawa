@@ -14,6 +14,10 @@ class PagePresenter
     "川 - #{@model.title}"
   end
 
+  def owner
+    UserPresenter.new(model.author).display_name
+  end
+
   def header
     h.content_tag(:header, :class  => "page-header") do
       h.content_tag(:h1, @model.title)

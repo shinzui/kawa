@@ -34,7 +34,7 @@ class KawaController < ApplicationController
   end
 
   def create
-    if new_instance.save
+    if wiki.send("add_#{model.to_s.downcase}", current_user, new_instance)
       redirect_to new_instance, :notice  => "#{model.to_s} added successfully"
     else
       render :edit
