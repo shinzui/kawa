@@ -42,6 +42,7 @@ class KawaController < ApplicationController
   end
 
   def edit
+    authorize_action_for instance_variable_get(model_singular_ivar)
   end
 
   def update
@@ -55,6 +56,7 @@ class KawaController < ApplicationController
 
   def destroy
     instance = instance_variable_get(model_singular_ivar)
+    authorize_action_for instance
     instance.destroy
     redirect_to send "#{model.to_s.downcase.pluralize}_path"
   end
