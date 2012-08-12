@@ -1,6 +1,8 @@
 class Link
   include Snippet
 
+  include Authority::Abilities
+
   before_validation { self.url = self.class.clean(url) }
   before_destroy  :can_destroy? 
   before_save :set_id
@@ -8,6 +10,7 @@ class Link
   identity type: String
 
   has_many :visits
+  belongs_to :creator, :class_name  => "User"
   has_and_belongs_to_many :pages
 
   field :private, type: Boolean
@@ -24,8 +27,17 @@ class Link
   alias :url= :data=
   alias :surl :_id
 
+  self.authorizer_name = "ResourceAuthorizer"
+
   def self.clean(url)
     PostRank::URI.clean(url)
+  end
+
+  #temporary until i upgrade to mongoid 3 with association callbacks
+  def associate_to_page(page)
+    self.creator = page.author unless creator.present?
+    self.private = true if page.private && (pages.empty? || pages.all? {|p| p.private })
+    save
   end
 
   def record_visit(referrer, ip)

@@ -63,6 +63,8 @@ GEM
     addressable (2.2.8)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
+    authority (2.0.1)
+      rails (>= 3.0.0)
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     blankslate (2.1.2.4)
@@ -369,6 +371,7 @@ PLATFORMS
 
 DEPENDENCIES
   ajax-chosen-rails!
+  authority
   awesome_print
   bson_ext
   capybara-webkit

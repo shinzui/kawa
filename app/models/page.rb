@@ -9,6 +9,8 @@ class Page
   include Mongoid::TaggableWithContext
   include Mongoid::TaggableWithContext::AggregationStrategy::RealTime
 
+  include Authority::Abilities
+
   index_name "#{Rails.env}-#{Rails.application.class.to_s.downcase}-pages"
 
   taggable :tags, :separator  => ","
@@ -30,11 +32,14 @@ class Page
   field :name
   field :markup
   field :raw_data
+  field :private, type: Boolean
   index :name, unique: true
   slug :name
 
   validates_presence_of :name, :markup, :raw_data, :author
   validates_uniqueness_of :name
+
+  self.authorizer_name = "ResourceAuthorizer"
 
 	def	self.supported_markups
 		Markup.constants.map {|m| Markup.const_get(m)}
@@ -76,11 +81,9 @@ class Page
   end
 
   def extract_links
-    doc = Nokogiri::HTML.parse(formatted_data)
-    path = Rails.application.routes.url_helpers.short_url_path("id").gsub("id","")
-    link_ids = doc.css('a').map { |a| a['href'] }.map { |l| l[%r|#{path}(.*)|, 1] }
-    page_links = Link.find(link_ids.compact)
-    self.links = page_links 
+    page_links = PageLinkExtractor.new(self).extract_links
+    page_links.each {|l| l.associate_to_page(self)}
+    self.links = page_links
   end
 
 end

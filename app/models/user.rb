@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Authority::UserAbilities
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :registerable
   # :lockable, :timeoutable and :omniauthable

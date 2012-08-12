@@ -13,6 +13,8 @@
 
     <%= f.input :raw_data, :as  => :text, :input_html  => {:class  => "span12"} %> 
 
+    <%= f.input :private, :as  => :boolean %>
+
     <div class="form-actions">
       <%= f.button :submit, :class  => "btn-primary" %>
       <%= link_to "Cancel", url_for(:back), :class  => "btn" %>

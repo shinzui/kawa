@@ -8,8 +8,8 @@ Given /^"(.*?)" is logged in$/ do |user_email|
 end
 
 Given /^I am logged in as "(.*?)"$/ do |user_info|
-  user = User.where(:email  => user_info)
-  user ||= User.where("user_profile.username"  => user_info)
+  user = User.where(:email  => user_info).first
+  user ||= User.where("user_profile.username"  => user_info).first
   if user.nil? && user_info =~ /@/
     user = Fabricate(:user, :email  => user_info)
   else

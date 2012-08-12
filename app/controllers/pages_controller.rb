@@ -42,14 +42,17 @@ class PagesController < ApplicationController
   end
 
   def show
-    redirect_to new_page_path(page: {name: params[:id]}) unless @page
+    return redirect_to new_page_path(page: {name: params[:id]}) unless @page
+    authorize_action_for(@page)
     @page = PagePresenter.new(@page)
   end
 
   def edit
+    authorize_action_for(@page)
   end
 
   def update
+    authorize_action_for(@page)
     if @page.update_attributes(params[:page])
       redirect_to @page, :notice  => "Page updated successfully"
     else
@@ -59,6 +62,7 @@ class PagesController < ApplicationController
 
   def destroy
     @page = Page.find_by_slug(params[:id])
+    authorize_action_for(@page)
     @page.destroy
     redirect_to pages_path
   end
