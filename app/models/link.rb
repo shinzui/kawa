@@ -38,6 +38,7 @@ class Link
   def associate_to_page(page)
     self.creator = page.author unless creator.present?
     self.private = true if page.private && (pages.empty? || pages.all? {|p| p.private })
+    self.private = false if !page.private 
     save
   end
 

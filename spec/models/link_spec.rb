@@ -61,6 +61,21 @@ describe Link do
       end
     end
 
+    context "private link associated to private page" do
+      before :each do
+        @private_page = Fabricate.build(:markdown_page, private: true)
+        @link = Fabricate.build(:link, private: true)
+        @link.pages = [@private_page]
+      end
+
+      it "should make the link public once linked from public page" do
+        @link.should be_private
+        @link.associate_to_page(@page)
+        @link.should_not be_private
+      end
+
+    end
+
     context "link not associated to any public pages" do
       before :each do
         @link = Fabricate.build(:link)
