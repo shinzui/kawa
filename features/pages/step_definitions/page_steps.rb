@@ -12,7 +12,6 @@ Given /^I create (?:a|an)( private)? "([^"]*)" page in "([^"]*)"$/ do |private_p
   visit new_page_path
   wiki_page = Fabricate.attributes_for("#{markup}_page_with_links".to_sym, :name  => page_name)
   fill_in "Name", :with => wiki_page[:name] 
-  select wiki_page[:markup], :from  => :markup 
   fill_in "Raw data", :with  => wiki_page[:raw_data]
   check "Private" if private_page
   click_button :submit
@@ -26,7 +25,6 @@ Given /^I create (?:a|an)( private)? "([^"]*)" page with the following links:$/ 
     wiki_raw_data << "\n[#{link_info['title']}](#{link_info['url']})\n"
   end
   fill_in "Name", :with => wiki_page[:name] 
-  select wiki_page[:markup], :from  => :markup 
   fill_in "Raw data", :with  => wiki_page[:raw_data]
   check "Private" if private_page
   click_button :submit

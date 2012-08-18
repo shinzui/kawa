@@ -17,6 +17,7 @@ class Page
 
   before_save :process_plugins
   before_save :extract_links
+  before_validation :set_default_markup
 
   has_and_belongs_to_many :links
   belongs_to :author, :class_name  => "User"
@@ -84,6 +85,10 @@ class Page
     page_links = PageLinkExtractor.new(self).extract_links
     page_links.each {|l| l.associate_to_page(self)}
     self.links = page_links
+  end
+
+  def set_default_markup
+    self.markup ||= Markup::MARKDOWN
   end
 
 end
