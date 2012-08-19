@@ -24,6 +24,8 @@ class Page
   belongs_to :last_editor, :class_name  => "User"
 
   scope :named, ->(name) { where(name: /^#{name}$/i) }
+  scope :private, -> { where(private: true) }
+  scope :authored, ->(author) { where(author_id: author.id) }
 
   module Markup
     MARKDOWN = "markdown".freeze
