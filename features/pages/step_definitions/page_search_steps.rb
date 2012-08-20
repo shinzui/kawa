@@ -1,6 +1,7 @@
 Given /^I search for "([^"]*)"$/ do |search_term|
   #ensure there is a search index
   Page.create_search_index
+  Page.search_index.refresh
   visit root_path
   within(:css, ".form-search") do
     fill_in 'query', :with  => search_term
@@ -22,6 +23,11 @@ Then /^I should see a friendly search error page$/ do
   page.should have_content("Sorry, your query")
 end
 
-Then /^I should see a button to create the "([^"]*)" Page$/ do |page_name|
-  page.should have_link "Create #{page_name}", :href  => new_page_path(page: {name: page_name})
+Then /^I should( not)? see a button to create the "([^"]*)" Page$/ do |button_not_visible, page_name|
+  expectation = button_not_visible ? :should_not : :should
+  page.send(expectation, have_link("Create #{page_name}", :href  => new_page_path(page: {name: page_name})))
+end
+
+Then /^I should see the no search result message$/ do
+  page.should have_content("No pages matched your query.")
 end

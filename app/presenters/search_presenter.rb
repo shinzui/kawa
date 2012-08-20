@@ -8,9 +8,13 @@ class SearchPresenter
     results
   end
 
+  def unfiltered_results
+    @unfiltered_results ||= Page.elastic_search(query)
+  end
+
   def results
     @pages ||= begin
-      pages = Page.elastic_search(query)
+      unfiltered_results.results.delete_if {|p| p.private && p.author != h.current_user }
     end
   end
 
