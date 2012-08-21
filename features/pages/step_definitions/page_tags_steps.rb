@@ -6,6 +6,12 @@ Given /^I create a page and tag it with "([^"]*)"$/ do |tags|
   click_button :submit
 end
 
+Given /^the page is tagged with "(.*?)"$/ do |tags|
+  wiki_page = Page.last
+  wiki_page.tags = tags
+  wiki_page.save
+end
+
 Then /^it should have the "([^"]*)" tag$/ do |tag|
   Page.last.tags_array.should include(tag)
 end
@@ -19,7 +25,7 @@ When /^I visit the "([^"]*)" tag page$/ do |tag|
   visit pages_path(:tags  => tags)
 end
 
-Then /^I should a link to the "([^"]*)" page$/ do |page_name|
+Then /^I should see a link to the "([^"]*)" page$/ do |page_name|
   wiki_page = Page.where(name: page_name).first
   page.should have_link(page_name, :href  => page_path(wiki_page))
   Page.where(:name.ne  => page_name).each do |other_page|

@@ -11,6 +11,11 @@ After do |scenario|
   Warden.test_reset!
 end
 
+AfterStep "@debugging" do
+  debugger
+  save_and_open_page
+end
+
 Before "@logged_in" do
   login_user
 end

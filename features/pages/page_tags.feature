@@ -10,13 +10,21 @@ Feature: Page tags
     Given the "tokyo tower" page is tagged with "tokyo"
     And there are 2 Pages
     When I visit the "tokyo" tag page
-    Then I should a link to the "tokyo tower" page
+    Then I should see a link to the "tokyo tower" page
+
+  @private_tag_search
+  Scenario: Viewing private pages tagged with a specific tag
+    Given there is a "北海道" private page created by "ayaka@gmail.com"
+    And the page is tagged with "hokkaido"
+    And I am logged in as "yu@gmail.com"
+    When I visit the "hokkaido" tag page
+    Then I should not see a link to the "北海道" page
 
   Scenario: Viewing pages tagged with multiple tags
     Given the "tokyo tower" page is tagged with "tokyo, landmark"
     And there are 2 Pages
     When I visit the "tokyo and landmark" tag page
-    Then I should a link to the "tokyo tower" page
+    Then I should see a link to the "tokyo tower" page
 
   Scenario: Viewing tag page
     Given the "tokyo tower" page is tagged with "tokyo"
