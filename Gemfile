@@ -17,7 +17,7 @@ gem 'tire-contrib'
 gem 'yajl-ruby'
 gem 'loofah'
 gem 'mustache'
-gem 'postrank-uri'
+gem 'postrank-uri', :git  => "git://github.com/shinzui/postrank-uri.git"
 gem 'pygments.rb'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
