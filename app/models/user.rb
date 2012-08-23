@@ -49,4 +49,9 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+  #
+
+  def admin?
+    true
+  end
 end

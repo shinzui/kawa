@@ -30,6 +30,10 @@ gem "sinatra", :require => nil
 gem "devise"
 gem "authority"
 
+#sidekiq UI
+gem "slim"
+gem "sinatra", :require  => nil
+
 group :development do
   gem 'awesome_print'
   gem 'guard'
