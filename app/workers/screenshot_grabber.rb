@@ -5,9 +5,9 @@ class ScreenshotGrabber
 
   Error = Class.new(StandardError)
 
-  def perform(link_id)
+  def perform(link_id, force = false)
     link = Link.find link_id
-    generate_screenshot(link)
+    generate_screenshot(link, force)
   end
 
   def html_link?(link)

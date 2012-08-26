@@ -1,22 +1,34 @@
-<div class="link">
-  <%= @link.link %>
+<div class="row-fluid">
+    <div class="span2 link-screenshot">
+      <%= @link.url_screenshot_thumbnail %>
 
-  <%  if @link.description %>
-    <p><%= @link.description %></p>
-  <% end -%>
-
-  <div class="pages">
-    <% if @link.pages.present? %>
-      <h6>Pages</h6>
-      <ul>
-        <% @link.pages.each do |page| %>
-          <% if current_or_guest_user.can_read?(page) %>
-            <li><%= link_to page.name, page_path(page) %></li>
-          <% end %>
+      <% if current_user %>
+        <%= form_tag link_url_screenshot_path(@link.model), :remote  => true do %>
+          <%= submit_tag "Regenerate", :class  => "btn btn-mini" %>
         <% end %>
-      </ul>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @link} %>
+    <div class="span10">
+      <%= @link.link %>
+      <% if @link.description %>
+        <p><%= @link.description %></p>
+      <% end -%>
+
+      <div class="pages">
+        <% if @link.pages.present? %>
+          <h6>Pages</h6>
+          <ul>
+            <% @link.pages.each do |page| %>
+              <% if current_or_guest_user.can_read?(page) %>
+                <li><%= link_to page.name, page_path(page) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
 </div>
+
+<%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @link} %>

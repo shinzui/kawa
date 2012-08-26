@@ -9,7 +9,10 @@ Kawa::Application.routes.draw do
   resources :page_tags
   resources :quotes
   resources :bookmarks
-  resources :links
+  resources :links do
+    resource :url_screenshot, :only  => [:create]
+  end
+
   resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
