@@ -20,6 +20,7 @@ module Kawa
         css_classes = []
         css_classes << "external" if link =~ /^http/i
         css_classes << "github" if link =~ /github/i 
+        css_classes << "quora" if link =~ /quora/i
         css_classes.join(" ") 
       end
 
