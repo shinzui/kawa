@@ -20,7 +20,7 @@ class KawaController < ApplicationController
     ivar = model_plural_ivar 
 
     if TagSearchPresenter.tag_search?(params)
-      @search = TagSearchPresenter.new(model, params)
+      @search = TagSearchPresenter.new(model, params, :paginate  => true)
       add_crumb @search.search_tags
       instance_variable_set(ivar, @search.result)
     else

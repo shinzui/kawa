@@ -7,6 +7,14 @@ GIT
       activemodel (~> 3.0)
 
 GIT
+  remote: git://github.com/shinzui/kaminari-bootstrap.git
+  revision: 5244eb2ef5ba89f87a9832a9dd64bc474a301956
+  specs:
+    kaminari-bootstrap (0.1.2)
+      kaminari
+      rails
+
+GIT
   remote: git://github.com/shinzui/postrank-uri.git
   revision: e9ccdb00ade241c432b9126613ecc84e077e7d2b
   specs:
@@ -174,6 +182,9 @@ GEM
     js-routes (0.8.4)
       rails (>= 3.2)
     json (1.7.5)
+    kaminari (0.14.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.7.4)
     launchy (2.1.2)
       addressable (~> 2.3)
@@ -391,6 +402,8 @@ DEPENDENCIES
   guard-shell
   jquery-rails
   js-routes
+  kaminari
+  kaminari-bootstrap!
   launchy
   less-rails
   less-rails-bootstrap

@@ -1,12 +1,8 @@
 class TagSearchPresenter
   include Kawa::Common::Presenter
-  attr_reader :tags
+  attr_reader :tags, :params
 
-  def self.tag_search?(params)
-    params[:tag].present? || params[:tags].present?
-  end
-
-  def initialize(model, params)
+  def initialize(model, params, opts = {})
     @model = model
     if params[:tag]
       @tags = [params[:tag]]
@@ -15,6 +11,13 @@ class TagSearchPresenter
     if params[:tags]
       @tags = params[:tags]
     end
+
+    @params = params.dup
+    @paginate = opts.delete(:paginate)
+  end
+
+  def self.tag_search?(params)
+    params[:tag].present? || params[:tags].present?
   end
 
   def search_tags
@@ -22,7 +25,11 @@ class TagSearchPresenter
   end
 
   def result
-    @result ||= @model.all_in(tags_array: @tags).desc(:updated_at)
+    @result ||= begin
+      r = @model.all_in(tags_array: @tags).desc(:updated_at)
+      r = r.page params[:page] if @paginate
+      r
+    end
   end
 
 end

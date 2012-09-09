@@ -29,6 +29,8 @@ gem "slim"
 gem "sinatra", :require => nil
 gem "devise"
 gem "authority"
+gem "kaminari"
+gem "kaminari-bootstrap", :git  => "git://github.com/shinzui/kaminari-bootstrap.git"
 
 #sidekiq UI
 gem "slim"
