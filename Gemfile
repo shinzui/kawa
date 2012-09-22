@@ -60,7 +60,7 @@ group :test do
   gem 'fabrication'
   gem 'mongoid-rspec'
   gem 'launchy'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'webmock', :require  => false
 end
 
