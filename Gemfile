@@ -71,6 +71,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
+  gem 'ejs'
+  gem 'eco'
 end
 
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'

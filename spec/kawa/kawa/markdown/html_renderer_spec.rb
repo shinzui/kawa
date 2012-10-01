@@ -21,6 +21,7 @@ describe Kawa::Markdown::HtmlRenderer do
   end
 
   describe "Link rendering" do
+
     context "with existing matching link" do
       before :each do
         @link = Fabricate(:link)
@@ -49,6 +50,10 @@ describe Kawa::Markdown::HtmlRenderer do
 
       it "should have an external css class for external links" do
         @anchor["class"].should == "external"
+      end
+
+      it "should store the link id in a data attribute" do
+        @anchor["data-id"].should == @link.id
       end
     end
   end

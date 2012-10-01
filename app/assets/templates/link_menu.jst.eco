@@ -1,0 +1,4 @@
+<ul class="dropdown-menu link-menu">
+  <li><a href="<%= Routes.edit_link_path(@link)%>">Edit Link Information</a></li>
+  <li><a href="<%= Routes.link_path(@link)%>">View Link Information</a></li>
+</ul>

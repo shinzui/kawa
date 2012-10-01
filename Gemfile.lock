@@ -145,6 +145,11 @@ GEM
     diff-lcs (1.1.3)
     domainatrix (0.0.10)
       addressable
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
     ejs (1.0.0)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -397,6 +402,8 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  eco
+  ejs
   fabrication
   guard
   guard-bundler
