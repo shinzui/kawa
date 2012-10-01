@@ -26,6 +26,7 @@ class Page
   scope :named, ->(name) { where(name: /^#{name}$/i) }
   scope :private, -> { where(private: true) }
   scope :authored, ->(author) { where(author_id: author.id) }
+  scope :tagged, ->(tags) { all_in(tags_array: tags)}
 
   module Markup
     MARKDOWN = "markdown".freeze

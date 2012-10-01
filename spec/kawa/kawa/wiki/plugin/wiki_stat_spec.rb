@@ -7,9 +7,9 @@ module Kawa::Wiki::Plugin
 
     it "should output the wiki stats" do
       page_count = 13
-      Page.stub(:count).and_return(page_count)
+      ::Page.stub(:count).and_return(page_count)
       page_tag_count = 15
-      Page.stub_chain(:tags, :count).and_return(page_tag_count)
+      ::Page.stub_chain(:tags, :count).and_return(page_tag_count)
       quote_count = 9
       ::Quote.stub(:count).and_return(quote_count)
       quote_tag_count = 11

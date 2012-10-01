@@ -6,16 +6,12 @@ module Kawa
         include RenderingPlugin
 
         def process(options = {})
-          Mustache.render(inline_template, stats)
-        end
-
-        def inline_template
-          data = IO.read(__FILE__).gsub("\r\n", "\n").split(/^__END__$/, 2)[1]
+          Mustache.render(inline_template(__FILE__), stats)
         end
 
         def stats
-          { page_count: Page.count,
-            page_tags_count: Page.tags.count,
+          { page_count: ::Page.count,
+            page_tags_count: ::Page.tags.count,
             pages_path: pages_path,
             page_tags_path: page_tags_path,
             quotes_path: quotes_path,
