@@ -37,10 +37,9 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.start
+    Mongoid.purge!
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
   end
 end

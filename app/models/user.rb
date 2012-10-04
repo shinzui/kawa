@@ -10,7 +10,7 @@ class User
 
   embeds_one :user_profile
   accepts_nested_attributes_for :user_profile
-  index "user_profile.username", :unique  => true
+  index({"user_profile.username" => 1}, {:unique  => true})
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""

@@ -61,7 +61,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find_by_slug(params[:id])
+    @page = Page.find(params[:id])
     authorize_action_for(@page)
     @page.destroy
     redirect_to pages_path
@@ -70,7 +70,9 @@ class PagesController < ApplicationController
   private 
 
     def load_page
-      @page = Page.find_by_slug(params[:id])
+      @page = Page.find(params[:id])
+    rescue Mongoid::Errors::DocumentNotFound
+      @page = nil
     end
 
     def page_crumb

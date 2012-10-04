@@ -21,6 +21,15 @@ Given /^I create a new bookmark$/ do
   click_button :submit
 end
 
+Given /^there are (\d+) bookmakrs$/ do |count|
+  count.to_i.times { Fabricate(:bookmark) }
+end
+
+Given /^I update the first bookmark$/ do
+  bookmark = Bookmark .order_by(created_at: 1).first 
+  bookmark.touch
+end
+
 Given /^I create a private bookmark$/ do
   new_bookmark
   check "Private"
@@ -48,4 +57,10 @@ end
 
 Given /^I go to view all bookmarks$/ do
   visit bookmarks_path
+end
+
+Then /^the bookmarks should be reversed ordered by their creation date$/ do
+  Bookmark.order_by(created_at: -1).each.each_with_index do |bookmark, index|
+    all("div.link div.thumbnails a")[index]["href"].should == short_url_path(bookmark)
+  end
 end

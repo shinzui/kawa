@@ -1,9 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem 'mongoid'
-gem 'bson_ext'
-gem 'mongoid_slug', :git  => 'git@github.com:shinzui/mongoid-slug.git'
+gem 'mongoid', '~> 3.0'
+gem 'mongoid_slug'#, :git  => 'git@github.com:shinzui/mongoid-slug.git'
 gem 'mongoid_taggable_with_context', :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
 gem 'mongoid_rails_migrations'
 
@@ -19,10 +18,12 @@ gem 'loofah'
 gem 'mustache'
 gem 'postrank-uri', :git  => "git://github.com/shinzui/postrank-uri.git"
 gem 'pygments.rb'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave'
+gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
 gem 'mini_magick'
 gem "js-routes"
 gem 'sidekiq'
+gem "kiqstand"
 gem "configatron"
 gem "rails-backbone"
 gem "slim"

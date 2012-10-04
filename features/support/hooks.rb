@@ -2,6 +2,7 @@ require 'elastic_search'
 
 Before do
   DatabaseCleaner.start
+  Mongoid.purge!
   ElasticSearch.refresh_all_indices
 end
 

@@ -3,14 +3,12 @@ module Kawa
     module Sequence
       extend self
 
-      COLLECTION = "sequences"
+      COLLECTION = "sequences".freeze
 
       def next(namespace)
-        query = {_id: namespace}
         update = {"$inc"  => {next: 1}}
-        options = {:query  => query, :update  => update, :upsert  => true, :new  => true}
-        collection = Mongoid.master.collection(COLLECTION)
-        collection.find_and_modify(options)["next"]
+        collection = Mongoid.default_session[COLLECTION]
+        collection.find(_id: namespace).modify(update, {upsert: true, new: true})["next"]
       end
 
     end

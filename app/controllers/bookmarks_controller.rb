@@ -8,7 +8,7 @@ class BookmarksController < KawaController
   protected
 
   def all
-    Bookmark.all.order_by(:created_at, :desc).page params[:page]
+    Bookmark.order_by(created_at: -1).page params[:page]
   end
 
   def custom_view_path

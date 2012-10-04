@@ -8,6 +8,6 @@ class LinksController < KawaController
 
   protected
   def all
-    Link.all.order_by(:created_at, :desc).page params[:page]
+    Link.order_by(created_at: -1).page params[:page]
   end
 end

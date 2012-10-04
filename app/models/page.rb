@@ -37,8 +37,11 @@ class Page
   field :markup
   field :raw_data
   field :private, type: Boolean
-  index :name, unique: true
-  slug :name
+  field :_slugs, type: Array, default: []
+  index({name: 1}, {unique: true})
+  slug  :name do |current_object|
+    Kawa::Util::SlugBuilder.generate(current_object.slug_builder)
+  end
 
   validates_presence_of :name, :markup, :raw_data, :author
   validates_uniqueness_of :name

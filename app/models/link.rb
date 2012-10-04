@@ -5,9 +5,9 @@ class Link
 
   before_validation { self.url = self.class.clean(url) }
   before_destroy  :can_destroy? 
-  before_save :set_id
+  # before_save :set_id
 
-  identity type: String
+  field :_id, type: String, default: -> { Kawa::Util::Base62.encode(Kawa::Mongo::Sequence.next("links")).to_s }
 
   has_many :visits
   belongs_to :creator, :class_name  => "User"

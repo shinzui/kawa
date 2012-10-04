@@ -5,7 +5,7 @@ class Quote
 
   field :random, type: Float
 
-  index :random
+  index({random: 1})
 
   belongs_to :contributor, :class_name  => "User"
 
