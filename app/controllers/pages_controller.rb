@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!, :except  => [:index, :show]
   before_filter :load_page, :page_crumb, :only  => [:show, :edit, :update]
 
+  respond_to :json, :html
+
   rescue_from Tire::Search::SearchRequestFailed do |error|
     if error.message =~ /SearchParseException/ && params[:query]
       flash[:error] = "Sorry, your query '#{params[:query]}' is invalid"
@@ -44,7 +46,10 @@ class PagesController < ApplicationController
   def show
     return redirect_to new_page_path(page: {name: params[:id]}) unless @page
     authorize_action_for(@page)
-    @page = PagePresenter.new(@page)
+    respond_with(@page) do |format|
+      format.json { render :json  => @page }
+      format.html { @page = PagePresenter.new(@page) }
+    end
   end
 
   def edit

@@ -32,6 +32,7 @@ gem "devise"
 gem "authority"
 gem "kaminari"
 gem "kaminari-bootstrap", :git  => "git://github.com/shinzui/kaminari-bootstrap.git"
+gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
 
 #sidekiq UI
 gem "slim"

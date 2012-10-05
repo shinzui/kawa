@@ -1,9 +1,14 @@
 class LinksController < KawaController
   prohibit :destroy
 
+  respond_to :json, :html
+
   def show
     authorize_action_for(@link)
-    @link = LinkPresenter.new(@link)
+    respond_with(@link) do |format|
+      format.json { render :json  => @link }
+      format.html { @link = LinkPresenter.new(@link) }
+    end
   end
 
   protected

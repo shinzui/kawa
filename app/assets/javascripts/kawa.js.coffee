@@ -79,6 +79,18 @@ class Kawa.LinkManager
     $link.tooltip(@tooltipOptions)
 
   viewScreenshot: ->
+    if @currentLink
+      $link = $(@currentLink)
+      $link.wrap("<div class='popover-wrapper'/>")
+      $.ajax(url: Routes.link_path({"id": $link.data("id")}), success: (data)->
+        imageThumbUrl = data.link.url_screenshot_thumb
+        $link.tooltip("hide")
+        popoverContent = if imageThumbUrl then "<img src='#{imageThumbUrl}'/>" else "Processing link screenshot"
+        $link.popover({"content": popoverContent, "placement": "right"})
+        $link.popover('show'))
+
+  clearPopovers: ->
+    $('.popover-wrapper a').popover('hide')
 
   getCurrentLink: ->
     @currentLink
@@ -100,6 +112,7 @@ jQuery ->
   $('.page-data table').addClass("table table-striped table-bordered table-condensed")
   linkManager = new Kawa.LinkManager()
   $('body').on('click.link-menu.data-api', linkManager.clearMenus)
+  $('body').on('click.popover.data-api', linkManager.clearPopovers)
   $('a.external').hover ((e) -> linkManager.setCurrentLink(e)),((e) -> linkManager.setCurrentLink(null))
   shortcutManager = new Kawa.KeyboardShortcutManager()
 
