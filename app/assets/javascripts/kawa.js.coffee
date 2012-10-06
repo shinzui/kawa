@@ -105,14 +105,17 @@ class Kawa.LinkManager
       @currentLink = null
 
 
-jQuery ->
+
+initKawa = ->
   $ = jQuery
   $('.quote, .link').on 'hover', (event) =>
     $(event.currentTarget).toggleClass('hover')
-  $('.page-data table').addClass("table table-striped table-bordered table-condensed")
   linkManager = new Kawa.LinkManager()
   $('body').on('click.link-menu.data-api', linkManager.clearMenus)
   $('body').on('click.popover.data-api', linkManager.clearPopovers)
   $('a.external').hover ((e) -> linkManager.setCurrentLink(e)),((e) -> linkManager.setCurrentLink(null))
   shortcutManager = new Kawa.KeyboardShortcutManager()
+
+jQuery -> initKawa()
+$(document).on 'page:load', initKawa
 

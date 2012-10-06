@@ -2,11 +2,11 @@
   <% link = LinkPresenter.new(link) %>
   <div class="link row-fluid">
     <div>
-      <div class="thumbnails span2">
+      <div class="thumbnails span2" data-no-turbolink>
         <%= link.url_screenshot_thumbnail %>
       </div>
     </div>
-    <div class="span10">
+    <div class="span10" data-no-turbolink>
       <%= link.link %>
     </div>
     <%= render :partial  => "shared/control", 
@@ -15,6 +15,5 @@
                    :edit_path  => edit_polymorphic_path(link.model)} %>
   </div>
 <% end %>
-
 
 

@@ -34,6 +34,7 @@ gem "kaminari"
 gem "select2-rails"
 gem "kaminari-bootstrap", :git  => "git://github.com/shinzui/kaminari-bootstrap.git"
 gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
+gem "turbolinks"
 
 #sidekiq UI
 gem "slim"
@@ -80,11 +81,7 @@ end
 
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'jquery-rails'
-gem 'less-rails'
-gem 'less-rails-bootstrap'
-gem 'chosen-rails'
-gem 'ajax-chosen-rails', :git  => "git@github.com:shinzui/ajax-chosen-rails.git" 
-
+gem 'twitter-bootstrap-turbo', :git => 'git://github.com/davydotcom/twitter-bootstrap-rails.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

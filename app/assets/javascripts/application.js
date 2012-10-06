@@ -16,6 +16,7 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/kawa
+//= require turbolinks
 //= require_tree ../templates
 //= require_tree .
 //

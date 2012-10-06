@@ -4,7 +4,8 @@ describe Kawa::Markdown::HtmlRenderer do
   include Rails.application.routes.url_helpers
 
   before :each do
-    @renderer = Redcarpet::Markdown.new(Kawa::Markdown::HtmlRenderer, :autolink  => true)
+    @options = {:no_intra_emphasis  => true, :tables  => true, :autolink  => true}
+    @renderer = Redcarpet::Markdown.new(Kawa::Markdown::HtmlRenderer.new(@options), @options)
   end
 
   describe "Autolink" do
@@ -16,6 +17,64 @@ describe Kawa::Markdown::HtmlRenderer do
       link = Link.with_url("http://tnm.jp").first
       anchor["href"].should == short_url_path(link)
       anchor["title"].should == link.url 
+    end
+
+  end
+
+  describe "Table rendering" do
+    before :each do
+      @page =<<-TABLE
+        Header1 | Header2 
+        ------- | -------
+        Cell1   | Cell2
+      TABLE
+    end
+
+    context "with table_css_class config" do
+      before :each do
+        @css_class = "table table-striped table-bordered table-condensed"
+        options = @options.merge(:table_css_class  => @css_class)
+        @renderer = Redcarpet::Markdown.new(Kawa::Markdown::HtmlRenderer.new(options),options)
+        @html = @renderer.render(@page)
+        @doc = Nokogiri::HTML::DocumentFragment.parse(@html)
+        @table = @doc.at_css("table")
+      end
+
+      it "should render the table with the configured css classes" do
+        @table["class"].should == @css_class
+      end
+    end
+
+    context "without table_css_class config" do
+      before :each do
+        @html = @renderer.render(@page)
+        @doc = Nokogiri::HTML::DocumentFragment.parse(@html)
+        @table = @doc.at_css("table")
+      end
+
+      it "should render a table without any css classes" do
+        @table["class"].should be_nil
+      end
+
+      it "should surround the header with thead" do
+        @table.first_element_child.name.should == "thead"
+      end
+
+      it "should render the table header" do
+        tr = @table.first_element_child.first_element_child
+        tr.name.should == "tr"
+        tr.search(">th").map(&:text).should == ["Header1", "Header2"]
+      end
+
+      it "should render the table body" do
+        tr = @table.last_element_child.first_element_child
+        tr.name.should == "tr"
+        tr.search(">td").map(&:text).should == ["Cell1", "Cell2"]
+      end
+
+      it "should surround the body with tbody" do
+        @table.last_element_child.name.should == "tbody"
+      end
     end
 
   end

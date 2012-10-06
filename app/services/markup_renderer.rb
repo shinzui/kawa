@@ -14,8 +14,10 @@ module MarkupRenderer
 
   def markdown
     options = {:no_intra_emphasis  => true, :tables  => true, :autolink  => true}
-    @markdown ||= Redcarpet::Markdown.new(Kawa::Markdown::HtmlRenderer, options)
+    unless configatron.markdown.table.css_class.nil?
+      options.merge!({:table_css_class  => configatron.markdown.table.css_class})
+    end
+    @markdown ||= Redcarpet::Markdown.new(Kawa::Markdown::HtmlRenderer.new(options), options)
   end
-
 
 end
