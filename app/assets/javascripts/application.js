@@ -7,11 +7,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require ajax-chosen-jquery
 //= require twitter/bootstrap
 //= require keymaster
 //= require js-routes
 //= require underscore
+//= require select2
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink

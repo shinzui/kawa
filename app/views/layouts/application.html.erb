@@ -37,5 +37,10 @@
     </div>
   </div>
   <%= javascript_include_tag "application" %>
+  <% if content_for?(:javascript) %>
+    <script type="text/javascript">
+     <%= yield(:javascript) %> 
+    </script>
+  <% end %>
 </body>
 </html>

@@ -1,11 +1,7 @@
 <div class="row-fluid">
   <% if @search %>
     <form action="<%= pages_path %>" method="get">
-      <select id="tags" name="tags[]" multiple>
-        <% @search.tags.each do |tag| %>
-          <option value="<%= tag %>" selected><%= tag %></option>
-        <% end %>
-      </select>
+      <input type="hidden" name="tags[]" value="<%= @search.tags.join(',') %>" id="tags" style="display:none;"/>
       <input type="submit" value="Filter" class="btn btn-small"/>
     </form>
 
@@ -19,3 +15,6 @@
     <% end %>
   </ul>
 </div>
+
+
+
