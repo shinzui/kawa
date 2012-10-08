@@ -6,7 +6,7 @@ class LinksController < KawaController
   def show
     authorize_action_for(@link)
     respond_with(@link) do |format|
-      format.json { render :json  => @link }
+      format.json { render :json  => @link, :serializer  => LinkSerializer }
       format.html { @link = LinkPresenter.new(@link) }
     end
   end
