@@ -17,6 +17,8 @@
 //= require backbone_datalink
 //= require backbone/kawa
 //= require turbolinks
+//= require d3.v2
+//= require d3.layout.cloud 
 //= require_tree ../templates
 //= require_tree .
 //
