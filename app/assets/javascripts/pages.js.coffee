@@ -1,4 +1,4 @@
-jQuery ->
+configureTagAutocomplete = ->
   $ = jQuery
   $("#tags").select2 {
     placeholder: 'Select tags',
@@ -17,3 +17,6 @@ jQuery ->
         { results: tags }
     }
   }
+
+jQuery -> configureTagAutocomplete()
+$(document).on 'page:load', configureTagAutocomplete
