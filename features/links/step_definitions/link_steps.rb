@@ -2,9 +2,13 @@ Given /^there is a Link$/ do
   @link = Fabricate(:link)
 end
 
+Given /^there is a Link with a URL screenshot$/ do
+  @link = Fabricate(:link_with_screenshot)
+end
+
 Given /^there is a private "(.*?)" to "(.*?)" created by "(.*?)"$/ do |link_type, link_url, creator|
   user = User.where(email: creator).first || Fabricate(:user, email: creator)
-  Fabricate(link_type.to_sym, url: link_url, private: true, creator: user)
+  @link = Fabricate(link_type.to_sym, url: link_url, private: true, creator: user)
 end
 
 Given /^I visit the link short url$/ do

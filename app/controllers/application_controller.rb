@@ -35,8 +35,15 @@ class ApplicationController < ActionController::Base
   end
 
   def authority_forbidden(exception)
-    flash[:error] = "You do not have access to this resource"
-    redirect_to root_url
+    respond_with do |format|
+      format.json do
+        render :json => {"errors" => "You are not authorized"}, :status => :unauthorized
+      end 
+      format.html do
+        flash[:error] = "You do not have access to this resource"
+        redirect_to root_url
+      end
+    end
   end
 
   private

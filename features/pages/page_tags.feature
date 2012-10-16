@@ -26,6 +26,7 @@ Feature: Page tags
     When I visit the "tokyo and landmark" tag page
     Then I should see a link to the "tokyo tower" page
 
+  @javascript
   Scenario: Viewing tag page
     Given the "tokyo tower" page is tagged with "tokyo"
     And the "namba" page is tagged with "osaka"

@@ -1,4 +1,5 @@
 class BookmarksController < KawaController
+  respond_to :html
 
   def show
     authorize_action_for(@link)

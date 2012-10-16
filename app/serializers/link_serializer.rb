@@ -1,5 +1,5 @@
 class LinkSerializer < ActiveModel::Serializer
-  attributes :id, :url_screenshot, :url_screenshot_thumb
+  attributes :id, :url_screenshot, :url_screenshot_thumb, :url
 
   def url_screenshot
     object.url_screenshot.url

@@ -66,6 +66,7 @@ group :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'webmock', :require  => false
+  gem 'cucumber-api-steps', :require => false
 end
 
 # Gems used only for assets and not required
