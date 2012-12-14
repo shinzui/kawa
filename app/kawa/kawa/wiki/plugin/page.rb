@@ -15,7 +15,7 @@ module Kawa
         def pages
           pages = ::Page.tagged(@tags)
           pages.reject {|p| p == page}.map do |page|
-            {name: page.name, url: page_path(page)}
+            {name: page.name, url: page_path(page.id)}
           end
         end
 

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 gem 'mongoid', '~> 3.0'
 gem 'mongoid_slug'#, :git  => 'git@github.com:shinzui/mongoid-slug.git'
 gem 'mongoid_taggable_with_context', :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
@@ -33,7 +33,7 @@ gem "authority"
 gem "kaminari"
 gem "select2-rails"
 gem "kaminari-bootstrap", :git  => "git://github.com/shinzui/kaminari-bootstrap.git"
-gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
+gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 gem "turbolinks"
 
 #sidekiq UI
