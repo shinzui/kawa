@@ -42,15 +42,6 @@ GIT
       rails
 
 GIT
-  remote: git://github.com/shinzui/postrank-uri.git
-  revision: e9ccdb00ade241c432b9126613ecc84e077e7d2b
-  specs:
-    postrank-uri (1.0.15)
-      addressable (>= 2.2.3)
-      domainatrix
-      nokogiri
-
-GIT
   remote: git@github.com:shinzui/mongoid_taggable_with_context.git
   revision: 426cb29291074123edba1c980af5020b998886bc
   specs:
@@ -145,8 +136,6 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.1.3)
-    domainatrix (0.0.11)
-      addressable
     eco (1.0.0)
       coffee-script
       eco-source
@@ -249,7 +238,7 @@ GEM
     moped (1.3.1)
     multi_json (1.5.0)
     mustache (0.99.4)
-    nokogiri (1.5.5)
+    nokogiri (1.5.6)
     origin (1.0.11)
     orm_adapter (0.4.0)
     poltergeist (1.0.2)
@@ -260,6 +249,10 @@ GEM
       multi_json (~> 1.0)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
+    postrank-uri (1.0.17)
+      addressable (~> 2.3.0)
+      nokogiri (~> 1.5.5)
+      public_suffix (~> 1.1.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -269,6 +262,7 @@ GEM
       yard (~> 0.8.1)
     pry-rails (0.2.2)
       pry (>= 0.9.10)
+    public_suffix (1.1.3)
     pygments.rb (0.3.3)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -454,7 +448,7 @@ DEPENDENCIES
   mustache
   nokogiri
   poltergeist
-  postrank-uri!
+  postrank-uri
   pry-doc
   pry-rails
   pygments.rb
