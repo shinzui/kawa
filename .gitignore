@@ -16,8 +16,11 @@
 
 config/mongoid.yml
 config/configatron/production.rb
+config/unicorn.rb
 public/assets/
 public/uploads/
+
+node_modules/
 
 .powder
 .powenv
