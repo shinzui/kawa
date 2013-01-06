@@ -2,8 +2,11 @@
 
 Information Datastore
 
-### Screenshot grabber
+### Requirements
 
-Requirement: optparse phantomjs
+redis, mongodb, elasticsearch, imagemagick.  
 
-npm install optparse
+##### Screenshot grabber
+
+optparse(npm install optparse), phantomjs.
+
