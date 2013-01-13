@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 gem 'mongoid', '~> 3.0'
 gem 'mongoid_slug'#, :git  => 'git@github.com:shinzui/mongoid-slug.git'
 gem 'mongoid_taggable_with_context', :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
