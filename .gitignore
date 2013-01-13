@@ -22,6 +22,10 @@ public/uploads/
 
 node_modules/
 
+# Zeus config
+custom_plan.rb
+zeus.json
+
 .powder
 .powenv
 .listen_test
