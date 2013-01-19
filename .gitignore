@@ -16,6 +16,7 @@
 
 config/mongoid.yml
 config/configatron/production.rb
+config/initializers/secret_token.rb
 config/unicorn.rb
 public/assets/
 public/uploads/
