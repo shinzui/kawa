@@ -80,7 +80,7 @@ group :assets do
   gem 'eco'
 end
 
-gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+gem 'simple_form'#, :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-turbo', :git => 'git://github.com/davydotcom/twitter-bootstrap-rails.git'
 
