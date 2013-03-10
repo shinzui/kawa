@@ -4,7 +4,7 @@ def new_quote
   visit new_quote_path
   fill_in "Author", with: "Miyamoto Musashi"
   fill_in "Quotation", with: "Do nothing which is of no use."
-  fill_in "Source", with: "The Book of Five Rings"
+  fill_in "quote_source", with: "The Book of Five Rings"
 end
 
 def verify_quote
@@ -18,13 +18,13 @@ end
 
 Given /^I create a new quotation$/ do 
   new_quote
-  click_button :submit
+  click_button "Create Quote" 
 end
 
 Given /^I create a "([^"]*)" quotation$/ do |lang| 
   new_quote
-  select lang, :from  => :lang
-  click_button :submit
+  select lang, :from  => "quote_lang"
+  click_button "Create Quote"
 end
 
 Then /^I should see the quotation$/ do
@@ -49,7 +49,7 @@ Given /^I update quotation to "([^"]*)"$/ do |new_quotation|
   quote = Quote.last
   visit edit_quote_path(quote)
   fill_in "Quotation", :with  => new_quotation
-  click_button :submit
+  click_button "Update Quote" 
 end
 
 Then /^the quotation should change$/ do
@@ -62,7 +62,7 @@ Given /^I tag the quote with "([^"]*)"$/ do |tags|
   quote = Quote.last
   visit edit_quote_path(quote)
   fill_in "Tags", :with  => tags
-  click_button :submit
+  click_button "Update Quote"
 end
 
 Then /^the quote should be tagged with "([^"]*)"$/ do |tags|

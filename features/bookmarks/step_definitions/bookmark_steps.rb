@@ -18,7 +18,7 @@ end
 
 Given /^I create a new bookmark$/ do
   new_bookmark
-  click_button :submit
+  click_button "Create Bookmark"
 end
 
 Given /^there are (\d+) bookmakrs$/ do |count|
@@ -33,7 +33,7 @@ end
 Given /^I create a private bookmark$/ do
   new_bookmark
   check "Private"
-  click_button :submit
+  click_button "Create Bookmark"
 end
 
 Given /^I access "(.*?)" bookmark$/ do |bookmark_url|

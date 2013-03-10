@@ -26,7 +26,7 @@ Given /^(?:he|she) edits (?:his|her) profile$/ do
   fill_in "Username", :with  => ozu[:username] 
   fill_in "First name", :with  => ozu[:first_name]
   fill_in "Last name", :with  => ozu[:last_name]
-  click_button :submit
+  click_button "Update User" 
 end
 
 Then /^the user profile should get updated$/ do 

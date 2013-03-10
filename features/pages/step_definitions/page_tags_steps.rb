@@ -3,7 +3,7 @@ Given /^I create a page and tag it with "([^"]*)"$/ do |tags|
   wiki_page = Fabricate.attributes_for(:markdown_page)
   fill_in "Name", :with  => wiki_page[:name]
   fill_in "Raw data", :with => "##Tokyo Tower\n<<tag values='#{tags}'>>"
-  click_button :submit
+  click_button "Create Page"
 end
 
 Given /^the page is tagged with "(.*?)"$/ do |tags|

@@ -14,7 +14,7 @@ Given /^I create (?:a|an)( private)? "([^"]*)" page in "([^"]*)"$/ do |private_p
   fill_in "Name", :with => wiki_page[:name] 
   fill_in "Raw data", :with  => wiki_page[:raw_data]
   check "Private" if private_page
-  click_button :submit
+  click_button "Create Page" 
 end
 
 Given /^I create (?:a|an)( private)? "([^"]*)" page with the following links:$/ do |private_page, page_name, links|
@@ -27,7 +27,7 @@ Given /^I create (?:a|an)( private)? "([^"]*)" page with the following links:$/ 
   fill_in "Name", :with => wiki_page[:name] 
   fill_in "Raw data", :with  => wiki_page[:raw_data]
   check "Private" if private_page
-  click_button :submit
+  click_button "Create Page"
 end
 
 Then /^the "(.*?)" link should be "(.*?)"$/ do |link_url, privacy|
@@ -47,11 +47,12 @@ Then /^I should see the page generated$/ do
   wiki_page = Page.last
   visit page_path(wiki_page)
   page.should have_content(wiki_page.name)
- 
+
   #TODO there must be an easier way to verify, also extract to helper
   doc = Nokogiri::HTML::DocumentFragment.parse(MarkupRenderer.renderer(wiki_page.markup)[wiki_page.raw_data])
   doc.traverse do |node|
     next if node.text? || !node.is_a?(Nokogiri::XML::Element)
+    next if node.children.select {|n| n.text?}.count > 1
     css_path = node.css_path.gsub(/^\? >/,'').strip
     page.should have_css(css_path, :text  => node.text)
   end
@@ -89,7 +90,7 @@ Given /^I update the Page name to "([^"]*)"$/ do |new_page_name|
   wiki_page = Page.last
   visit edit_page_path(wiki_page)
   fill_in "Name", :with  => new_page_name
-  click_button :submit
+  click_button "Update Page"
 end
 
 Then /^the Page name should change$/ do 

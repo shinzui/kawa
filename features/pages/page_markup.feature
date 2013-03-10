@@ -1,3 +1,4 @@
+@page_markup
 Feature: Page Markup
 
   Background:

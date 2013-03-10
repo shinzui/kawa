@@ -1,3 +1,4 @@
+@bookmark
 Feature: Bookmark Security
 
   Scenario: Viewing private bookmakrs

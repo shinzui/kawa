@@ -1,3 +1,4 @@
+@page_title
 Feature: Page title
 
   Scenario: Default page title

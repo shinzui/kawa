@@ -1,3 +1,4 @@
+@page_tags
 Feature: Page tags
 
   @logged_in

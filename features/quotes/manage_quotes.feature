@@ -1,3 +1,4 @@
+@quotes
 Feature: Manage quotes
 
   Background:

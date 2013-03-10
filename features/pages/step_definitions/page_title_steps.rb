@@ -5,7 +5,5 @@ Then /^the page header should be "([^"]*)"$/ do |header|
 end
 
 Then /^the page title should be "([^"]*)"$/ do |title| 
-  within('head title') do 
-    page.should have_content(title)
-  end
+  find('title').native.text.should have_content(title)
 end
