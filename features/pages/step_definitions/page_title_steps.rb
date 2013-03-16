@@ -5,5 +5,5 @@ Then /^the page header should be "([^"]*)"$/ do |header|
 end
 
 Then /^the page title should be "([^"]*)"$/ do |title| 
-  page.title.should == title
+  page.should have_title title
 end

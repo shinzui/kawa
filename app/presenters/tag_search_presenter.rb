@@ -9,7 +9,7 @@ class TagSearchPresenter
     end
 
     if params[:tags]
-      @tags = params[:tags]
+      @tags = params[:tags].first.split(",")
     end
 
     @params = params.dup
@@ -26,7 +26,7 @@ class TagSearchPresenter
 
   def result
     @result ||= begin
-      r = @model.all_in(tags_array: @tags).desc(:updated_at)
+      r = @model.all_in(tags: @tags).desc(:updated_at)
       r = r.page params[:page] if @paginate
       r
     end

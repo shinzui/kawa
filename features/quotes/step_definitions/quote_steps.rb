@@ -67,7 +67,7 @@ end
 
 Then /^the quote should be tagged with "([^"]*)"$/ do |tags|
   tags = tags.split("and").map(&:strip)
-  Quote.last.tags_array.should == tags
+  Quote.last.tags.should == tags
 end
 
 Then /^I should be able to delete the quote$/ do
@@ -104,9 +104,9 @@ end
 
 Then /^I should see the "([^"]*)" tagged quote$/ do |tag|
   tags = tag.split("and").map(&:strip)
-  quote = Quote.all_in(:tags_array  => tags).first
+  quote = Quote.all_in(:tags  => tags).first
   page.should have_content(quote.quotation)
-  other_quotes =  Quote.not_in(:tags_array  => tags)
+  other_quotes =  Quote.not_in(:tags => tags)
   other_quotes.each do |q|
     page.should_not have_content(q.quotation)
   end

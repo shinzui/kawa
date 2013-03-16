@@ -4,6 +4,7 @@ configureTagAutocomplete = ->
     placeholder: 'Select tags',
     width: "300px",
     multiple: true,
+    minimumInputLength: 2,
     initSelection: (element, callback) ->
       data = _.map($(element.val().split(",")), (e) -> {id: e, text: e})
       callback(data)
@@ -18,5 +19,6 @@ configureTagAutocomplete = ->
     }
   }
 
-jQuery -> configureTagAutocomplete()
+$ ->
+  configureTagAutocomplete()
 $(document).on 'page:load', configureTagAutocomplete

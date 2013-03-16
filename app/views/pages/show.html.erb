@@ -1,6 +1,6 @@
 <% content_for(:page_title) { @page.title } %>
-<div class="row-fluid">
-  <article class="page-data span12">
+<div class="row">
+  <article class="page-data col-lg-12">
     <%= @page.header %>
     <%= @page.data.html_safe %>
   </article>
@@ -10,12 +10,12 @@
 
 
 <% if @page.updatable? || @page.deletable?  %>
-  <div class="form-actions row-fluid">
+  <div class="form-actions row">
     <% if @page.updatable? %>
-      <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn-info btn-small", :alt  => "Edit", :title  => "Edit" %>
+      <%= link_to 'Edit page', edit_page_path(@page.model), :rel  => "edit-page", :class  => "btn btn-info btn-sm", :alt  => "Edit", :title  => "Edit" %>
     <% end %>
     <% if @page.deletable? %>
-      <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :data  => {confirm:  "Are you sure?"}, :class  => "btn-danger btn-small", :alt  => "Delete" %>
+      <%= link_to 'Delete page', @page.model, :rel  => 'delete-page', :method  => :delete, :data  => {confirm:  "Are you sure?"}, :class  => "btn btn-danger btn-sm", :alt  => "Delete" %>
     <% end %>
   </div>
 <% end %>

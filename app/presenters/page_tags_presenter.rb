@@ -4,7 +4,8 @@ class PageTagsPresenter
   Tag = Struct.new(:name, :weight)
 
   def initialize(term = nil)
-    @tags = term.nil? ? Page.tags_with_weight : Page.tags_with_weight(:criteria  => {:_id  => /#{term}/i})
+    @term = term
+    @tags = filtered_tags  #term.nil? ? Page.tags_with_weight : Page.tags_with_weight(:criteria  => {:_id  => /#{term}/i})
   end
 
   def tags
@@ -17,6 +18,16 @@ class PageTagsPresenter
 
   def each
     tags.each { |e| yield(e) }
+  end
+
+  private
+  def filtered_tags
+    if @term.present?
+      #temp hack to finish the rails4 upgrade, refactor and do inside db
+      Page.tags_with_weight.select { |t| t.first =~ /#{@term}/i }
+    else
+      Page.tags_with_weight
+    end
   end
   
 end

@@ -13,7 +13,7 @@ module Kawa
         context "with tag values" do
           it "should associate the pages with the defined tags" do
             tag_plugin.process({:values  => "tokyo tower, tokyo"})
-            @page.tags_array.size.should == 2 
+            @page.tags.size.should == 2 
           end
         end
        

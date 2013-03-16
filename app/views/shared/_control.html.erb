@@ -10,7 +10,7 @@
     </span>
   <% end %>
   <% if current_or_guest_user.can_delete?(model) %>
-    <span class="label label-important">
+    <span class="label label-danger">
       <%= link_to 'Delete', model, :rel  => "delete-#{model.class.to_s.downcase}" , :method  => :delete, :data  => {:confirm  => "Are you sure?"} %>
     </span>
   <% end -%>

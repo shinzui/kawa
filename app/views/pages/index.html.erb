@@ -1,8 +1,8 @@
-<div class="row-fluid">
+<div class="row">
   <% if @search %>
     <form action="<%= pages_path %>" method="get">
-      <input type="hidden" name="tags[]" value="<%= @search.tags.join(',') %>" id="tags" style="display:none;"/>
-      <input type="submit" value="Filter" class="btn btn-small"/>
+      <input type="hidden" name="tags[]" value="<%= @search.tags.join(',') %>" id="tags" />
+      <input type="submit" value="Filter" class="btn btn-sm"/>
     </form>
 
     <h3>Pages tagged with <%= @search.search_tags %></h3>

@@ -1,15 +1,35 @@
-<div class="row-fluid">
-  <%= simple_form_for @link, :html  => { :class  => 'form-vertical' } do |f| %>
+<div class="row">
+  <%= simple_form_for @link do |f| %>
     <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
 
-    <%= f.input :url, :input_html  => {:class  => "span8"} %>
-    <%= f.input :title, :input_html  => {:class  => "span8"} %>
-    <%= f.input :description, :as  => :text, :input_html  => {:class  => "span8", :rows  => 10} %> 
-    <%= f.input :private, :as  => :boolean %>
-    <%= f.input :tags, :input_html  => {:class  => "span4"} %>
+    <div class="row">
+      <div class="col-lg-7">
+        <%= f.input :url %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7">
+        <%= f.input :title %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7">
+        <%= f.input :description, :as  => :text, :input_html  => {:class  => "col-lg-8", :rows  => 10} %> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <%= f.input :private, :as  => :boolean %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7">
+        <%= f.input :tags, input_html: {value: @link.tags.nil? ? nil : @link.tags.join(",")} %>
+      </div>
+    </div>
 
     <div class="form-actions">
-      <%= f.button :submit, :class  => "btn-primary" %>
+      <%= f.button :submit, :class  => "btn btn-primary" %>
       <%= link_to "Cancel", url_for(:back), :class  => "btn" %>
     </div>
   <% end %>

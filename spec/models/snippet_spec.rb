@@ -16,7 +16,7 @@ describe Snippet do
   describe "Tagging" do
     it "should use a comma as a tag separator" do
       snippet.tags = "ruby, programming language"
-      snippet.tags_array.count.should == 2
+      snippet.tags.count.should == 2
     end
 
   end

@@ -2,7 +2,7 @@ module BasePresenter
   include Kawa::Common::Presenter
 
   def tags
-    model.tags_array
+    model.tags
   end
 
   def tags?

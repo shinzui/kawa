@@ -2,22 +2,24 @@ class ResourceAuthorizer < ApplicationAuthorizer
 
   UnsupportedResource = Class.new(StandardError)
 
-  ResourceOwner = {
-    Page  => Page.public_instance_method(:author),
-    Link  => Link.public_instance_method(:creator),
-    Bookmark  => Bookmark.public_instance_method(:creator),
-    Quote  => Quote.public_instance_method(:contributor)
-  }.freeze
+  def resource_owner
+    {
+      Page  => Page.public_instance_method(:author),
+      Link  => Link.public_instance_method(:creator),
+      Bookmark  => Bookmark.public_instance_method(:creator),
+      Quote  => Quote.public_instance_method(:contributor)
+    }.freeze
+  end
 
   def self.readable_by?(user)
     return true
   end
 
   def modifiable_by?(user)
-    raise UnsupportedResource unless ResourceOwner.keys.include?(resource.class)
+    raise UnsupportedResource unless resource_owner.keys.include?(resource.class)
 
     return true unless resource.respond_to?(:private?) && resource.private? 
-    owner = ResourceOwner[resource.class].bind(resource).call
+    owner = resource_owner[resource.class].bind(resource).call
     return owner == user
   end
 

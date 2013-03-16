@@ -1,22 +1,44 @@
-<div class="row-fluid">
-  <%= simple_form_for @quote do |f| %>
-    <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
+<%= simple_form_for @quote do |f| %>
+  <%= render :partial  => "/shared/form_error", :locals  => {:f  => f} %>
 
-    <%= f.input :author %>
-
-    <%= f.input :source %>
-
-    <%= f.input :source_url, :input_html  => {:class  => "span8"}%>
-
-    <%= f.input :quotation, :as  => :text, :input_html  => {:class  => "span8", :rows  => 13} %> 
-
-    <%= f.input :lang, :collection  => Language.supported, :label_method  => :name, :value_method  => :iso_code %>
-
-    <%= f.input :tags, :input_html  => {:class  => "span4"} %>
-
-    <div class="form-actions">
-      <%= f.button :submit, :class  => "btn btn-primary" %> 
-      <button class="btn"><%= link_to "Cancel", url_for(:back) %></button>
+  <div class="row">
+    <div class="col-lg-4">
+      <%= f.input :author %>
     </div>
-  <% end -%>
-</div>
+  </div>
+
+  <div class="row">
+  <div class="col-lg-4">
+    <%= f.input :source %>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7">
+      <%= f.input :source_url %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7">
+      <%= f.input :quotation, :as  => :text, :input_html  => {rows: 13} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <%= f.input :lang, :collection  => Language.supported, :label_method  => :name, :value_method  => :iso_code, input_html: {class: "col-lg-3"} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7">
+      <%= f.input :tags, input_html: {class: "col-lg-4", value: @quote.tags.nil? ? nil : @quote.tags.join(",")} %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class  => "btn btn-primary" %> 
+    <button class="btn btn-default"><%= link_to "Cancel", url_for(:back) %></button>
+  </div>
+<% end -%>

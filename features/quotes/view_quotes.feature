@@ -1,3 +1,4 @@
+@quotes
 Feature: View quotes
   Scenario: Viewing all quotes
     Given there are 4 quotes

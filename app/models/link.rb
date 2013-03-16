@@ -5,7 +5,8 @@ class Link
 
   before_validation { self.url = self.class.clean(url) }
   before_destroy  :can_destroy? 
-  # before_save :set_id
+  before_save :update_screenshot
+  before_create :create_screenshot
 
   field :_id, type: String, default: -> { Kawa::Util::Base62.encode(Kawa::Mongo::Sequence.next("links")).to_s }
 
@@ -13,7 +14,7 @@ class Link
   belongs_to :creator, :class_name  => "User"
   has_and_belongs_to_many :pages
 
-  field :private, type: Boolean
+  field :private, type: Mongoid::Boolean
 
   validates_uniqueness_of :data
   # validates_presence_of :creator, :data
@@ -58,6 +59,16 @@ class Link
   private 
   def set_id
     self._id = Kawa::Util::Base62.encode(Kawa::Mongo::Sequence.next("links")).to_s if new_record?
+  end
+
+  def update_screenshot
+    if !new_record? && data_changed?
+      ScreenshotGrabber.perform_async(link.id) unless data_was == url
+    end
+  end
+
+  def create_screenshot
+    ScreenshotGrabber.perform_async(id)
   end
 
 end

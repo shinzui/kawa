@@ -3,15 +3,14 @@
 <%= render :partial  => 'shared/metadata', :locals  => {:presenter  => @quote} %>
 
 <% if @quote.updatable? || @quote.deletable? %>
-  <div class="form-actions row-fluid">
-    <div class="span12">
+  <div class="form-actions row">
+    <div class="col-lg-12">
       <% if @quote.updatable? %>
-        <%= link_to 'Edit quote', edit_quote_path(@quote.model), :rel  => "edit-quote", :class  => "btn-info btn-small", :alt  => "Edit", :title  => "Edit" %>
+        <%= link_to 'Edit quote', edit_quote_path(@quote.model), :rel  => "edit-quote", :class  => "btn btn-info btn-sm", :alt  => "Edit", :title  => "Edit" %>
       <% end %>
       <% if @quote.deletable? %>
-        <%= link_to 'Delete quote', @quote.model, :rel  => 'delete-quote', :method  => :delete, :data  => {:confirm  => "Are you sure?"}, :class  => "btn-danger btn-small", :alt  => "Delete" %>
+        <%= link_to 'Delete quote', @quote.model, :rel  => 'delete-quote', :method  => :delete, :data  => {:confirm  => "Are you sure?"}, :class  => "btn btn-danger btn-sm", :alt  => "Delete" %>
       <% end %>
     </div>
   </div>
 <% end %>
-

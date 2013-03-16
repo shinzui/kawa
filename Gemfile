@@ -1,40 +1,40 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.12'
-gem 'mongoid', '~> 3.1'
+gem 'rails', '4.0.0'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'mongoid', :github  => "mongoid/mongoid", :branch  => "master"
 gem 'mongoid_slug'#, :git  => 'git@github.com:shinzui/mongoid-slug.git'
-gem 'mongoid_taggable_with_context', :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
+gem 'mongoid_taggable_with_context'#, :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
 gem 'mongoid_rails_migrations'
 
 gem 'nokogiri'
 gem 'redcarpet'
 gem 'creole'
-gem 'crummy', '~> 1.3.6'
-#gem 'idn'
-gem 'tire'
+gem 'crummy'
+gem 'tire', github: "karmi/tire"
 gem 'tire-contrib'
 gem 'yajl-ruby'
 gem 'loofah'
 gem 'mustache'
-gem 'postrank-uri'#, :git  => "git://github.com/shinzui/postrank-uri.git"
-# gem 'pygments.rb'
+gem 'postrank-uri'
 gem 'carrierwave'
-gem "carrierwave-mongoid"#, :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
+gem "carrierwave-mongoid"
 gem 'mini_magick'
 gem "js-routes"
 gem 'sidekiq'
-gem "kiqstand"
+gem "pygments.rb"
 gem "configatron"
-gem "rails-backbone"
 gem "slim"
 gem "sinatra", :require => nil
 gem "devise"
 gem "authority"
 gem "kaminari"
 gem "select2-rails"
-gem "kaminari-bootstrap", :git  => "git://github.com/shinzui/kaminari-bootstrap.git"
+gem "kaminari-bootstrap", github: "mcasimir/kaminari-bootstrap" 
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
-gem "turbolinks"
+gem "protected_attributes"
+gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
+gem "font-awesome-rails"
 
 #sidekiq UI
 gem "slim"
@@ -60,7 +60,7 @@ end
 
 
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails' #, github: 'cucumber/cucumber-rails', branch: 'master_rails4_test'
   gem "rspec-rails"
   gem 'database_cleaner'
   gem 'fabrication'
@@ -74,17 +74,17 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',   '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0.beta1'
+  
+  gem 'uglifier'
   gem 'therubyracer'
   gem 'ejs'
   gem 'eco'
 end
 
-gem 'simple_form'#, :git => 'git://github.com/plataformatec/simple_form.git'
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'jquery-rails'
-gem 'twitter-bootstrap-turbo', :git => 'git://github.com/davydotcom/twitter-bootstrap-rails.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -93,7 +93,7 @@ gem 'twitter-bootstrap-turbo', :git => 'git://github.com/davydotcom/twitter-boot
 gem 'unicorn'
 
 group :test, :development do
-  gem 'debugger2', :require => 'ruby-debug', :git  => "git://github.com/ko1/debugger2.git"
   gem 'konacha'
+  gem 'debugger', :require => 'ruby-debug'
 end
 

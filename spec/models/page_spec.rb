@@ -17,14 +17,14 @@ describe Page do
     it "should support tags with whitespaces" do
       page = Fabricate(:markdown_page)
       page.tags = "tokyo tower"
-      page.tags_array.count.should == 1
-      page.tags_array.first.should == "tokyo tower"
+      page.tags.count.should == 1
+      page.tags.first.should == "tokyo tower"
     end
 
     it "should use a comma as a tag seperator" do
       page = Fabricate(:markdown_page)
       page.tags = "tokyo tower, tokyo"
-      page.tags_array.count.should == 2
+      page.tags.count.should == 2
     end
 
   end

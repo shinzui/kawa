@@ -25,8 +25,8 @@ class LinkPresenter
 
   def url_screenshot_thumbnail
     image = url_screenshot_thumbnail_url || "processing.jpg"
-    h.link_to h.short_url_path(model), :class  => "thumbnail" do
-      h.image_tag image
+    h.link_to h.short_url_path(model)  do
+      h.image_tag image, class: "img-thumbnail"
     end
   end
 

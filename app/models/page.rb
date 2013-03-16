@@ -11,7 +11,7 @@ class Page
 
   include Authority::Abilities
 
-  index_name "#{Rails.env}-#{Rails.application.class.to_s.downcase}-pages"
+  index_name "#{Rails.env}-#{Rails.application.class.to_s.downcase}"
 
   taggable :tags, :separator  => ","
 
@@ -32,7 +32,7 @@ class Page
   scope :named, ->(name) { where(name: /^#{name}$/i) }
   scope :private, -> { where(private: true) }
   scope :authored, ->(author) { where(author_id: author.id) }
-  scope :tagged, ->(tags) { all_in(tags_array: tags)}
+  scope :tagged, ->(tags) { all_in(tags: tags)}
 
   module Markup
     MARKDOWN = "markdown".freeze
@@ -41,7 +41,7 @@ class Page
   field :name
   field :markup
   field :raw_data
-  field :private, type: Boolean
+  field :private, type: Mongoid::Boolean
   field :_slugs, type: Array, default: []
   index({name: 1}, {unique: true})
   slug  :name do |current_object|
@@ -51,11 +51,21 @@ class Page
   validates_presence_of :name, :markup, :raw_data, :author
   validates_uniqueness_of :name
 
+  mapping do
+    indexes :id, index: :not_analyzed
+    indexes :name, analyzer: 'snowball', boost: 5.0
+    indexes :tags, analyzer: 'keyword', boost: 2.0
+    indexes :raw_data, analyzer: 'snowball'
+    indexes :created_at, type: 'date' 
+    indexes :updated_at, type: 'date'
+    indexes :private, type: 'boolean'
+  end
+
   self.authorizer_name = "ResourceAuthorizer"
 
-	def	self.supported_markups
-		Markup.constants.map {|m| Markup.const_get(m)}
-	end
+  def self.supported_markups
+    Markup.constants.map {|m| Markup.const_get(m)}
+  end
 
   def self.search_index
     Tire.index(index_name)
@@ -87,7 +97,6 @@ class Page
   end
 
   private
-  
   def process_plugins
     Kawa::Wiki::Plugin::Processor.new(self).process_processing_plugins(raw_data)
   end

@@ -13,7 +13,7 @@ Given /^the page is tagged with "(.*?)"$/ do |tags|
 end
 
 Then /^it should have the "([^"]*)" tag$/ do |tag|
-  Page.last.tags_array.should include(tag)
+  Page.last.tags.should include(tag)
 end
 
 Given /^the "([^"]*)" page is tagged with "([^"]*)"$/ do |page_name, tag|

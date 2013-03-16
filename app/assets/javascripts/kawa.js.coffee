@@ -109,7 +109,7 @@ class Kawa.LinkManager
 
 initKawa = ->
   $ = jQuery
-  $('.quote, .link').on 'hover', (event) =>
+  $('.quote, .link').on 'mouseenter mouseleave', (event) =>
     $(event.currentTarget).toggleClass('hover')
   linkManager = new Kawa.LinkManager()
   $('body').on('click.link-menu.data-api', linkManager.clearMenus)

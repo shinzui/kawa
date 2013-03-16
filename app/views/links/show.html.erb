@@ -1,15 +1,15 @@
-<div class="row-fluid">
-    <div class="span2 link-screenshot">
+<div class="row">
+    <div class="col-lg-2 link-screenshot">
       <%= @link.url_screenshot_thumbnail %>
 
       <% if current_user %>
         <%= form_tag link_url_screenshot_path(@link.model), :remote  => true do %>
-          <%= submit_tag "Regenerate", :class  => "btn btn-mini" %>
+          <%= submit_tag "Regenerate", :class  => "btn btn-xs btn-default" %>
         <% end %>
       <% end %>
     </div>
 
-    <div class="span10">
+    <div class="col-lg-10">
       <%= @link.link %>
       <% if @link.description %>
         <p><%= @link.description %></p>

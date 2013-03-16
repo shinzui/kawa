@@ -1,17 +1,17 @@
 <% if current_or_guest_user.can_read?(link) %>
   <% link = LinkPresenter.new(link) %>
-  <div class="link row-fluid">
+  <div class="link row">
     <div>
-      <div class="thumbnails span2" data-no-turbolink>
+      <div class="thumbnails col-lg-2" >
         <%= link.url_screenshot_thumbnail %>
       </div>
     </div>
-    <div class="span10" data-no-turbolink>
+    <div class="col-lg-10">
       <%= link.link %>
     </div>
     <%= render :partial  => "shared/control", 
       :locals  => {:model  => link.model, 
-                   :html_class  => "span12",
+                   :html_class  => "col-lg-12",
                    :edit_path  => edit_polymorphic_path(link.model)} %>
   </div>
 <% end %>
