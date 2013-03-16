@@ -91,6 +91,6 @@ gem 'twitter-bootstrap-turbo', :git => 'git://github.com/davydotcom/twitter-boot
 gem 'unicorn'
 
 group :test, :development do
-  gem 'debugger', :require => 'ruby-debug'
+  gem 'debugger2', :require => 'ruby-debug', :git  => "git://github.com/ko1/debugger2.git"
 end
 

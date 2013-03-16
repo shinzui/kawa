@@ -30,3 +30,5 @@ zeus.json
 .powder
 .powenv
 .listen_test
+
+.ruby-version
