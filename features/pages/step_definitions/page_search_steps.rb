@@ -2,6 +2,10 @@ Given /^I search for "([^"]*)"$/ do |search_term|
   #ensure there is a search index
   Page.create_search_index
   Page.search_index.refresh
+  unless Page.where(name: 'Home').present?
+    Fabricate(:markdown_page, name: 'Home')
+  end
+
   visit root_path
   within(:css, ".form-search") do
     fill_in 'query', :with  => search_term
