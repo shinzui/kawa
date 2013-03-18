@@ -21,6 +21,14 @@ module BasePresenter
     model.respond_to?(:private?) ? model.private? : false
   end
 
+  def backlinks
+    model.respond_to?(:inbound_page_links) ? model.inbound_page_links : []
+  end
+
+  def backlinks?
+    backlinks.present?
+  end
+
   def view_count
     if model.respond_to?(:visits)
       count = model.visits.count

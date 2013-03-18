@@ -9,10 +9,12 @@ class PageRenderer
     @page = page
     @tagmap = {}
     @codemap = {}
+    @linked_pages = []
     @plugin_processor = Kawa::Wiki::Plugin::Processor.new(@page)
   end
 
   def render
+    @rendered = true
     data = @page.raw_data.clone
     data = extract_code(data)
     data = preprocess_tags(data)
@@ -33,6 +35,15 @@ class PageRenderer
 
   def linked_page_path(page)
    self.class.linked_page_path(page) 
+  end
+
+  def rendered?
+    @rendered
+  end
+
+  def linked_pages
+    render unless rendered?
+    @linked_pages 
   end
 
   private
@@ -80,9 +91,11 @@ class PageRenderer
       title, page_name = *parts.compact.map(&:strip)
       page_name ||= title
       
+      @linked_pages << page_name
       page = Page.named(page_name).first
       page ||= Page.new(:name  => page_name)
       presence = page.new_record? ? 'absent' : 'present'
       "<a class=\"#{presence}\" href=\"#{linked_page_path(page)}\">#{title}</a>"
     end
+
 end

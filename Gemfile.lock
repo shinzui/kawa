@@ -9,16 +9,6 @@ GIT
       therubyracer (>= 0.10.2)
 
 GIT
-  remote: git://github.com/jnicklas/carrierwave-mongoid.git
-  revision: b445a38407cc0ee3eda7ffff2e4820e2efca0276
-  branch: mongoid-3.0
-  specs:
-    carrierwave-mongoid (0.3.0.alpha)
-      carrierwave (~> 0.6)
-      mongoid (~> 3.0.0)
-      mongoid-grid_fs (~> 1.3.1)
-
-GIT
   remote: git://github.com/ko1/debugger2.git
   revision: e845a450465c50149180313815a9f0253b822116
   specs:
@@ -95,6 +85,10 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    carrierwave-mongoid (0.5.0)
+      carrierwave (~> 0.8.0)
+      mongoid (~> 3.0)
+      mongoid-grid_fs (~> 1.3)
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
@@ -213,12 +207,12 @@ GEM
     mime-types (1.21)
     mini_magick (3.5.0)
       subexec (~> 0.2.1)
-    mongoid (3.0.23)
-      activemodel (~> 3.1)
-      moped (~> 1.2)
+    mongoid (3.1.2)
+      activemodel (~> 3.2)
+      moped (~> 1.4.2)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    mongoid-grid_fs (1.3.3)
+    mongoid-grid_fs (1.7.0)
       mime-types (~> 1.19)
       mongoid (~> 3.0)
     mongoid-rspec (1.7.0)
@@ -407,7 +401,7 @@ DEPENDENCIES
   authority
   awesome_print
   carrierwave
-  carrierwave-mongoid!
+  carrierwave-mongoid
   coffee-rails (~> 3.2.1)
   configatron
   creole
@@ -434,7 +428,7 @@ DEPENDENCIES
   launchy
   loofah
   mini_magick
-  mongoid (~> 3.0)
+  mongoid (~> 3.1)
   mongoid-rspec
   mongoid_rails_migrations
   mongoid_slug

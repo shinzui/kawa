@@ -1,5 +1,8 @@
 <div class='<%= "#{presenter.model.class.to_s.downcase}-metadata" %> row-fluid'>
   <div class="span8">
+    <% if presenter.backlinks? %>
+      <a href="#backlinkModal" data-toggle='modal' class='backlinks'><i class='icon-random'></i></a>
+    <% end %>
     <% if presenter.private? %>
       <i class="icon-lock"></i>
     <%  end %>
@@ -15,6 +18,32 @@
         <%= link_to tag, "#{url_for(presenter.model.class)}?tag=#{tag}", :rel  => "tag" %><%= render_comma(presenter.tags, idx) %>
       <% end %>
     <% end %>
+  </div>
+</div>
+
+<div id="backlinkModal" class="modal hide">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">✕</button>
+    <h3>Backlinks</h3>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Page</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% presenter.backlinks.each do |backlink| %>
+        <tr>
+          <td><%= link_to backlink.outbound_page.name, backlink.outbound_page %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
 

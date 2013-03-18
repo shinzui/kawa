@@ -17,9 +17,15 @@ class Page
 
   before_save :process_plugins
   before_save :extract_links
+  after_save :update_backlinks
+  after_create :sync_backlinks
+  after_destroy :sync_backlinks
+
   before_validation :set_default_markup
 
   has_and_belongs_to_many :links
+  has_many :inbound_page_links, class_name: 'Backlink', inverse_of: :inbound_page
+  has_many :outbound_page_links, class_name: 'Backlink', inverse_of: :outbound_page
   belongs_to :author, :class_name  => "User"
   belongs_to :last_editor, :class_name  => "User"
 
@@ -30,7 +36,6 @@ class Page
 
   module Markup
     MARKDOWN = "markdown".freeze
-    # CREOLE   = "creole".freeze
   end
   
   field :name
@@ -91,6 +96,14 @@ class Page
     page_links = PageLinkExtractor.new(self).extract_links
     page_links.each {|l| l.associate_to_page(self)}
     self.links = page_links
+  end
+
+  def update_backlinks
+    Backlink.update_outbound_links self
+  end
+
+  def sync_backlinks
+    Backlink.update_inbound_links self
   end
 
   def set_default_markup

@@ -78,6 +78,11 @@ rake db:migrate --trace
         renderer.render.should match expected_link
       end
 
+      it "should add the page name to the linked pages" do
+        @interwiki_link = "[[#{@linked_page.name}]]"
+        renderer.render
+        renderer.linked_pages.should == [@linked_page.name]
+      end
     end
 
     context "Page name links to non-existing pages" do

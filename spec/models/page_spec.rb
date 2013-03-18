@@ -51,6 +51,74 @@ describe Page do
     end
   end
 
+  describe "Backlinks" do
+    before :each do
+      page_data =<<-DATA
+# Backlinks
+
+[[Lee Da Hae]]
+
+[[Kim So Yeon]]
+      DATA
+      @linked_page = Fabricate(:markdown_page, name: 'Kim So Yeon')
+      @page = Fabricate(:markdown_page, :raw_data  => page_data)
+    end
+
+    context "to existing page" do
+      it "should reference the outbound pages" do
+        @page.outbound_page_links.where(inbound_page: @linked_page).count.should == 1
+      end
+
+      it "the outbound page should contain a reference to the inbound page" do
+        @linked_page.inbound_page_links.where(outbound_page: @page).count.should == 1 
+      end
+
+      it "should remove the backlink if the link is removed" do
+        @page.raw_data = "# No Backlinks\n [[Lee Da Hae]]"
+        @page.save
+
+        @linked_page.inbound_page_links.where(outbound_page: @page).count.should == 0
+      end
+    end
+
+    context "to non-existing page" do
+      it "should reference the outbound page by its name" do
+        @page.outbound_page_links.where(inbound_page_name: 'Lee Da Hae').count.should == 1
+      end
+
+      it "should remove the backlink if the page is removed" do
+        Backlink.where(inbound_page_name: 'Lee Da Hae').count.should == 1
+        @page.raw_data = "# No Backlinks\n [[Kim So Yeon]]"
+        @page.save
+
+        Backlink.where(inbound_page_name: 'Lee Da Hae').count.should == 0
+      end
+    end
+
+    context "updating dead backlinks" do
+      
+      it "should update the backlinks to link to the new page" do
+        backlink = Backlink.where(inbound_page_name: 'Lee Da Hae').first
+        backlink.should be_present
+
+        lee_da_hae = Fabricate(:markdown_page, name: 'Lee Da Hae')
+
+        backlink.reload.inbound_page_name.should be_nil
+        backlink.inbound_page.should == lee_da_hae
+      end
+
+      it "should update backlinks to deleted pages" do
+        backlink = Backlink.where(outbound_page_id: @page.id, inbound_page_id: @linked_page.id).first
+        backlink.should be_present
+
+        @linked_page.destroy
+
+        backlink.reload.inbound_page.should be_nil
+        backlink.inbound_page_name.should == 'Kim So Yeon'
+      end
+    end
+  end
+
   describe "Links" do
     context "page with external links" do
       before :each do
