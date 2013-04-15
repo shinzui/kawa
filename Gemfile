@@ -48,12 +48,14 @@ group :development do
   gem "guard-shell"
   gem "guard-bundler"
   gem "guard-pow"
+  gem 'guard-konacha'
   gem "rb-fsevent", :require  => false
-  # gem "growl", :require  => false
   gem "terminal-notifier"
   gem "yard"
   gem "pry-rails"
   gem "pry-doc"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 
@@ -92,5 +94,6 @@ gem 'unicorn'
 
 group :test, :development do
   gem 'debugger2', :require => 'ruby-debug', :git  => "git://github.com/ko1/debugger2.git"
+  gem 'konacha'
 end
 

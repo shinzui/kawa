@@ -44,3 +44,13 @@ guard 'pow' do
   watch(%r{^config/environments/.*\.rb$})
   watch(%r{^config/initializers/.*\.rb$})
 end
+
+### Guard::Konacha
+#  available options:
+#  - :spec_dir, defaults to 'spec/javascripts'
+#  - :driver, defaults to :selenium
+require 'capybara/poltergeist'
+guard :konacha, :driver  => :poltergeist do
+  watch(%r{^app/assets/javascripts/(.*)\.js(\.coffee)?$}) { |m| "#{m[1]}_spec.js" }
+  watch(%r{^spec/javascripts/.+_spec(\.js|\.js\.coffee)$})
+end
