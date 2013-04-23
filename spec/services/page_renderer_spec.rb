@@ -52,7 +52,7 @@ rake db:migrate --trace
     it "should highlight the code block" do
       result =  @renderer.render
       doc = Nokogiri::HTML::DocumentFragment.parse(result)
-      doc.css('.highlight').count.should == 2
+      doc.css('pre.code').count.should == 2
     end
   end
 

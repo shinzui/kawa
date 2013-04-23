@@ -60,7 +60,9 @@ class PageRenderer
       @codemap.each do |stamp, spec|
         code = spec[:code]
         code.gsub!(/^(  |\t)/m, '') if code.lines.all? {|l| l  =~ /(  |\t)/ }
-        highlight = Pygments.highlight(code, :lexer  => spec[:lang])
+        highlight =<<-CODE
+        <pre class="code"><code class='#{spec[:lang]}'>#{code}</code></pre>
+        CODE
         data.gsub!(stamp, highlight)
       end
       data 

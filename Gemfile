@@ -17,7 +17,7 @@ gem 'yajl-ruby'
 gem 'loofah'
 gem 'mustache'
 gem 'postrank-uri'#, :git  => "git://github.com/shinzui/postrank-uri.git"
-gem 'pygments.rb'
+# gem 'pygments.rb'
 gem 'carrierwave'
 gem "carrierwave-mongoid"#, :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
 gem 'mini_magick'

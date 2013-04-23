@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require d3.v2
 //= require d3.layout.cloud 
+//= require highlight
 //= require_tree ../templates
 //= require_tree .
 //

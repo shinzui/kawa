@@ -115,6 +115,7 @@ initKawa = ->
   $('body').on('click.link-menu.data-api', linkManager.clearMenus)
   $('body').on('click.popover.data-api', linkManager.clearPopovers)
   $('a.external').hover ((e) -> linkManager.setCurrentLink(e)),((e) -> linkManager.setCurrentLink(null))
+  $('pre code').each( (i,e) -> hljs.highlightBlock(e))
   shortcutManager = new Kawa.KeyboardShortcutManager()
 
 jQuery -> initKawa()
