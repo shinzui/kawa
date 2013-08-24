@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'mongoid', :github  => "mongoid/mongoid", :branch  => "master"
-gem 'mongoid_slug'#, :git  => 'git@github.com:shinzui/mongoid-slug.git'
+gem 'mongoid_slug'
 gem 'mongoid_taggable_with_context'#, :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
 gem 'mongoid_rails_migrations'
 
@@ -22,6 +22,7 @@ gem "carrierwave-mongoid"
 gem 'mini_magick'
 gem "js-routes"
 gem 'sidekiq'
+gem 'kiqstand', github: "mongoid/kiqstand"
 gem "pygments.rb"
 gem "configatron"
 gem "slim"

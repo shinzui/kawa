@@ -20,6 +20,14 @@ GIT
       rails
 
 GIT
+  remote: git://github.com/mongoid/kiqstand.git
+  revision: fdd5ea62293707fe044180a220670b0142314d04
+  specs:
+    kiqstand (1.2.0)
+      mongoid (~> 4.0)
+      moped (~> 1.4)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: d0fc225a81a27dfdd69f17134a564208bbe501c6
   branch: master
@@ -436,6 +444,7 @@ DEPENDENCIES
   js-routes
   kaminari
   kaminari-bootstrap!
+  kiqstand!
   konacha
   launchy
   loofah
