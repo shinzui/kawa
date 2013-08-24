@@ -17,7 +17,7 @@
             <% if notice or flash[:error] %>
               <% css_class = notice ? 'success' : 'error' %>
               <% message = notice ?  notice : flash[:error] %>
-              <div class="alert <%= css_class %> fade in" data-alert="alert">
+              <div class="alert alert-warning <%= css_class %> fade in" data-alert="alert">
                 <a class="close" data-dismiss="alert" href="#">×</a>
                 <p><%= message %></p>
               </div>

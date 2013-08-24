@@ -7,15 +7,8 @@
  *= require_self
  *= require_tree . 
 */
-
-body {
-  #padding-top: 60px;
-  background-color: #fffffc;
-  color: #2b2b2b;
-}
-
-nav.navbar-static-top {
-}
+@import "bootstrap";
+@import "font-awesome";
 
 pre.code {
   background-color: #f8f8ff;
