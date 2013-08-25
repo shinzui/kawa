@@ -3,17 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 a.external {
-  background: url(external.gif) no-repeat right center;
+  background: image-url('external.gif') no-repeat right center;
   padding-right: 11px;
 }
 
 a.github {
-  background: url(github-favicon.ico) no-repeat right center;
+  background: image-url('github-favicon.ico') no-repeat right center;
   padding-right: 19px;
 }
 
 a.quora {
-  background: url(quora.png) no-repeat right center;
+  background: image-url('quora.png') no-repeat right center;
   padding-right: 19px;
 }
 
