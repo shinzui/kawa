@@ -13,6 +13,25 @@
 
     <%= f.input :private, :as  => :boolean %>
 
+    <div id="attachment-container">
+      <% @page.attachments.each_with_index do |a, index| %>
+        <input id="page_attachment_ids[<%= index %>]" name="page[attachment_ids[<%= index %>]]" type="hidden" value="<%= a.id.to_s %>" data-attachment-index="<%= index %>">
+      <% end %>
+    </div>
+
+    <div id="attachment-upload" class="dropzone">
+      <% @page.attachments.each_with_index do |a, index| %>
+      <div class="dz-preview dz-image-preview">
+         <div class="dz-details">
+            <div class="dz-filename"><span data-dz-name=""><%= a.asset_filename %></span></div> 
+            <div class="dz-size" data-dz-size=""><strong><%= number_to_human_size(a.file_size)%></strong></div>  
+             <img data-dz-thumbnail="" alt="<%= a.asset_filename %>" src="<%= a.asset.thumb.url %>">
+           </div>  
+           <a class="dz-remove remove-attachment" data-attachment-id="<%= a.id.to_s %>" href="javascript:undefined;">Remove file</a>
+       </div>
+      <% end %>
+    </div>
+
     <div class="form-actions">
       <%= f.button :submit, :class  => "btn btn-primary" %>
       <%= link_to "Cancel", url_for(:back), :class  => "btn" %>

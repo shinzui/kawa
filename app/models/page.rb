@@ -26,6 +26,7 @@ class Page
   has_and_belongs_to_many :links
   has_many :inbound_page_links, class_name: 'Backlink', inverse_of: :inbound_page
   has_many :outbound_page_links, class_name: 'Backlink', inverse_of: :outbound_page
+  has_many :attachments, autosave: true, dependent: :destroy
   belongs_to :author, :class_name  => "User"
   belongs_to :last_editor, :class_name  => "User"
 

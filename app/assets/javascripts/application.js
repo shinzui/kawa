@@ -15,6 +15,9 @@
 //= require d3.v2
 //= require d3.layout.cloud 
 //= require highlight
+//= require dropzone
+//= require retina
+//= require jquery.textarea.caret
 //= require_tree ../templates
 //= require_tree .
 //

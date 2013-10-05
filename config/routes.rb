@@ -6,6 +6,7 @@ Kawa::Application.routes.draw do
   root :to => redirect("/pages/home")
 
   resources :pages
+  resources :attachments
   resources :page_tags
   resources :quotes
   resources :bookmarks

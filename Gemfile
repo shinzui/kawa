@@ -19,6 +19,7 @@ gem 'mustache'
 gem 'postrank-uri'
 gem 'carrierwave'
 gem "carrierwave-mongoid"
+gem "mime-types"
 gem 'mini_magick'
 gem "js-routes"
 gem 'sidekiq'
@@ -36,6 +37,7 @@ gem "active_model_serializers", :git => "git://github.com/rails-api/active_model
 gem "protected_attributes"
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem "font-awesome-rails"
+gem 'dropzonejs-rails'
 
 #sidekiq UI
 gem "slim"
@@ -55,6 +57,7 @@ group :development do
   gem "yard"
   gem "pry-rails"
   gem "pry-doc"
+  gem "pry-remote"
   gem "better_errors"
   gem "binding_of_caller"
   gem "quiet_assets"

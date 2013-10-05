@@ -30,11 +30,13 @@ class PagesController < ApplicationController
 
   def new
     add_crumb "New Page"
-    @page = Page.new(params[:page])
+    page = Page.new(params[:page])
+    @page = PageForm.new(page)
   end
 
   def create
-    @page = Page.new(params[:page])
+    @page = PageForm.new
+    @page.attributes = params[:page]
 
     if wiki.add_page(current_user, @page)
       redirect_to @page, :notice  => "Success"
@@ -58,7 +60,9 @@ class PagesController < ApplicationController
 
   def update
     authorize_action_for(@page)
-    if @page.update_attributes(params[:page])
+    @page = PageForm.new(@page)
+    @page.attributes = params[:page]
+    if @page.save
       redirect_to @page, :notice  => "Page updated successfully"
     else
       render :edit

@@ -4,6 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require select2
  *= require highlight-github-theme
+ *= require dropzone/basic
  *= require_self
  *= require_tree . 
 */
