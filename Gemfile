@@ -27,7 +27,6 @@ gem 'kiqstand', github: "mongoid/kiqstand"
 gem "pygments.rb"
 gem "configatron"
 gem "slim"
-gem "sinatra", :require => nil
 gem "devise"
 gem "authority"
 gem "kaminari"
@@ -38,9 +37,9 @@ gem "protected_attributes"
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem "font-awesome-rails"
 gem 'dropzonejs-rails'
+gem 'rack-cors'
 
 #sidekiq UI
-gem "slim"
 gem "sinatra", :require  => nil
 
 group :development do
