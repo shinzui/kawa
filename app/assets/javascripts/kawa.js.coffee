@@ -83,7 +83,7 @@ class Kawa.LinkManager
       $link = $(@currentLink)
       $link.wrap("<div class='popover-wrapper'/>")
       $.ajax(url: Routes.link_path({"id": $link.data("id")}), success: (data)->
-        imageThumbUrl = data.link.url_screenshot_thumb
+        imageThumbUrl = data.link.url_screenshot_thumb_url
         $link.tooltip("hide")
         thumbLink = "<a href='#{$link.attr('href')}' class='thumbnail' data-no-turbolink><img src='#{imageThumbUrl}'/></a>"
         popoverContent = if imageThumbUrl then thumbLink else "Processing link screenshot"

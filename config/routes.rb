@@ -14,6 +14,14 @@ Kawa::Application.routes.draw do
     resource :url_screenshot, :only  => [:create]
   end
 
+  namespace :api do
+    resources :pages
+    resources :quotes
+    resources :links
+    resources :bookmarks
+    devise_for :users
+  end
+
   resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
