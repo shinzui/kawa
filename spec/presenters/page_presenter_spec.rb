@@ -16,7 +16,7 @@ describe PagePresenter do
       end
 
       it "should return the page name" do
-        presenter.header.should == "<header class=\"page-header\"><h1>#{@page.name}</h1></header>"
+        presenter.header.should == "<header><h1>#{@page.name}</h1></header>"
       end
     end
 
@@ -26,7 +26,7 @@ describe PagePresenter do
       end
 
       it "should return the embedded title" do
-        presenter.header.should == '<header class="page-header"><h1>Title</h1></header>'
+        presenter.header.should == '<header><h1>Title</h1></header>'
       end
     end
 

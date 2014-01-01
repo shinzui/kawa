@@ -4,6 +4,7 @@ gem 'rails', '4.0.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'mongoid', :github  => "mongoid/mongoid", :branch  => "master"
 gem 'mongoid_slug'
+gem 'stringex', github: 'shinzui/stringex'
 gem 'mongoid_taggable_with_context'#, :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
 gem 'mongoid_rails_migrations'
 
@@ -23,7 +24,6 @@ gem "mime-types"
 gem 'mini_magick'
 gem "js-routes"
 gem 'sidekiq'
-gem 'kiqstand', github: "mongoid/kiqstand"
 gem "pygments.rb"
 gem "configatron"
 gem "slim"
@@ -64,7 +64,7 @@ end
 
 
 group :test do
-  gem 'cucumber-rails' #, github: 'cucumber/cucumber-rails', branch: 'master_rails4_test'
+  gem 'cucumber-rails', require: false
   gem "rspec-rails"
   gem 'database_cleaner'
   gem 'fabrication'
