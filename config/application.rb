@@ -51,7 +51,8 @@ module Kawa
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '/api/*', headers: :any, methods: :get
+        resource '/api/*', headers: :any, methods: [:get, :post, :put, :delete, :options]
+        resource '/oauth/*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
 

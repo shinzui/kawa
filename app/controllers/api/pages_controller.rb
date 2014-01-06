@@ -1,5 +1,7 @@
 class Api::PagesController < ApplicationController
 
+  doorkeeper_for :all
+
   def index
     @pages = Page.all.desc(:updated_at)
     render json: @pages, each_serializer: PageInfoSerializer, root: "pages"
@@ -8,5 +10,16 @@ class Api::PagesController < ApplicationController
   def show
     page = Page.find(params[:id])
     render json: page, serializer: FullPageSerializer, root: "page"
+  end
+
+  def create
+  end
+
+  def update
+
+  end
+
+  def destroy
+    
   end
 end
