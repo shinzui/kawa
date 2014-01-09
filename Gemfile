@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'mongoid', :github  => "mongoid/mongoid", :branch  => "master"
 gem 'mongoid_slug'
@@ -31,7 +31,7 @@ gem "devise"
 gem "authority"
 gem "kaminari"
 gem "select2-rails"
-gem "kaminari-bootstrap", github: "mcasimir/kaminari-bootstrap" 
+gem "kaminari-bootstrap", github: "mcasimir/kaminari-bootstrap"
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 #gem "protected_attributes"
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
@@ -81,7 +81,6 @@ end
 group :assets do
   gem 'sass-rails',   '~> 4.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0.beta1'
-  
   gem 'uglifier'
   gem 'therubyracer'
   gem 'ejs'
