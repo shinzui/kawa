@@ -34,7 +34,7 @@ gem "select2-rails"
 gem "kaminari-bootstrap", github: "mcasimir/kaminari-bootstrap" 
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 gem "protected_attributes"
-gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
+gem 'bootstrap-sass', github: "twbs/bootstrap-sass"
 gem "font-awesome-rails"
 gem 'dropzonejs-rails'
 gem 'rack-cors'
