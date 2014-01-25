@@ -11,6 +11,11 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+
 pre.code {
   background-color: #f8f8ff;
 }
