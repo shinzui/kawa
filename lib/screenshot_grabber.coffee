@@ -1,4 +1,6 @@
-page = new WebPage()
+page = require('webpage').create()
+system = require('system')
+
 if phantom.args.length < 2 or phantom.args.length > 3
   console.log "Usage: phantom screenshot_grabber.coffee URL filename"
   phantom.exit(1)
@@ -10,6 +12,11 @@ else
   page.settings.localToRemoteUrlAccessEnabled = true
   page.settings.webSecurityEnabled = true
   page.settings.XSSAuditingEnabled = true
+  page.onError = (msg, trace) ->
+    system.stderr.writeLine msg
+  page.onResourceError = (resourceError) ->
+      system.stderr.writeLine "  - unable to load url: #{resourceError.url}"
+      system.stderr.writeLine "  - error code: #{resourceError.errorCode} description: #{resourceError.errorString}"
   page.open(address, (status) ->
     if status isnt "success"
       console.log "Unable to load address #{address}: #{status}"
