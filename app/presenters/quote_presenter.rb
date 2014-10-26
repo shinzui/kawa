@@ -15,7 +15,7 @@ class QuotePresenter
   def quote
     blockquote_opts = {:lang  => @model.lang} if @model.lang.present?
     h.content_tag(:blockquote, blockquote_opts) do
-      h.concat(quotation)
+      h.concat(h.simple_format(quotation))
       h.concat(attribution)
     end
   end
