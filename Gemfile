@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.0.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
-gem 'mongoid', :github  => "mongoid/mongoid", :branch  => "master"
+gem 'mongoid'
 gem 'mongoid_slug'
 gem 'stringex', github: 'shinzui/stringex'
 gem 'mongoid_taggable_with_context'#, :git  => 'git@github.com:shinzui/mongoid_taggable_with_context.git'
@@ -97,7 +97,5 @@ gem 'jquery-rails'
 gem 'unicorn'
 
 group :test, :development do
-  gem 'konacha'
-  gem 'debugger', :require => 'ruby-debug'
 end
 
