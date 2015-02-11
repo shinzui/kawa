@@ -18,7 +18,7 @@ class ScreenshotGrabber
   def generate_screenshot(link, force = false)
     return unless generate_screenshot?(link, force)
 
-    script_location = File.join(Rails.root, 'lib/screenshot_grabber.coffee')
+    script_location = File.join(Rails.root, 'lib/screenshot_grabber.js')
     output = "#{Dir.tmpdir}/#{Digest::MD5.hexdigest(link.url)}.png"
     phantomjs_opts = "--ignore-ssl-errors=yes --ssl-protocol=any"
     `phantomjs #{phantomjs_opts} #{script_location} "#{link.url}" #{output}`
